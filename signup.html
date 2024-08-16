@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body{
+            height: 100%;
+            width: 100%;
+        }
+
+        body{
+            background-color: #7f7f7f;
+        }
+        .userinfo{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+
+        #icon{
+            height: fit-content;
+            width: fit-content;
+            margin-right: 10px;
+        }
+
+        #signup{
+            background-color: #6ede8a;
+        }
+        #info{
+            position: absolute;
+            left: 20%;
+            top: 20%;
+            display: flex;
+        }
+        #login{
+            background-color: transparent;
+            border: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id = "info">
+        <img id = "icon" src="ecommerce_logo.png" alt = "">
+        <div class = "inputs">
+            <input class = "userinfo" placeholder = "Username*" type = "text">
+            <input class = "userinfo" placeholder = "Email*" type = "text">
+            <input class = "userinfo" placeholder = "Password*" type = "password">
+            <input class = "userinfo" placeholder = "Confirm password*" type = "password">
+            
+            <button class = "userinfo" id = "signup">
+                Sign up
+            </button>
+
+            <button class = "userinfo" id = "login">
+                <span style="color: white;">Already signed up?</span>
+                <span style="color: #90caf9; text-decoration: underline;">Log in here</span>
+            </button>
+        </div>
+    </div>
+</body>
+</html>

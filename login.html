@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body{
+            height: 100%;
+            width: 100%;
+        }
+
+        body{
+            background-color: #7f7f7f;
+        }
+        .userinfo{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+            width: 250px;
+        }
+
+        #icon{
+            height: fit-content;
+            width: fit-content;
+            margin-right: 10px;
+        }
+
+        #login{
+            background-color: #6ede8a;
+            align-items: center;
+            margin-top: 25px;
+        }
+
+        #forgot{
+            align-items: center;
+            text-decoration: underline;
+            background-color: #7f7f7f;
+            text-align: center;
+            border: 0;
+            padding: 0;
+        }
+        #info{
+            position: absolute;
+            left: 20%;
+            top: 20%;
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div id = "info">
+        <img id = "icon" src="ecommerce_logo.png" alt = "">
+        <div class = "inputs">
+            <input class = "userinfo" placeholder = "Email*" type = "text">
+            <input class = "userinfo" placeholder = "Password*" type = "password">
+            <input class = "userinfo" placeholder = "Confirm password*" type = "password">
+            
+            <button class = "userinfo" id = "login">
+                Log in
+            </button>
+            <button class = "userinfo" id = "forgot">
+                Forgot password
+            </button>
+        </div>
+    </div>
+</body>
+</html>
