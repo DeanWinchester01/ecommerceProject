@@ -18,21 +18,40 @@
             display: flex;
             flex-wrap: wrap;
             position: relative;
-            left:23%;
+            left:7%;
             top:13%;
+            width: 80%;
         }
         .item{
             display: flex;
-            width: 130px;
+            width: 12.5%;
             height: 130px;
-            margin-right: 33px;
+            margin-right: 4%;
+            margin-bottom: 4%;
         }
         #searchbar{
             position: relative;
-            left: 23%;
+            left: 7%;
             top: 5%;
             width: 80%;
             height: 35px;
+        }
+        #sidemenu{
+            position: absolute;
+            left: 90%;
+            background: aqua;
+            height: 100%;
+            width: 10%;
+            top: 6%;
+        }
+        .sideoption{
+            display: flex;
+            margin-bottom: 10%;
+            margin-left: 26%;
+        }
+        #sideoptionstyle{
+            top: 10%;
+            position: relative;
         }
     </style>
 </head>
@@ -75,6 +94,18 @@
         <button class="item">
             item3
         </button>
+    </div>
+
+    <div id = "sidemenu">
+        <div id = "sideoptionstyle">
+            <button class = "sideoption">
+                Log in
+            </button>
+            <button class = "sideoption">
+                Sign up
+            </button>
+        </div>
+        
     </div>
 </body>
 </html>
