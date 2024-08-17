@@ -21,6 +21,7 @@
             left:7%;
             top:13%;
             width: 80%;
+            filter: blur(10px);
         }
         .item{
             display: flex;
@@ -35,6 +36,7 @@
             top: 5%;
             width: 80%;
             height: 35px;
+            filter: blur(10px);
         }
         #sidemenu{
             position: absolute;
@@ -43,6 +45,7 @@
             height: 100%;
             width: 10%;
             top: 6%;
+            filter: blur(10px);
         }
         .sideoption{
             display: flex;
@@ -52,6 +55,24 @@
         #sideoptionstyle{
             top: 10%;
             position: relative;
+        }
+        .itemview{
+            width: 80%;
+            height: 80%;
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            background-color: white;
+        }
+        .descriptor{
+            position: relative;
+            left: 50%;
+        }
+        #itemImage{
+            width: 33%;
+            left: 10%;
+            position: relative;
+            top: 14%;
         }
     </style>
 </head>
@@ -106,6 +127,22 @@
             </button>
         </div>
         
+    </div>
+
+    <div class = "itemview">
+        <img src="ecommerce_logo.png" id = "itemImage" alt="">
+        <span>
+            
+        </span>
+        <p class = "descriptor">
+            item name
+        </p>
+        <p class = "descriptor">
+            item description
+        </p>
+        <p class = "descriptor">
+            item value
+        </p>
     </div>
 </body>
 </html>
