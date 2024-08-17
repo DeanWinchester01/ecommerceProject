@@ -11,14 +11,18 @@
         }
 
         body{
-            background-color: #7f7f7f;
+            background-color: #212529;
         }
         .userinfo{
             display: flex;
             flex-direction: column;
             margin-bottom: 10px;
+            padding: 8px;
+            background-color: #212529;
+            border-color: #6c757d;
+            color: #f8f9fa;
         }
-
+        
         #icon{
             height: fit-content;
             width: fit-content;
@@ -26,7 +30,13 @@
         }
 
         #signup{
-            background-color: #6ede8a;
+            color: #212529;
+            background-color: #42a5f5;
+            border-color: #42a5f5;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            padding: 8px;
         }
         #info{
             position: absolute;
@@ -45,18 +55,17 @@
     <div id = "info">
         <img id = "icon" src="ecommerce_logo.png" alt = "">
         <div class = "inputs">
-            <input class = "userinfo" placeholder = "Username*" type = "text">
-            <input class = "userinfo" placeholder = "Email*" type = "text">
-            <input class = "userinfo" placeholder = "Password*" type = "password">
-            <input class = "userinfo" placeholder = "Confirm password*" type = "password">
+            <input class = "userinfo" placeholder = "Username" type = "text">
+            <input class = "userinfo" placeholder = "Email" type = "text">
+            <input class = "userinfo" placeholder = "Password" type = "password">
+            <input class = "userinfo" placeholder = "Confirm Password" type = "password">
             
             <button class = "userinfo" id = "signup">
                 Sign up
             </button>
 
             <button class = "userinfo" id = "login">
-                <span style="color: white;">Already signed up?</span>
-                <span style="color: #90caf9; text-decoration: underline;">Log in here</span>
+                <span style="color: #6c757d;">Already signed up? <span style="color: #42a5f5; text-decoration: underline;">Login</span></span>
             </button>
         </div>
     </div>
