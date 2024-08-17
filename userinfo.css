@@ -23,7 +23,7 @@ body{
     margin-right: 10px;
 }
 
-#signup{
+#mainButton{
     color: #212529;
     background-color: #42a5f5;
     border-color: #42a5f5;
@@ -40,7 +40,7 @@ body{
     display: flex;
 }
 
-#login{
+#secondaryButton{
     background-color: transparent;
     border: 0;
     padding: 0;
