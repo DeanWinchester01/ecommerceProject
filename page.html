@@ -21,7 +21,7 @@
             left:7%;
             top:13%;
             width: 80%;
-            filter: blur(10px);
+            /*filter: blur(10px);*/
         }
         .item{
             display: flex;
@@ -37,7 +37,7 @@
             top: 5%;
             width: 80%;
             height: 35px;
-            filter: blur(10px);
+            /*filter: blur(10px);*/
             background-color: #495057;
         }
         #sidemenu{
@@ -47,7 +47,7 @@
             height: 100%;
             width: 10%;
             top: 6%;
-            filter: blur(10px);
+            /*filter: blur(10px);*/
         }
         .sideoption{
             display: flex;
@@ -83,48 +83,18 @@
             position: relative;
             top: 14%;
         }
+        .itemImage{
+            width: 90%;
+            height: 90%;
+            position: relative;
+            left:5%;
+            top:5%;
+        }
     </style>
 </head>
 <body>
     <input id = "searchbar" type="text">
-    <div class="layout">
-        <button class="item">
-            item1
-        </button>
-        <button class="item">
-            item2
-        </button>
-        <button class="item">
-            item3
-        </button>
-        <button class="item">
-            item1
-        </button>
-        <button class="item">
-            item2
-        </button>
-        <button class="item">
-            item3
-        </button>
-        <button class="item">
-            item1
-        </button>
-        <button class="item">
-            item2
-        </button>
-        <button class="item">
-            item3
-        </button>
-        <button class="item">
-            item1
-        </button>
-        <button class="item">
-            item2
-        </button>
-        <button class="item">
-            item3
-        </button>
-    </div>
+    <div id = "layout" class="layout"> </div>
 
     <div id = "sidemenu">
         <div id = "sideoptionstyle">
@@ -137,8 +107,8 @@
         </div>
         
     </div>
-
-    <div class = "itemview">
+    <script src="scripts.js"></script>
+    <!--<div class = "itemview">
         <img src="ecommerce_logo.png" id = "itemImage" alt="">
         <span>
 
@@ -152,6 +122,6 @@
         <p class = "descriptor">
             item value
         </p>
-    </div>
+    </div>-->
 </body>
 </html>
