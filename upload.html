@@ -41,14 +41,14 @@
             width: 17%;
             height: 33%;
             position: relative;
-            top: 20%;
+            top: 0;
         }
         #itemImg{
             width: 40%;
-            height: 40%;
-            left: 48%;
+            height: 80%;
+            left: 36%;
             position: relative;
-            top: -6%;
+            top: 0;
         }
         .detail{
             height: 50%; /* Container height relative to the body or parent element */
@@ -66,11 +66,15 @@
 <body>
     
         <div id = "details" >
-            <button id = "imgUpload">
-                <span class="material-symbols-outlined">upload_file</span>
-                Upload image
-            </button>
-            <img id = "itemImg" src="0.png" alt="">
+            <div style="display: flex;">
+                <button id = "imgUpload">
+                    <span class="material-symbols-outlined">upload_file</span>
+                    Upload image
+                </button>
+                <img id = "itemImg" src="0.png" alt="">
+            </div>
+            
+            
             <input class = "detail" type = "text" placeholder = "Name">
             <input class = "detail" type = "text" placeholder = "Description">
             <input class = "detail" type = "text" placeholder = "Price">
