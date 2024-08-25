@@ -1,0 +1,53 @@
+<!-- YELLOW -->
+# High: {#ffe14c} | <#ffe14c>
+# Medium: {#ffe97f} | <#ffe97f>
+# Low: {#fff2b2} | <#fff2b2>
+# White: {#fffae5} | <#fffae5>
+
+<!-- RED -->
+# High: {#d02224} | <#d02224>
+# Medium: {#e35053} | <#e35053>
+# Low: {#ec8385} | <#ec8385>
+# White: {#f6cacc} | <#f6cacc>
+
+<!-- GREEN -->
+# High: {#208b3a} | <#208b3a>
+# Medium: {#2dc653} | <#2dc653>
+# Low: {#6ede8a} | <#6ede8a>
+# White: {#b7efc5} | <#b7efc5>
+
+<!-- GRAY -->
+# High: {#7f7f7f} | <#7f7f7f>
+# Medium: {#a5a5a5} | <#a5a5a5>
+# Low: {#cccccc} | <#cccccc>
+# White: {#f2f2f2} | <#f2f2f2>
+
+<!-- ORANGE -->
+# High: {#ff8c42} | <#ff8c42>
+# Medium: {#fcaf58} | <#fcaf58>
+# Low: {#f9c784} | <#f9c784>
+# White: {#ffffff} | <#ffffff>
+
+<!-- BLUE -->
+# High: {#1e88e5} | <#1e88e5>
+# Medium: {#42a5f5} | <#42a5f5>
+# Low: {#90caf9} | <#90caf9>
+# White: {#e3f2fd} | <#e3f2fd>
+
+<!-- BROWN -->
+# High: {#8b5e34} | <#8b5e34>
+# Medium: {#bc8a5f} | <#bc8a5f>
+# Low: {#e7bc91} | <#e7bc91>
+# White: {#ffedd8} | <#ffedd8>
+
+<!-- PURPLE -->
+# High: {#6f46a6} | <#6f46a6>
+# Medium: {#8b79d9} | <#8b79d9>
+# Low: {#b3beff} | <#b3beff>
+# White: {#e6f2ff} | <#e6f2ff>
+
+<!-- PINK -->
+# High: {#fb6f92} | <#fb6f92>
+# Medium: {#ff8fab} | <#ff8fab>
+# Low: {#ffb3c6} | <#ffb3c6>
+# White: {#ffe5ec} | <#ffe5ec>
