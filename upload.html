@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body{
+            height: 100%;
+            width: 100%;
+        }
+        
+        body{
+            background-color: #212529;
+        }
+        #details{
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            height: 80%;
+            position: relative;
+            left: 10%;
+            top: 10%
+        }
+        #imgUpload{
+            left: 16%;
+            width: 17%;
+            height: 33%;
+            position: relative;
+            top: 20%;
+        }
+        #itemImg{
+            width: 40%;
+            height: 40%;
+            left: 48%;
+            position: relative;
+            top: -6%;
+        }
+        .detail{
+            height: 50%; /* Container height relative to the body or parent element */
+            width: 100%;
+            display: flex; /* Optional: Use flexbox for alignment */
+            align-items: center; /* Optional: Center the input vertically */
+            justify-content: center; /* Optional: Center the input horizontally */
+        }
+    </style>
+    
+</head>
+<body>
+    
+        <div id = "details" >
+            <button id = "imgUpload">
+                Upload image
+            </button>
+            <img id = "itemImg" src="0.png" alt="">
+            <input class = "detail" type = "text" placeholder = "Name">
+            <input class = "detail" type = "text" placeholder = "Description">
+            <input class = "detail" type = "text" placeholder = "Price">
+            <input class = "detail" type = "text" placeholder = "Category">
+        </div>
+    
+</body>
+</html>
