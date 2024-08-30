@@ -115,6 +115,12 @@
             top: 0;
             left: 0;
         }
+        #close{
+            position: relative;
+            left: 65%;
+            top: -34%;
+            background-color: red;
+        }
     </style>
 </head>
 <body>
@@ -132,41 +138,40 @@
         </div>
         
     </div>
-    <script src="scripts.js"></script>
-    <div class = "itemview" style="background-color: white;">
+    <div class = "itemview" id = "itemview" style="background-color: white;">
         <img src="0.png" id = "itemImage" alt="">
         
         <div class = "descriptors" style="top: 12.5%; left: 50%; position: absolute; width: 30%;">
-            <p class = "descriptor">
+            <p class = "descriptor" id = "name">
                 <span style="text-decoration:solid; font-size: large;">
                     Name:
                 </span>
-                <span >
+                <span id = "custom">
                     Suzuki 2023
                 </span>
             </p>
-            <p class = "descriptor">
+            <p class = "descriptor" id = "category">
                 <span style="text-decoration:solid; font-size: large;">
                     Category:
                 </span>
-                <span >
+                <span id = "custom">
                     Motorbike
                 </span>
             </p>
-            <p class = "descriptor">
+            <p class = "descriptor" id = "description">
                 <span style="text-decoration:solid; font-size: large;">
                     Description:
                 </span>
-                <span >
+                <span id = "custom">
                     i have used this bike for a few months now, it came out in 2023. selling due to having a new bike
                 </span>
                 
             </p>
-            <p class = "descriptor">
+            <p class = "descriptor" id = "price">
                 <span style="text-decoration:solid; font-size: large;">
                     Price:
                 </span>
-                <span >
+                <span id = "custom">
                     $6000
                 </span>
             </p>
@@ -178,6 +183,10 @@
             </button>
         </div>
         
+        <button id = "close">
+            X
+        </button>
     </div>
+    <script src="page.js"></script>
 </body>
 </html>
