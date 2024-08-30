@@ -139,7 +139,7 @@ var items = [
     }
 
 ]
-for(let i = 0; i < 12; i++){
+for(let i = 0; i < 23; i++){
     var layout = document.getElementById("layout")
     var newButton = document.createElement("button")
     newButton.className = "item"
