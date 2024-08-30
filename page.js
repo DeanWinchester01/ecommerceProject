@@ -177,6 +177,11 @@ function ShowBackground(){
     searchBar.style.filter = "none"
 }
 
+
+/**
+ * @param {number} index - The index of the item to fetch.
+ * @returns {Promise<void>}
+ */
 async function ShowItem(index){
     let entry = items[index]
     let name = itemName.querySelector("#custom")
