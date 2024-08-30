@@ -1,22 +1,143 @@
 var items = [
     {
-        "name":"suzuki",
-        "category":"bike",
-        "description":"some description",
-        "price":6000
+        "name":"Yamaha YZF-R7 R7 HO 2023",
+        "category":"Motorbike",
+        "description":"N/A",
+        "price":16_099
     },
     {
-        "name":"jefferson",
-        "category":"bike",
-        "description":"i dont know",
-        "price":7000
+        "name":"Yamaha YZF-R3 2024",
+        "category":"Motorbike",
+        "description":"N/A",
+        "price":9_675
     },
     {
-        "name":"third bike",
-        "category":"i dont know, im tired",
-        "description":"jez, dickhead, do this for me",
-        "price":50_000
+        "name":"Yamaha YZ450FX",
+        "category":"Motorbike",
+        "description":"N/A",
+        "price":16_249
+    },
+    {
+        "name":"Yamaha XSR900 GP 2024",
+        "category":"Motorbike",
+        "description":"N/A",
+        "price":22_799
+    },
+    {
+        "name":"Yamaha Tenere 700 2024",
+        "category":"Motorbike",
+        "description":"N/A",
+        "price":20_180
+    },
+    {
+        "name":"Yamaha AG125 2023",
+        "category":"Motorbike",
+        "description":"N/A",
+        "price":5_299
+    },
+    {
+        "name":"Yamaha MT-07 2023",
+        "category":"Motorbike",
+        "description":"N/A",
+        "price":14_099
+    },
+    {
+        "name":"Kawasaki ZX6R Ninja 636 2024",
+        "category":"Motorbike",
+        "description":"N/A",
+        "price":21_495
+    },
+    {
+        "name":"Kawasaki Z1000 ABS 2024",
+        "category":"Motorbike",
+        "description":"N/A",
+        "price":19_916
+    },
+    {
+        "name":"Kawasaki KX85 Big Wheel 2024",
+        "category":"Motorbike",
+        "description":"N/A",
+        "price":8_495
+    },
+    {
+        "name":"Kawasaki KLE300 Versys-X 300 2024",
+        "category":"Motorbike",
+        "description":"N/A",
+        "price":9_060
+    },
+    {
+        "name":"Kawasaki EX500 Ninja 500 2024",
+        "category":"Motorbike",
+        "description":"N/A",
+        "price":8_995
+    },
+    {
+        "name":"Kawasaki EN650 Vulcan SE 2024",
+        "category":"Motorbike",
+        "description":"N/A",
+        "price":12_866
+    },
+    {
+        "name":"2017 Honda Civic",
+        "category":"Car",
+        "description":"N/A",
+        "price":16_950
+    },
+    {
+        "name":"2019 Jaguar F-Type",
+        "category":"Car",
+        "description":"N/A",
+        "price":139_990
+    },
+    {
+        "name":"2022 Toyota Corolla",
+        "category":"Car",
+        "description":"N/A",
+        "price":31_980
+    },
+    {
+        "name":"2022 Tesla Model Y",
+        "category":"Car",
+        "description":"N/A",
+        "price":49_990
+    },
+    {
+        "name":"2024 Kia Sportage",
+        "category":"Car",
+        "description":"N/A",
+        "price":39_990
+    },
+    {
+        "name":"2024 Volkswagen ID.4",
+        "category":"Car",
+        "description":"N/A",
+        "price":53_990
+    },
+    {
+        "name":"2022 Hyundai Kona",
+        "category":"Car",
+        "description":"N/A",
+        "price":33_990
+    },
+    {
+        "name":"2015 Nissan GTR",
+        "category":"Car",
+        "description":"N/A",
+        "price":139_990
+    },
+    {
+        "name":"2019 Chevrolet Camaro",
+        "category":"Car",
+        "description":"N/A",
+        "price":109_990
+    },
+    {
+        "name":"2024 Audi Q7",
+        "category":"Car",
+        "description":"N/A",
+        "price":167_990
     }
+
 ]
 for(let i = 0; i < 12; i++){
     var layout = document.getElementById("layout")
@@ -26,7 +147,7 @@ for(let i = 0; i < 12; i++){
     layout.appendChild(newButton)
 
     var image = document.createElement("img")
-    var source = "images/"+i+".png"
+    var source = "images/" + i+".png"
     image.src = source
     newButton.appendChild(image)
 
@@ -68,12 +189,11 @@ async function ShowItem(index){
     cat.textContent = entry.category
     description.textContent = entry.description
     pr.textContent = "$"+entry.price
-    img.src = "images/"+index+".png"
-    
     itemView.style.visibility = "visible"
-    sidemenu.style.filter = "blur(10px)"
-    layout.style.filter = "blur(10px)"
-    searchBar.style.filter = "blur(10px)"
+    img.src = "images/" + index+".png"
 }
 
 closeButton.onclick = ShowBackground
+//document.getElementById("0").onclick = function(){
+    //ShowItem("0")
+//}
