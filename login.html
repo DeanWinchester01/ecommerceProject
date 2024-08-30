@@ -19,20 +19,18 @@
     <div id = "info">
         <img id = "icon" src="ecommerce_logo.png" alt = "">
         <div class = "inputs">
-            <input class = "userinfo" placeholder = "Email" type = "text">
-            <input class = "userinfo" placeholder = "Password" type = "password">
-            <input class = "userinfo" placeholder = "Confirm Password" type = "password">
+            <input class = "userinfo" id = "email" placeholder = "Email" type = "text">
+            <input class = "userinfo" id = "password" placeholder = "Password" type = "password">
             
-            <button class = "userinfo" id = "mainButton" style = "font-weight: 600; font-size: 15px; border-radius: 10px;">
+            <button class = "userinfo" type="submit" id = "mainButton" style = "font-weight: 600; font-size: 15px; border-radius: 10px;">
                 Log in
             </button>
-            <button class = "userinfo" id = "secondaryButton">
+            <button class = "userinfo forgotPassword" id = "secondaryButton">
                 Forgot password
             </button>
         </div>
     </div>
 
-    <script src="login.js">
-    </script>
+    <script src="login.js"></script>
 </body>
 </html>
