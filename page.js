@@ -26,7 +26,7 @@ for(let i = 0; i < 12; i++){
     layout.appendChild(newButton)
 
     var image = document.createElement("img")
-    var source = i+".png"
+    var source = "images/"+i+".png"
     image.src = source
     newButton.appendChild(image)
 
@@ -68,11 +68,12 @@ async function ShowItem(index){
     cat.textContent = entry.category
     description.textContent = entry.description
     pr.textContent = "$"+entry.price
+    img.src = "images/"+index+".png"
+    
     itemView.style.visibility = "visible"
-    img.src = index+".png"
+    sidemenu.style.filter = "blur(10px)"
+    layout.style.filter = "blur(10px)"
+    searchBar.style.filter = "blur(10px)"
 }
 
 closeButton.onclick = ShowBackground
-//document.getElementById("0").onclick = function(){
-    //ShowItem("0")
-//}
