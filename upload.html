@@ -38,10 +38,11 @@
         }
         #imgUpload{
             left: 16%;
-            width: 17%;
-            height: 33%;
             position: relative;
-            top: 0;
+            font-size: 16px;  /* Increase font size */
+            padding: 8px;     /* Increase padding for better clickability */
+            width: 350px;     /* Control the total width including the white area */
+            height: 40px;     /* Increase height */
         }
         #itemImg{
             width: 40%;
@@ -60,26 +61,34 @@
             font-weight: 400;
             font-style: normal;
         }
+        #Upload{
+            width: 50%;
+            height: 25%;
+            left: 25%;
+            position: relative;
+        }
     </style>
     
 </head>
-<body>
+    <body>
     
         <div id = "details" >
             <div style="display: flex;">
-                <button id = "imgUpload">
-                    <span class="material-symbols-outlined">upload_file</span>
-                    Upload image
-                </button>
+                <input type="file" id = "imgUpload" accept="image/*">
+                
                 <img id = "itemImg" src="images/0.png" alt="">
             </div>
             
             
-            <input class = "detail" type = "text" placeholder = "Name">
-            <input class = "detail" type = "text" placeholder = "Description">
-            <input class = "detail" type = "text" placeholder = "Price">
-            <input class = "detail" type = "text" placeholder = "Category">
+            <input class = "detail" id = "itemName" type = "text" placeholder = "Name">
+            <input class = "detail" id = "desc" type = "text" placeholder = "Description">
+            <input class = "detail" id = "price" type = "text" placeholder = "Price">
+            <input class = "detail" id = "category" type = "text" placeholder = "Category">
+
+            <button id = "Upload">
+                Upload
+            </button>
         </div>
-    
-</body>
+        <script src="upload.js"></script>
+    </body>
 </html>
