@@ -1,6 +1,7 @@
 var uploadButton = document.getElementById("imgUpload")
 var vehicleImg = document.getElementById("itemImg")
 var upload = document.getElementById("Upload")
+var returnButton = document.getElementById("Return")
 
 
 
@@ -53,3 +54,5 @@ upload.onclick = function(){
     console.log("Upload")
     window.open("page.html")
 }
+
+returnButton.onclick = () => window.open("page.html")
