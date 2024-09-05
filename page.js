@@ -66,6 +66,9 @@ async function ShowItem(index){
     pr.textContent = "$"+entry.price
     itemView.style.visibility = "visible"
     img.src = "images/" + index+".png"
+    sidemenu.style.filter = "blur(10px)"
+    layout.style.filter = "blur(10px)"
+    searchBar.style.filter = "blur(10px)"
 }
 
 closeButton.onclick = ShowBackground
