@@ -6,14 +6,14 @@ fetch("vehicles.json")
 })
 
 for(let i = 0; i < 23; i++){
-    var layout = document.getElementById("layout")
-    var newButton = document.createElement("button")
+    let layout = document.getElementById("layout")
+    let newButton = document.createElement("button")
     newButton.className = "item"
     newButton.id = i
     layout.appendChild(newButton)
 
-    var image = document.createElement("img")
-    var source = "images/" + i+".png"
+    let image = document.createElement("img")
+    let source = "images/" + i+".png"
     image.src = source
     newButton.appendChild(image)
 

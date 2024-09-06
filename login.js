@@ -1,7 +1,7 @@
 document.getElementById('mainButton').onclick = function() {
     console.log("hi")
-    email = document.getElementById('email').value;
-    password = document.getElementById('password').value;
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
     
     if (localStorage.getItem('email') != email) {
         alert("ERROR: Wrong email address!");

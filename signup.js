@@ -5,10 +5,10 @@ var loginButton = document.getElementById("secondaryButton")
 //user data
 
 signupButton.onclick = function(){
-    var userName = document.getElementById("Username")
-    var email = document.getElementById("Email")
-    var password = document.getElementById("Password")
-    var confirmedPass = document.getElementById("Confirm")
+    let userName = document.getElementById("Username")
+    let email = document.getElementById("Email")
+    let password = document.getElementById("Password")
+    let confirmedPass = document.getElementById("Confirm")
     
     if(userName.value == ""){
         console.log("No username")
