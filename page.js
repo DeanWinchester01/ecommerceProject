@@ -74,6 +74,6 @@ async function ShowItem(index){
 closeButton.onclick = ShowBackground
 ShowBackground()
 
-login.onclick = () => window.open("login.html")
-signup.onclick = () => window.open("signup.html")
-upload.onclick = () => window.open("upload.html")
+login.onclick = () => window.open("login.html","_self")
+signup.onclick = () => window.open("signup.html","_self")
+upload.onclick = () => window.open("upload.html","_self")

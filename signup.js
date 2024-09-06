@@ -29,9 +29,9 @@ signupButton.onclick = function(){
     localStorage.setItem("email",email.value)
     localStorage.setItem("password",password.value)
     
-    window.open("page.html")
+    window.open("page.html","_self")
 }
 
 loginButton.onclick = function(){
-    window.open("login.html")
+    window.open("login.html","_self")
 }

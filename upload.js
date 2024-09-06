@@ -52,7 +52,7 @@ upload.onclick = function(){
     }
     
     console.log("Upload")
-    window.open("page.html")
+    window.open("page.html","_self")
 }
 
-returnButton.onclick = () => window.open("page.html")
+returnButton.onclick = () => window.open("page.html","_self")

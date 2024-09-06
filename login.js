@@ -12,5 +12,7 @@ document.getElementById('mainButton').onclick = function() {
         return;
     }
 
-    window.open("page.html");
+    window.open("page.html","_self");
 }
+
+document.getElementById("signup").onclick = () => window.open("signup.html", "_self")
