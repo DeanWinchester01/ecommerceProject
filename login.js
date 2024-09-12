@@ -1,3 +1,5 @@
+localStorage.setItem("LoggedIn",false)
+
 document.getElementById('mainButton').onclick = function() {
     console.log("hi")
     let email = document.getElementById('email').value;
@@ -12,6 +14,7 @@ document.getElementById('mainButton').onclick = function() {
         return;
     }
 
+    localStorage.setItem("LoggedIn",true)
     window.open("page.html","_self");
 }
 
