@@ -87,10 +87,8 @@ logout.onclick = function(){
 }
 
 if(localStorage.getItem("LoggedIn") == "true"){
-    console.log("logged in")
     login.style.visibility = "hidden"
     signup.style.visibility = "hidden"
-    //document.querySelector("#Logout").style.visibility = "visible"
     document.querySelector("#welcome").textContent = "Welcome " + localStorage.getItem("username")
 }else{
     console.log("logged out")

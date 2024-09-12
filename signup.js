@@ -29,6 +29,7 @@ signupButton.onclick = function(){
     localStorage.setItem("username",userName.value)
     localStorage.setItem("email",email.value)
     localStorage.setItem("password",password.value)
+    localStorage.setItem("LoggedIn",true)
     
     window.open("page.html","_self")
 }
