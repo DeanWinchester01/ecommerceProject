@@ -1,6 +1,7 @@
 //buttons
 var signupButton = document.getElementById("mainButton")
 var loginButton = document.getElementById("secondaryButton")
+localStorage.setItem("LoggedIn",false)
 
 //user data
 

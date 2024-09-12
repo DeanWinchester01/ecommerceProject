@@ -20,10 +20,11 @@ for(let i = 0; i < 23; i++){
     image.className = "itemImage"
 
     newButton.onclick = function(){
-        console.log("clicked on item")
         ShowItem(i)
     }
 }
+
+
 
 var itemView = document.getElementById("itemview")
 var sidemenu = document.getElementById("sidemenu")
@@ -33,6 +34,7 @@ var searchBar = document.getElementById("searchbar")
 var login = document.getElementById("login")
 var signup = document.getElementById("signup")
 var upload = document.getElementById("upload")
+var logout = document.getElementById("Logout")
 
 var itemName = document.getElementById("name")
 var category = document.getElementById("category")
@@ -60,7 +62,6 @@ async function ShowItem(index){
     let description = desc.querySelector("#custom")
     let pr = price.querySelector("#custom")
     let img = document.getElementById("itemImage")
-    console.log(typeof(items))
 
     name.textContent = entry.name
     cat.textContent = entry.category
@@ -79,3 +80,21 @@ ShowBackground()
 login.onclick = () => window.open("login.html","_self")
 signup.onclick = () => window.open("signup.html","_self")
 upload.onclick = () => window.open("upload.html","_self")
+
+logout.onclick = function(){
+    localStorage.setItem("LoggedIn",false)
+    window.open("login.html","_self_")
+}
+
+if(localStorage.getItem("LoggedIn") == "true"){
+    console.log("logged in")
+    login.style.visibility = "hidden"
+    signup.style.visibility = "hidden"
+    //document.querySelector("#Logout").style.visibility = "visible"
+    document.querySelector("#welcome").textContent = "Welcome " + localStorage.getItem("username")
+}else{
+    console.log("logged out")
+    upload.style.visibility = "hidden"
+    document.querySelector("#Logout").style.visibility = "hidden"
+    document.querySelector("#welcome").style.visibility = "hidden"
+}
