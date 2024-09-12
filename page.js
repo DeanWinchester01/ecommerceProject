@@ -2,7 +2,7 @@ var items;
 fetch("vehicles.json")
 .then(response => response.json())
 .then(data => {
-    items = JSON.stringify(data)
+    items = data
 })
 
 for(let i = 0; i < 23; i++){
@@ -20,6 +20,7 @@ for(let i = 0; i < 23; i++){
     image.className = "itemImage"
 
     newButton.onclick = function(){
+        console.log("clicked on item")
         ShowItem(i)
     }
 }
@@ -59,6 +60,7 @@ async function ShowItem(index){
     let description = desc.querySelector("#custom")
     let pr = price.querySelector("#custom")
     let img = document.getElementById("itemImage")
+    console.log(typeof(items))
 
     name.textContent = entry.name
     cat.textContent = entry.category
