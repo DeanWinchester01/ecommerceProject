@@ -147,7 +147,7 @@
         
     </div>
     <div class = "itemview" id = "itemview" style="background-color: white;">
-        <img src="images/0.png" id = "itemImage" alt="">
+        <img src="{{url_for('static', filename = 'images/0.png')}}" id = "itemImage" >
         
         <div class = "descriptors" style="top: 12.5%; left: 50%; position: absolute; width: 30%;">
             <p class = "descriptor" id = "name">
@@ -194,9 +194,6 @@
         <button id = "close">
             X
         </button>
-
-        <input type="button" onclick="hello('yo')" value = "click me">
     </div>
-    <script type = "text/javascript" src="{{url_for('static', filename = 'test.js')}}"></script>
 </body>
 </html>
