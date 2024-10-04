@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eCommerce Login</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="styleSheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,23 +17,32 @@
 </head>
 <body>
     <div id = "info">
-        <img id = "icon" src="images/ecommerce_logo.png" alt = "">
+        <img id = "icon" src="{{url_for('static', filename = 'images/ecommerce_logo.png')}}">
         <div class = "inputs">
             <input class = "userinfo" id = "email" placeholder = "Email" type = "text">
             <input class = "userinfo" id = "password" placeholder = "Password" type = "password">
             
-            <button class = "userinfo" type="submit" id = "mainButton" style = "font-weight: 600; font-size: 15px; border-radius: 10px;">
-                Log in
-            </button>
-            <button class = "userinfo" type="submit" id = "signup">
-                Sign up
-            </button>
-            <button class = "userinfo forgotPassword" id = "secondaryButton">
-                Forgot password
-            </button>
+            <form action="/login" method="post">
+                <button class = "userinfo" type="submit" id = "mainButton" style = "font-weight: 600; font-size: 15px; border-radius: 10px;">
+                    Log in
+                </button>
+
+            </form>
+
+            <form action="/signup" method="post">
+                <button class = "userinfo" type="submit" id = "signup">
+                    Sign up
+                </button>
+            </form>
+
+
+            <form action="/pass" method="post">
+                <button class = "userinfo forgotPassword" id = "secondaryButton">
+                    Forgot password
+                </button>
+            </form>
+            
         </div>
     </div>
-
-    <script src="login.js"></script>
 </body>
 </html>

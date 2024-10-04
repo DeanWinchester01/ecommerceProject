@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eCommerce Signup</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="styleSheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,23 +16,28 @@
 </head>
 <body>
     <div id = "info">
-        <img id = "icon" src="images/ecommerce_logo.png" alt = "">
+        <img id = "icon" src="{{url_for('static', filename = 'images/ecommerce_logo.png')}}">
         <div class = "inputs">
             <input class = "userinfo" id = "Username" placeholder = "Username" type = "text">
             <input class = "userinfo" id = "Email" placeholder = "Email" type = "text">
             <input class = "userinfo" id = "Password" placeholder = "Password" type = "password">
             <input class = "userinfo" id = "Confirm" placeholder = "Confirm Password" type = "password">
             
-            <button class = "userinfo" id = "mainButton">
-                Sign up
-            </button>
+            <form action="/page" method="post">
+                <button class = "userinfo" id = "mainButton" type="submit">
+                    Sign up
+                </button>
 
-            <button class = "userinfo" id = "secondaryButton">
-                <span style="color: #6c757d;">Already signed up? <span style="color: #42a5f5; text-decoration: underline;">Login</span></span>
-            </button>
+            </form>
+
+            <form action="/login" method="post">
+                <button class = "userinfo" id = "secondaryButton">
+                    <span style="color: #6c757d;">Already signed up? <span style="color: #42a5f5; text-decoration: underline;">Login</span></span>
+                </button>
+
+            </form>
         </div>
     </div>
 
-    <script src="signup.js"></script>
 </body>
 </html>
