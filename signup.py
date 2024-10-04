@@ -1,4 +1,4 @@
-from flask import Flask, url_for, redirect, render_template, request, Blueprint
+from flask import Flask, url_for, redirect, render_template, request, Blueprint,make_response
 
 signupBP = Blueprint("signup", __name__)
 @signupBP.route("/signup", methods = ["POST","GET"])
@@ -15,11 +15,20 @@ def usersignup():
 
         if "@gmail.com" in email:
             if password == confirmPass:
-                return render_template("page.html")
+                resp = make_response(render_template("signup.html"))
+                
+                resp.set_cookie("username", username)
+                resp.set_cookie("email",email)
+                resp.set_cookie("pass", password)
+
+                return redirect("/page")
+
             else:
                 print("missmatching passwords")
         else:
             print("wrong email format")
+
+        
 
 
 #@app.route("/page", methods = ["GET","POST"])
