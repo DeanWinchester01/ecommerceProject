@@ -15,20 +15,22 @@ def usersignup():
 
         if "@gmail.com" in email:
             if password == confirmPass:
-                resp = make_response(render_template("signup.html"))
+                resp = make_response(redirect("/page"))
                 
                 resp.set_cookie("username", username)
                 resp.set_cookie("email",email)
                 resp.set_cookie("pass", password)
-
-                return redirect("/page")
+                return resp
 
             else:
                 print("missmatching passwords")
         else:
             print("wrong email format")
 
-        
+@signupBP.route("/signup/login")
+def login():
+    return redirect("/login")
+
 
 
 #@app.route("/page", methods = ["GET","POST"])

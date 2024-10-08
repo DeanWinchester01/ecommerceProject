@@ -17,25 +17,25 @@
 <body>
     <div id = "info">
         <img id = "icon" src="{{url_for('static', filename = 'images/ecommerce_logo.png')}}">
+        <div class = "inputs">
+            
         <form action="/signup/user" method="post">
-            <div class = "inputs">
-                <input class = "userinfo" name = "username" id = "Username" placeholder = "Username" type = "text" required>
-                <input class = "userinfo" name = "email" id = "Email" placeholder = "Email" type = "text" required>
-                <input class = "userinfo" name = "password" id = "Password" placeholder = "Password" type = "password" required>
-                <input class = "userinfo" name = "confirmPass" id = "Confirm" placeholder = "Confirm Password" type = "password" required>
-                
-                <button class = "userinfo" id = "mainButton" type="submit">
-                    Sign up
-                </button>
+            <input class = "userinfo" name = "username" id = "Username" placeholder = "Username" type = "text" required>
+            <input class = "userinfo" name = "email" id = "Email" placeholder = "Email" type = "text" required>
+            <input class = "userinfo" name = "password" id = "Password" placeholder = "Password" type = "password" required>
+            <input class = "userinfo" name = "confirmPass" id = "Confirm" placeholder = "Confirm Password" type = "password" required>
+            
+            <button class = "userinfo" id = "mainButton" type="submit">
+                Sign up
+            </button>
+        </form>
 
-                <button class = "userinfo" id = "secondaryButton">
-                    <span style="color: #6c757d;">Already signed up? <span style="color: #42a5f5; text-decoration: underline;">Login</span></span>
-                </button>
-    
-            </div>
+        <form action="/signup/login">
+            <button class = "userinfo" id = "secondaryButton">
+                <span style="color: #6c757d;">Already signed up? <span style="color: #42a5f5; text-decoration: underline;">Login</span></span>
+            </button>
 
         </form>
     </div>
-
 </body>
 </html>
