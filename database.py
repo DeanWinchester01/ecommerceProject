@@ -8,28 +8,181 @@ client = MongoClient(
     tls=True,                     # Enable TLS
     tlsAllowInvalidCertificates=True  # Disable SSL certificate verification
 )
+def GetVehicles():
+    # Access the collection
+    print("3")
+    collection = client["eCommerceProject"]["vehicles"]
 
-# Access the database
-print("2")
-database = client["eCommerceProject"]
+    # Insert a single document
+    data = []
+    #result = collection.insert_one({"x": 1})
+    for x in collection.find():
+        data.append(x)
 
-# Access the collection
-print("3")
-collection = database["vehicles"]
+    return data
 
-# Insert a single document
-print("4")
-result = collection.insert_one({"x": 1})
-print("Document inserted, acknowledged:", result.acknowledged)
+    # You can also insert multiple documents as shown below:
+    document_list = [
+        {"vehicle": "car", "seller": "nico", "year":2001},
+    ]
+    entries = [
+        {
+            "name":"Yamaha YZF-R7 R7 HO 2023",
+            "category":"Motorbike",
+            "description":"N/A",
+            "price":16099
+        },
+        {
+            "name":"Yamaha YZF-R3 2024",
+            "category":"Motorbike",
+            "description":"N/A",
+            "price":9675
+        },
+        {
+            "name":"Yamaha YZ450FX",
+            "category":"Motorbike",
+            "description":"N/A",
+            "price":16249
+        },
+        {
+            "name":"Yamaha XSR900 GP 2024",
+            "category":"Motorbike",
+            "description":"N/A",
+            "price":22799
+        },
+        {
+            "name":"Yamaha Tenere 700 2024",
+            "category":"Motorbike",
+            "description":"N/A",
+            "price":20180
+        },
+        {
+            "name":"Yamaha AG125 2023",
+            "category":"Motorbike",
+            "description":"N/A",
+            "price":5299
+        },
+        {
+            "name":"Yamaha MT-07 2023",
+            "category":"Motorbike",
+            "description":"N/A",
+            "price":14099
+        },
+        {
+            "name":"Kawasaki ZX6R Ninja 636 2024",
+            "category":"Motorbike",
+            "description":"N/A",
+            "price":21495
+        },
+        {
+            "name":"Kawasaki Z1000 ABS 2024",
+            "category":"Motorbike",
+            "description":"N/A",
+            "price":19916
+        },
+        {
+            "name":"Kawasaki KX85 Big Wheel 2024",
+            "category":"Motorbike",
+            "description":"N/A",
+            "price":8495
+        },
+        {
+            "name":"Kawasaki KLE300 Versys-X 300 2024",
+            "category":"Motorbike",
+            "description":"N/A",
+            "price":9060
+        },
+        {
+            "name":"Kawasaki EX500 Ninja 500 2024",
+            "category":"Motorbike",
+            "description":"N/A",
+            "price":8995
+        },
+        {
+            "name":"Kawasaki EN650 Vulcan SE 2024",
+            "category":"Motorbike",
+            "description":"N/A",
+            "price":12866
+        },
+        {
+            "name":"2017 Honda Civic",
+            "category":"Car",
+            "description":"N/A",
+            "price":16950
+        },
+        {
+            "name":"2019 Jaguar F-Type",
+            "category":"Car",
+            "description":"N/A",
+            "price":139990
+        },
+        {
+            "name":"2022 Toyota Corolla",
+            "category":"Car",
+            "description":"N/A",
+            "price":31980
+        },
+        {
+            "name":"2022 Tesla Model Y",
+            "category":"Car",
+            "description":"N/A",
+            "price":49990
+        },
+        {
+            "name":"2024 Kia Sportage",
+            "category":"Car",
+            "description":"N/A",
+            "price":39990
+        },
+        {
+            "name":"2024 Volkswagen ID.4",
+            "category":"Car",
+            "description":"N/A",
+            "price":53990
+        },
+        {
+            "name":"2022 Hyundai Kona",
+            "category":"Car",
+            "description":"N/A",
+            "price":33990
+        },
+        {
+            "name":"2015 Nissan GTR",
+            "category":"Car",
+            "description":"N/A",
+            "price":139990
+        },
+        {
+            "name":"2019 Chevrolet Camaro",
+            "category":"Car",
+            "description":"N/A",
+            "price":109990
+        },
+        {
+            "name":"2024 Audi Q7",
+            "category":"Car",
+            "description":"N/A",
+            "price":167990
+        }
 
-# You can also insert multiple documents as shown below:
-document_list = [
-    {"name": "Mongo's Burgers"},
-    {"name": "Mongo's Pizza"}
-]
+    ]
+    # Insert multiple documents
+    #result = collection.insert_many(entries, bypass_document_validation=True)
+    #print(f"{len(result.inserted_ids)} documents inserted.")
 
-# Insert multiple documents
-result = collection.insert_many(document_list, bypass_document_validation=True)
-print(f"{len(result.inserted_ids)} documents inserted.")
+    print("5")
 
-print("5")
+def LogIn(email, password):
+    collection = client["eCommerceProject"]["users"]
+    for x in collection.find():
+        print(x)
+
+def SignUp(username, email, password):
+    collection = client["eCommerceProject"]["users"]
+    
+    if collection.find_one({"email":email}):
+        print("email taken")
+        return False
+    else:
+        result = collection.insert_one({"email":email, "username": username, "pass" : password})
+        print(result)

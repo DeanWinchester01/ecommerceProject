@@ -17,7 +17,11 @@
 </head>
 <body>
     <input id = "searchbar" type="text">
-    <div id = "layout" class="layout"> </div>
+    <div id = "layout" class="layout"> 
+        {% block content%} 
+            {{ dynamic_html | safe }}
+        {% endblock %}
+    </div>
 
     <div id = "sidemenu">
         <div id = "sideoptionstyle">
@@ -106,6 +110,7 @@
                 ShowBackground()
             })
 
+            ShowBackground()
         </script>
     </div>
 </body>
