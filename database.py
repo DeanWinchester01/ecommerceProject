@@ -2,7 +2,7 @@ from pymongo import MongoClient
 import ssl
 
 # Connect to the MongoDB server
-print("1")
+print("[MongoDB] 1: Database Server Connection Check")
 client = MongoClient(
     "mongodb+srv://jeznerleonidas0:jwduC3xdsqb9SagF@ecommerceproject.sznvj.mongodb.net/?retryWrites=true&w=majority&appName=eCommerceProject",
     tls=True,                     # Enable TLS
@@ -10,7 +10,7 @@ client = MongoClient(
 )
 def GetVehicles():
     # Access the collection
-    print("3")
+    print("[MongoDB] 2: Database Collection Access Check")
     collection = client["eCommerceProject"]["vehicles"]
 
     # Insert a single document
@@ -170,7 +170,7 @@ def GetVehicles():
     #result = collection.insert_many(entries, bypass_document_validation=True)
     #print(f"{len(result.inserted_ids)} documents inserted.")
 
-    print("5")
+    print("[MongoDB] 3: Database Final Check")
 
 def LogIn(email, password):
     collection = client["eCommerceProject"]["users"]
