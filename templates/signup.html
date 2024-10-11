@@ -3,42 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <!-- Title -->
     <title>E-Commerce | Signup</title>
-
     <!-- Style.CSS -->
-    <link rel="styleSheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
-
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-
     <!-- Google Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
     <div id = "info">
         <img id = "icon" src="{{url_for('static', filename = 'images/ecommerce_logo.png')}}">
-        <div class = "inputs">
-            
+        <div class = "inputs"> 
         <form action="/signup/user" method="post">
             <input class = "userinfo" name = "username" id = "Username" placeholder = "Username" type = "text" required>
             <input class = "userinfo" name = "email" id = "Email" placeholder = "Email" type = "text" required>
             <input class = "userinfo" name = "password" id = "Password" placeholder = "Password" type = "password" required>
             <input class = "userinfo" name = "confirmPass" id = "Confirm" placeholder = "Confirm Password" type = "password" required>
-            
-            <button class = "userinfo" id = "mainButton" type="submit">
-                Sign up
-            </button>
+            <button class = "userinfo" id = "mainButton" type="submit">Sign up</button>
         </form>
 
         <form action="/signup/login">
-            <button class = "userinfo" id = "secondaryButton">
-                <span style="color: #6c757d;">Already signed up? <span style="color: #42a5f5; text-decoration: underline;">Login</span></span>
-            </button>
-
+            <p>Already have an account?</p>
+            <button class = "userinfo" id = "secondaryButton">Login</button>
         </form>
     </div>
 </body>
