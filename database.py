@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 import ssl
+from encryption import EncryptMessage, DecryptMessage
 
 # Connect to the MongoDB server
 print("[MongoDB] 1: Database Server Connection Check")
@@ -174,15 +175,28 @@ def GetVehicles():
 
 def LogIn(email, password):
     collection = client["eCommerceProject"]["users"]
-    for x in collection.find():
-        print(x)
+    for account in collection:
+        mail = DecryptMessage(account["email"])
+        _pass = DecryptMessage(account("pass"))
+
+        if mail == email and password == _pass:
+            return True
+        return False
 
 def SignUp(username, email, password):
     collection = client["eCommerceProject"]["users"]
-    
-    if collection.find_one({"email":email}):
-        print("email taken")
-        return False
-    else:
+
+    for account in collection:
+        mail = DecryptMessage(account["email"])
+        user = DecryptMessage(account("username"))
+
+        if mail == email or username == user:
+            print("details taken")
+            return False
+        
+        email = EncryptMessage(email)
+        username = EncryptMessage(username)
+        password = EncryptMessage(password)
+        
         result = collection.insert_one({"email":email, "username": username, "pass" : password})
-        print(result)
+        return result
