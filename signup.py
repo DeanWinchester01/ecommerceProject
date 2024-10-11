@@ -35,6 +35,8 @@ def usersignup():
     resp.set_cookie("pass", password)
     resp.set_cookie("loggedIn", "True")
 
+    return resp
+
 @signupBP.route("/signup/login")
 def login():
     return redirect("/login")

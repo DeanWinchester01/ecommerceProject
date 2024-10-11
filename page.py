@@ -21,6 +21,6 @@ def page():
         html += "<img class='itemImage' src='"
         html += image + "\'>"
         html += "</button>"
-    print(html)
+        
     #print(user)
     return render_template("page.html", dynamic_html = html)

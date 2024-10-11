@@ -1,78 +1,97 @@
 import random
 import math
 
-key = {}
+key = {
+    'a': 'R',
+    'b': 'S',
+    'c': 'T', 
+    'd': 'U', 
+    'e': 'V', 
+    'f': 'W', 
+    'g': 'X', 
+    'h': 'Y', 
+    'i': 'Z', 
+    'j': 'a', 
+    'k': 'b', 
+    'l': 'c', 
+    'm': 'd', 
+    'n': 'e', 
+    'o': 'f', 
+    'p': 'g', 
+    'q': 'h', 
+    'r': 'i', 
+    's': 'j', 
+    't': 'k', 
+    'u': 'l', 
+    'v': 'm', 
+    'w': 'n', 
+    'x': 'o', 
+    'y': 'p', 
+    'z': 'q', 
+    'A': 'r', 
+    'B': 's', 
+    'C': 't', 
+    'D': 'u', 
+    'E': 'v', 
+    'F': 'w', 
+    'G': 'x', 
+    'H': 'y', 
+    'I': 'z', 
+    'J': '0', 
+    'K': '1', 
+    'L': '2', 
+    'M': '3', 
+    'N': '4', 
+    'O': '5', 
+    'P': '6', 
+    'Q': '7', 
+    'R': '8', 
+    'S': '9', 
+    'T': 'á', 
+    'U': 'é', 
+    'V': 'í', 
+    'W': 'ó', 
+    'X': 'ú', 
+    'Y': 'ü', 
+    'Z': 'ñ'}
 secondKey = {
-    '@':'.',
-    '.':'@',
-    '1': 'h',
-    '2': 't',
-    '3': 'e',
-    '4': 'u',
-    '5': 'c',
-    '6': 'b',
-    '7': 'k',
-    '8': 'x',
-    '9': 'q',
-    '0': 'j',
-    'A': 'a',
-    'B': 'y',
-    'C': 'n',
-    'D': 'r',
-    'E': 'f',
-    'F': 'z',
-    'G': 'm',
-    'H': 'w',
-    'I': 'v',
-    'J': 'p',
-    'K': 's',
-    'L': 'd',
-    'M': 'l',
-    'N': 'i',
-    'O': 'g',
-    'P': 'o',
-    'Q': 'j',
-    'R': 'c',
-    'S': 'e',
-    'T': 'q',
-    'U': 'x',
-    'V': 'k',
-    'W': 't',
-    'X': 'h',
-    'Y': 'b',
-    'Z': 'a',
-    'a': '4',
-    'b': '8',
-    'c': '3',
-    'd': '1',
-    'e': '6',
-    'f': '9',
-    'g': '0',
-    'h': '2',
-    'i': '5',
-    'j': '7',
-    'k': 'l',
-    'l': 'w',
-    'm': 'p',
-    'n': 'v',
-    'o': 'm',
-    'p': 'j',
-    'q': 't',
-    'r': 'f',
-    's': 'n',
-    't': 'r',
-    'u': 'y',
-    'v': 'e',
-    'w': 'c',
-    'x': 'd',
-    'y': 'a',
-    'z': 'g',
+    'a': 'c',
+    'b': 'k',
+    'c': 'm',
+    'd': 'e',
+    'e': 'x',
+    'f': 'b',
+    'g': 't',
+    'h': 'r',
+    'i': 'n',
+    'j': 'p',
+    'k': 'o',
+    'l': 'u',
+    'm': 'a',
+    'n': 'w',
+    'o': 'v',
+    'p': 'z',
+    'q': 's',
+    'r': 'y',
+    's': 'g',
+    't': 'd',
+    'u': 'l',
+    'v': 'i',
+    'w': 'h',
+    'x': 'q',
+    'y': 'j',
+    'z': 'f',
+    '1': 'C',
+    '2': 'J',
+    '3': 'G',
+    '4': 'T',
+    '5': 'Q',
+    '6': 'B',
+    '7': 'R',
+    '8': 'M',
+    '9': 'X',
+    '0': 'O'
 }
-
-
-
-firstKey = "RSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789áéíóúüñß"
-alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 def GetCorrectLetter(letter, key):
     defaultChar = '_'
@@ -164,17 +183,26 @@ def RemoveGarbage(message):
     #print(message)
     return actualMessage
 
+def GetRandomChar(randomNum):
+    i = 0
+    for entry in secondKey:
+        if i == randomNum:
+            return entry
+        i += 1
+
 def AddGarbage(message):
     newMessage = ""
     amountOfGarbage = pow(len(message), 2)
 
     for i in range(amountOfGarbage):
+        num = GetRandomNum(0, len(secondKey))
+
         if i == len(message) :
             newMessage += message
-            chosenChar = firstKey[GetRandomNum(0, len(firstKey))]
+            chosenChar = GetRandomChar(num)
             newMessage += chosenChar
         else:
-            chosenChar = firstKey[GetRandomNum(0, len(firstKey))]
+            chosenChar = GetRandomChar(num)
             newMessage += chosenChar
 
     return newMessage
@@ -190,7 +218,7 @@ def EncryptMessage(message):
 
         message = Translate(message, secondKey)
         message = reverse(message)
-        message = Translate(message, key)
+        message = Translate(message, secondKey)
         message = AddGarbage(message)
 
     return message
@@ -202,7 +230,7 @@ def DecryptMessage(message):
     else:
         decrypted = RemoveGarbage(message)
         #print(decrypted)
-        decrypted = Decrypt(decrypted, key)
+        decrypted = Decrypt(decrypted, secondKey)
         #print(decrypted)
         decrypted = unmix(decrypted)
         #print(decrypted)
@@ -218,6 +246,6 @@ def DecryptMessage(message):
     return decrypted
 
 
-for i in range(len(alphabet)):
-    #entry = {alphabet[i]: firstKey[i]}
-    key[alphabet[i]] = firstKey[i]
+#first = EncryptMessage("")
+#print(first)
+#print(DecryptMessage(first))

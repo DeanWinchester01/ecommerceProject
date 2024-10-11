@@ -5,9 +5,9 @@ from encryption import EncryptMessage, DecryptMessage
 # Connect to the MongoDB server
 print("[MongoDB] 1: Database Server Connection Check")
 client = MongoClient(
-    "mongodb+srv://jeznerleonidas0:jwduC3xdsqb9SagF@ecommerceproject.sznvj.mongodb.net/?retryWrites=true&w=majority&appName=eCommerceProject",
-    tls=True,                     # Enable TLS
-    tlsAllowInvalidCertificates=True  # Disable SSL certificate verification
+    "mongodb+srv://jeznerleonidas0:jwduC3xdsqb9SagF@ecommerceproject.sznvj.mongodb.net/?retryWrites=true&w=majority&appName=eCommerceProject"
+    #tls=True,                     # Enable TLS
+    #tlsAllowInvalidCertificates=True  # Disable SSL certificate verification
 )
 def GetVehicles():
     # Access the collection
@@ -175,9 +175,11 @@ def GetVehicles():
 
 def LogIn(email, password):
     collection = client["eCommerceProject"]["users"]
-    for account in collection:
+    for account in collection.find():
         mail = DecryptMessage(account["email"])
-        _pass = DecryptMessage(account("pass"))
+        _pass = DecryptMessage(account["pass"])
+        print(mail)
+        print(_pass)
 
         if mail == email and password == _pass:
             return True
@@ -186,9 +188,13 @@ def LogIn(email, password):
 def SignUp(username, email, password):
     collection = client["eCommerceProject"]["users"]
 
-    for account in collection:
+    emptyList = True
+
+    for account in collection.find():
+        emptyList = False
         mail = DecryptMessage(account["email"])
-        user = DecryptMessage(account("username"))
+        user = DecryptMessage(account["username"])
+        print(mail, user)
 
         if mail == email or username == user:
             print("details taken")
@@ -200,3 +206,13 @@ def SignUp(username, email, password):
         
         result = collection.insert_one({"email":email, "username": username, "pass" : password})
         return result
+    
+    if emptyList:
+        email = EncryptMessage(email)
+        username = EncryptMessage(username)
+        password = EncryptMessage(password)
+        
+        result = collection.insert_one({"email":email, "username": username, "pass" : password})
+        return result
+    
+LogIn("worldkiller75@gmail.com","1234")
