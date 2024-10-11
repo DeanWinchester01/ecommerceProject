@@ -1,6 +1,9 @@
 from flask import Flask, Blueprint, render_template, request
 from werkzeug.utils import secure_filename
 import database
+import io
+import base64
+
 pageBP = Blueprint("page",__name__)
 
 @pageBP.route("/page", methods = ["POST","GET"])
@@ -16,10 +19,11 @@ def page():
 
     html = """"""
     for entry in range(len(data)):
+        file = io.BytesIO(base64.decode(entry["image"]))
         image = "/static/images/"+str(entry)+".png"
         html += "<button class = 'item'>"
         html += "<img class='itemImage' src='"
-        html += image + "\'>"
+        html += file + "\'>"
         html += "</button>"
         
     #print(user)

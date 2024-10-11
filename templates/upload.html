@@ -98,8 +98,11 @@
             </div>
 
             <div style="display: flex;">
-                <img id = "itemImg" src="images/0.png" alt="">
-                <input type="file" id = "imgUpload" accept="image/*">
+                <form action="/upload" method="post" enctype="multipart/form-data">
+                    <img id = "itemImg" src="images/0.png" alt="">
+                    <input name = "image" type="file" id = "imgUpload" accept="image/*">
+                    <input type="submit">
+                </form>
             </div>
             
             <input class = "detail" id = "itemName" type = "text" placeholder = "Name">
@@ -109,6 +112,5 @@
 
             <button id = "Upload">Upload</button>
         </div>
-        <script src="upload.js"></script>
     </body>
 </html>

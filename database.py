@@ -173,6 +173,12 @@ def GetVehicles():
 
     print("[MongoDB] 3: Database Final Check")
 
+def UploadVehicle(data):
+    collection = client["eCommerceProject"]["vehicles"]
+    result = collection.insert_one(data)
+    return result
+
+
 def LogIn(email, password):
     collection = client["eCommerceProject"]["users"]
     for account in collection.find():
