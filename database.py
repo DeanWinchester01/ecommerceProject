@@ -167,6 +167,24 @@ def GetVehicles():
         }
 
     ]
+    
+    
+    #read_img = matplotlib.image.imread('your_image.png')
+    '''for i in range(len(entries)):
+        file = request.files["image"]
+        #file.save(secure_filename(file.filename))
+        binary = file.read()
+        b62string = base64.b64encode(binary).decode("utf-8")
+        print(b62string)
+            
+            
+        data = {
+            "user":"someone",
+            "image": b62string
+        }
+
+        database.UploadVehicle(data)
+    '''
     # Insert multiple documents
     #result = collection.insert_many(entries, bypass_document_validation=True)
     #print(f"{len(result.inserted_ids)} documents inserted.")
@@ -220,5 +238,3 @@ def SignUp(username, email, password):
         
         result = collection.insert_one({"email":email, "username": username, "pass" : password})
         return result
-    
-LogIn("worldkiller75@gmail.com","1234")

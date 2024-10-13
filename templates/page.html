@@ -20,18 +20,13 @@
 <body>
     <input id = "searchbar" type="text">
     <div id = "layout" class="layout"> 
-        {% block content%} 
-            {{ dynamic_html | safe }}
-        {% endblock %}
+        {{ items | safe }}
     </div>
 
     <div id = "sidemenu">
         <div id = "sideoptionstyle">
-            <p class = "sideoption" id = "welcome"> </p>
-            <button class = sideoption id = "upload">Upload vehicle</button>
-            <button class = "sideoption" id = "Logout">Log out</button>
-            <button class = "sideoption" id = "login">Log in</button>
-            <button class = "sideoption" id = "signup">Sign up</button>
+            {{user_specifics | safe}}
+            
         </div> 
     </div>
     
@@ -80,6 +75,18 @@
             })
 
             ShowBackground()
+
+            if (document.cookie.length > 0){
+                let parts = document.cookie.split("; ")
+                console.log(parts)
+                let loggedIn = parts[3]
+                let isLoggedIn = loggedIn.split("=")[1] == "True"
+
+                if (isLoggedIn){
+                    document.getElementById("welcome").textContent = "Welcome " + parts[0].split("=")[1]
+                }
+            }
+
         </script>
     </div>
 </body>
