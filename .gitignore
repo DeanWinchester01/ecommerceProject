@@ -129,7 +129,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-
+git config advice.addIgnoredFile false
 # Spyder project settings
 .spyderproject
 .spyproject
