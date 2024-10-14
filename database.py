@@ -22,7 +22,7 @@ def GetVehicles():
     for x in collection.find():
         data.append(x)
 
-    #return data
+    return data
 
     # You can also insert multiple documents as shown below:
     document_list = [
