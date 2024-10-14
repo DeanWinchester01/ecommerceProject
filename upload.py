@@ -18,7 +18,7 @@ def UploadVehicle():
 def GetVehicleImage():
     if request.method == "POST":
         file = request.files["image"]
-        #file.save(secure_filename(file.filename))
+        file.save(secure_filename(file.filename))
         binary = file.read()
         b62string = base64.b64encode(binary).decode("utf-8")
         print(b62string)

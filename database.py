@@ -9,6 +9,8 @@ client = MongoClient(
     tls=True,                         # Enable TLS
     tlsAllowInvalidCertificates=True  # Disable SSL certificate verification
 )
+
+
 def GetVehicles():
     # Access the collection
     print("[MongoDB] 2: Database Collection Access Check")
@@ -20,7 +22,7 @@ def GetVehicles():
     for x in collection.find():
         data.append(x)
 
-    return data
+    #return data
 
     # You can also insert multiple documents as shown below:
     document_list = [
@@ -167,6 +169,8 @@ def GetVehicles():
         }
 
     ]
+
+
     
     
     #read_img = matplotlib.image.imread('your_image.png')
