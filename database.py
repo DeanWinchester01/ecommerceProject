@@ -2,6 +2,7 @@ from pymongo import MongoClient
 import ssl
 from encryption import EncryptMessage, DecryptMessage
 import os
+import io
 from flask import Flask
 import base64
 from PIL import Image
@@ -14,7 +15,7 @@ client = MongoClient(
     tlsAllowInvalidCertificates=True  # Disable SSL certificate verification
 )
 app = Flask(__name__)
-vehicles = os.path.join("ecommercePY\\ecommercePY\\static","images")
+vehicles = os.path.join("flaskenv\\ecommerceProject\\static","images")
 app.config["UPLOAD_FOLDER"] = vehicles
 
 def GetVehicles():
@@ -167,12 +168,16 @@ def GetVehicles():
     print("adding image")
     for i in range(len(entries)):
         fullName = os.path.join(app.config["UPLOAD_FOLDER"], str(i)+"-min.png")
-        img = Image.open(fullName)
-        binary = img.tobytes()
-        #compressed = zlib.compress(binary)
-        b64string = base64.b64encode(binary).decode("utf-8")
-        entries[i]["image"] = b64string
-        print(str(i)+" done")
+        with Image.open(fullName) as img:
+            buffered = io.BytesIO()
+            img.save(buffered, format="PNG")
+            binary = buffered.getvalue()
+
+            #binary = img.tobytes()
+            #compressed = zlib.compress(binary)
+            b64string = base64.b64encode(binary).decode("utf-8")
+            entries[i]["image"] = b64string
+            print(str(i)+" done")
         
     print("inserting")
     collection.insert_many(entries)
@@ -198,7 +203,7 @@ def GetVehicles():
     #print(f"{len(result.inserted_ids)} documents inserted.")
 
     print("[MongoDB] 3: Database Final Check")
-GetVehicles()
+#GetVehicles()
 def UploadVehicle(data):
     collection = client["eCommerceProject"]["vehicles"]
     result = collection.insert_one(data)
@@ -210,11 +215,13 @@ def LogIn(email, password):
     for account in collection.find():
         mail = DecryptMessage(account["email"])
         _pass = DecryptMessage(account["pass"])
+        user = DecryptMessage(account["username"])
+
         print(mail)
         print(_pass)
-
+        data = {"email":mail, "username":user, "pass" : _pass}
         if mail == email and password == _pass:
-            return True
+            return data
     return False
 
 def SignUp(username, email, password):

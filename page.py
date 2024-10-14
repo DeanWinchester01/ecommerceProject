@@ -1,9 +1,10 @@
+import os
 from flask import Flask, Blueprint, render_template, request
 from werkzeug.utils import secure_filename
 import database
-import io
+import tempfile
 import base64
-import zlib
+import io
 from PIL import Image
 pageBP = Blueprint("page",__name__)
 
@@ -22,19 +23,20 @@ def page():
     data = database.GetVehicles()
 
     items = """"""
-    cmap = {'0': (255,255,255),
-        '1': (0,0,0)}
+    saveFolder = "flaskenv/ecommerceProject/static/images/"
     for entry in range(len(data)):
-        print(data[entry]["image"])
         decoded = base64.b64decode(data[entry]["image"])
-        #uncompressed = zlib.decompress(decoded)
-        img.putdata(data)
-        img.show() 
-        #file = io.BytesIO(base64.decode(entry["image"]))
-        file = "/static/images/"+str(entry)+".png"
-        items += "<button class = 'item'>"
-        items += f"<img class='itemImage' src='"
-        items += file + "\'>"
+        imgStream = io.BytesIO(decoded)
+        image = Image.open(imgStream)
+        buffered = io.BytesIO()
+        image.save(buffered,format="PNG")
+        filepath = os.path.join(saveFolder,f"{entry}.png")
+        
+        with open(filepath,"wb") as fh:
+            fh.write(decoded)
+        
+        items += "<button class='item'>"
+        items += f"<img class='itemImage' src='static/images/"+str(entry)+".png'>"
         items += "</button>"
 
     option1 = f"""
