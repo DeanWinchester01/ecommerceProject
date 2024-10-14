@@ -1,7 +1,11 @@
 from pymongo import MongoClient
 import ssl
 from encryption import EncryptMessage, DecryptMessage
-
+import os
+from flask import Flask
+import base64
+from PIL import Image
+import zlib
 # Connect to the MongoDB server
 print("[MongoDB] 1: Database Server Connection Check")
 client = MongoClient(
@@ -9,7 +13,9 @@ client = MongoClient(
     tls=True,                         # Enable TLS
     tlsAllowInvalidCertificates=True  # Disable SSL certificate verification
 )
-
+app = Flask(__name__)
+vehicles = os.path.join("ecommercePY\\ecommercePY\\static","images")
+app.config["UPLOAD_FOLDER"] = vehicles
 
 def GetVehicles():
     # Access the collection
@@ -154,24 +160,22 @@ def GetVehicles():
             "category":"Car",
             "description":"N/A",
             "price":139990
-        },
-        {
-            "name":"2019 Chevrolet Camaro",
-            "category":"Car",
-            "description":"N/A",
-            "price":109990
-        },
-        {
-            "name":"2024 Audi Q7",
-            "category":"Car",
-            "description":"N/A",
-            "price":167990
         }
 
     ]
 
-
-    
+    print("adding image")
+    for i in range(len(entries)):
+        fullName = os.path.join(app.config["UPLOAD_FOLDER"], str(i)+"-min.png")
+        img = Image.open(fullName)
+        binary = img.tobytes()
+        #compressed = zlib.compress(binary)
+        b64string = base64.b64encode(binary).decode("utf-8")
+        entries[i]["image"] = b64string
+        print(str(i)+" done")
+        
+    print("inserting")
+    collection.insert_many(entries)
     
     #read_img = matplotlib.image.imread('your_image.png')
     '''for i in range(len(entries)):
@@ -194,7 +198,7 @@ def GetVehicles():
     #print(f"{len(result.inserted_ids)} documents inserted.")
 
     print("[MongoDB] 3: Database Final Check")
-
+GetVehicles()
 def UploadVehicle(data):
     collection = client["eCommerceProject"]["vehicles"]
     result = collection.insert_one(data)
@@ -211,7 +215,7 @@ def LogIn(email, password):
 
         if mail == email and password == _pass:
             return True
-        return False
+    return False
 
 def SignUp(username, email, password):
     collection = client["eCommerceProject"]["users"]

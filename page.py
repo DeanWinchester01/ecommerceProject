@@ -3,7 +3,8 @@ from werkzeug.utils import secure_filename
 import database
 import io
 import base64
-
+import zlib
+from PIL import Image
 pageBP = Blueprint("page",__name__)
 
 @pageBP.route("/page", methods = ["POST","GET"])
@@ -21,7 +22,14 @@ def page():
     data = database.GetVehicles()
 
     items = """"""
+    cmap = {'0': (255,255,255),
+        '1': (0,0,0)}
     for entry in range(len(data)):
+        print(data[entry]["image"])
+        decoded = base64.b64decode(data[entry]["image"])
+        #uncompressed = zlib.decompress(decoded)
+        img.putdata(data)
+        img.show() 
         #file = io.BytesIO(base64.decode(entry["image"]))
         file = "/static/images/"+str(entry)+".png"
         items += "<button class = 'item'>"

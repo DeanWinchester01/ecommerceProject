@@ -20,7 +20,7 @@ def GetVehicleImage():
         file = request.files["image"]
         file.save(secure_filename(file.filename))
         binary = file.read()
-        b62string = base64.b64encode(binary).decode("utf-8")
+        b62string = base64.b32encode(binary).decode("utf-8")
         print(b62string)
             
             
