@@ -24,10 +24,10 @@ def page():
     for entry in range(len(data)):
         #file = io.BytesIO(base64.decode(entry["image"]))
         file = "/static/images/"+str(entry)+".png"
-        html += "<button class = 'item'>"
-        html += f"<img class='itemImage' src='"
-        html += file + "\'>"
-        html += "</button>"
+        items += "<button class = 'item'>"
+        items += f"<img class='itemImage' src='"
+        items += file + "\'>"
+        items += "</button>"
 
     option1 = f"""
         <p class = 'sideoption' id = 'welcome'>' {username} '</p>
