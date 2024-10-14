@@ -1,4 +1,5 @@
 from flask import Flask, make_response, render_template, Blueprint, request, redirect
+from database import LogIn
 
 loginBP = Blueprint("login",__name__)
 
@@ -10,22 +11,16 @@ def login():
         password = request.form["password"]
         print(email, password)
                 
-        savedemail = request.cookies.get("email")
-        savedpassword = request.cookies.get("pass")
-
-        print(savedemail)
-        print(savedpassword)
-        #print(savedEmail, savedPass)
-
-        if email == savedemail and password == savedpassword:
+        login = LogIn(email, password)
+        if login != False:
             resp = make_response(redirect("/page"))
-            print("login correct")
-            #return redirect("/page")
+            resp.set_cookie("email",login["email"])
+            resp.set_cookie("username",login["username"])
             resp.set_cookie("loggedIn", "True")
             return resp
-        else:
-            print("login incorrect")
-            return render_template("login.html")
+        
+        print("login incorrect")
+        return render_template("login.html")
     else:
         if request.cookies.get("loggedIn") == "True":
             return redirect("/page")

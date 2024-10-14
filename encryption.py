@@ -244,9 +244,3 @@ def DecryptMessage(message):
             #print(decrypted)
 
     return decrypted
-
-
-
-#first = EncryptMessage("")
-#print(first)
-#print(DecryptMessage(first))

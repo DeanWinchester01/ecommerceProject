@@ -79,11 +79,11 @@
             if (document.cookie.length > 0){
                 let parts = document.cookie.split("; ")
                 console.log(parts)
-                let loggedIn = parts[3]
+                let loggedIn = parts[2]
                 let isLoggedIn = loggedIn.split("=")[1] == "True"
 
                 if (isLoggedIn){
-                    document.getElementById("welcome").textContent = "Welcome " + parts[0].split("=")[1]
+                    document.getElementById("welcome").textContent = "Welcome " + parts[1].split("=")[1]
                 }
             }
 

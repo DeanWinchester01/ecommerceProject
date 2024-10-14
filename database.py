@@ -5,9 +5,9 @@ from encryption import EncryptMessage, DecryptMessage
 # Connect to the MongoDB server
 print("[MongoDB] 1: Database Server Connection Check")
 client = MongoClient(
-    "mongodb+srv://jeznerleonidas0:jwduC3xdsqb9SagF@ecommerceproject.sznvj.mongodb.net/?retryWrites=true&w=majority&appName=eCommerceProject"
-    #tls=True,                     # Enable TLS
-    #tlsAllowInvalidCertificates=True  # Disable SSL certificate verification
+    "mongodb+srv://jeznerleonidas0:jwduC3xdsqb9SagF@ecommerceproject.sznvj.mongodb.net/?retryWrites=true&w=majority&appName=eCommerceProject",
+    tls=True,                     # Enable TLS
+    tlsAllowInvalidCertificates=True  # Disable SSL certificate verification
 )
 def GetVehicles():
     # Access the collection
@@ -199,15 +199,20 @@ def UploadVehicle(data):
 
 def LogIn(email, password):
     collection = client["eCommerceProject"]["users"]
+    
     for account in collection.find():
         mail = DecryptMessage(account["email"])
         _pass = DecryptMessage(account["pass"])
-        print(mail)
-        print(_pass)
+        username = DecryptMessage(account["username"])
+
+        data = {"email":mail,"pass":_pass,"username":username}
+        print("found email: ",mail)
+        print("found password: ",_pass)
 
         if mail == email and password == _pass:
-            return True
-        return False
+            return data
+        
+    return False
 
 def SignUp(username, email, password):
     collection = client["eCommerceProject"]["users"]

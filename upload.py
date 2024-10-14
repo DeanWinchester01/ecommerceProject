@@ -14,7 +14,7 @@ uploadBP = Blueprint("upload",__name__)
 def UploadVehicle():
     return render_template("upload.html")
 
-@uploadBP.route("/upload/vehicle", methods = ["Get","POST"])
+@uploadBP.route("/upload/vehicle", methods = ["GET","POST"])
 def GetVehicleImage():
     if request.method == "POST":
         file = request.files["image"]
@@ -30,6 +30,4 @@ def GetVehicleImage():
         }
 
         database.UploadVehicle(data)
-        return file
-
-    return redirect("/upload")
+        return redirect("/upload")
