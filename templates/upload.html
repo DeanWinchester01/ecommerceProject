@@ -35,8 +35,8 @@
             font-style: normal;
         }
         #imgUpload{
-            left: 45%;
-            top:60%;
+            left: 0;
+            top:0;
             position: absolute;
             font-size: 16px;  /* Increase font size */
             padding: 8px;     /* Increase padding for better clickability */
@@ -45,14 +45,16 @@
         }
         #itemImg{
             width: 40%;
-            height: 80%;
+            height: 40%;
             left: 30%;
             position: relative;
             top: 0;
         }
         .detail{
-            height: 50%; /* Container height relative to the body or parent element */
+            height: 10%; /* Container height relative to the body or parent element */
             width: 100%;
+            top: 10%;
+            position: relative;
             display: flex; /* Optional: Use flexbox for alignment */
             align-items: center; /* Optional: Center the input vertically */
             justify-content: center; /* Optional: Center the input horizontally */
@@ -83,6 +85,7 @@
         #itemName::placeholder,
         #desc::placeholder,
         #price::placeholder,
+        #tags::placeholder,
         #category::placeholder {
             color: #fafafa;
         }
@@ -91,26 +94,45 @@
     <body>
         <div id = "details" >
             <div>
-                <button class="buttonDesign" id="Return">
-                    <span class="material-symbols-outlined">arrow_back</span>
-                    Return
-                </button>
+                <form action="/page" method="POST">
+                    <button class="buttonDesign" id="Return">
+                        <span class="material-symbols-outlined">arrow_back</span>
+                        Return
+                    </button>
+
+                </form>
             </div>
 
-            <div style="display: flex;">
-                <form action="/upload/vehicle" method="post" enctype="multipart/form-data">
-                    <img id = "itemImg" alt="">
-                    <input name = "image" type="file" id = "imgUpload" accept="image/*">
-                    <input type="submit">
+            
+            <img id = "itemImg" alt="">
+            <div style="display: flex; height: 90%; width: 80%; left: 12%; top: 40%; position: absolute;">
+                <form action="/upload/vehicle" method="post" enctype="multipart/form-data" style="width: 100%;">
+                    <input name = "image" type="file" id = "imgUpload" accept="image/*" style="left: 0%;" required>
+                    <input class = "detail" name="name" id = "itemName" type = "text" placeholder = "Name" required>
+                    <input class = "detail" name="description" id = "desc" type = "text" placeholder = "Description" required>
+                    <input class = "detail" name="price" id = "price" type = "text" placeholder = "Price" required>
+                    <input class = "detail" name="category" id = "category" type = "text" placeholder = "Category" required>
+                    <input class = "detail" name="tags" id = "tags" type="text" placeholder = "#Input #Tags #Like #This">
+            
+                    <input type="submit" id = "Upload" style="height: 10%; width: 100%; left: 0; top: 12%;">
                 </form>
             </div>
             
-            <input class = "detail" id = "itemName" type = "text" placeholder = "Name">
-            <input class = "detail" id = "desc" type = "text" placeholder = "Description">
-            <input class = "detail" id = "price" type = "text" placeholder = "Price">
-            <input class = "detail" id = "category" type = "text" placeholder = "Category">
-
-            <button id = "Upload">Upload</button>
         </div>
+        <script>
+            let imageinput = document.getElementById("imgUpload")
+            let image = document.getElementById("itemImg")
+
+            imageinput.addEventListener("change", function(event){
+                let file = event.target.files[0];
+                if (file){
+                    let reader = new FileReader();
+                    reader.onload = function(e){
+                        image.src = e.target.result;
+                    }
+                    reader.readAsDataURL(file)
+                }
+            })
+        </script>
     </body>
 </html>

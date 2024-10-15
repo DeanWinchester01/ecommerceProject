@@ -21,13 +21,35 @@ def GetVehicleImage():
         file.save(secure_filename(file.filename))
         binary = file.read()
         b62string = base64.b32encode(binary).decode("utf-8")
-        print(b62string)
-            
+        data = request.form
+
+        user = request.cookies["email"]
+        vehiclename = data["name"]
+        description = data["description"]
+        price = int(data["price"])
+        category = data["category"]
+        tags = data["tags"]
+
+        print(user, vehiclename, description, price, category, tags)
+
+        if user == None or vehiclename == None or description == None or price == None or category == None:
+            return redirect("/upload")
+        
+        allTags = tags.split(" ")
+        for i in range(len(allTags)):
+            if allTags[i][0] != "#" or len(allTags[i]) < 2:
+                return redirect("/upload")
             
         data = {
-            "user":"someone",
-            "image": b62string
+            "user":user,
+            "image": b62string,
+            "vehicle":vehiclename,
+            "description":description,
+            "price":price,
+            "category":category,
+            "tags":tags
         }
-
+        
         database.UploadVehicle(data)
-        return redirect("/upload")
+        #ADD ANOTHER ENTRY TO UPLOAD THE VEHICLE TO THE USER'S PROFILE
+        return redirect("/page")

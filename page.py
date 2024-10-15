@@ -23,7 +23,7 @@ def page():
     data = database.GetVehicles()
 
     items = """"""
-    saveFolder = "flaskenv/ecommerceProject/static/images/"
+    saveFolder = "ecommerceProject/static/images/"
     for entry in range(len(data)):
         decoded = base64.b64decode(data[entry]["image"])
         imgStream = io.BytesIO(decoded)
