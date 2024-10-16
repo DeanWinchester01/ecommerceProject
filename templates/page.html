@@ -57,37 +57,7 @@
         
         <button id = "close" name="close" value="close">X</button>
 
-        <script>
-            var itemView = document.getElementById("itemview")
-            var sidemenu = document.getElementById("sidemenu")
-            var layout = document.getElementById("layout")
-            var searchBar = document.getElementById("searchbar")
-
-            function ShowBackground(){
-                itemView.style.visibility = "hidden"
-                sidemenu.style.filter = "none"
-                layout.style.filter = "none"
-                searchBar.style.filter = "none"
-            }
-
-            document.getElementById("close").addEventListener("click", function(){
-                ShowBackground()
-            })
-
-            ShowBackground()
-
-            if (document.cookie.length > 0){
-                let parts = document.cookie.split("; ")
-                console.log(parts)
-                let loggedIn = parts[2]
-                let isLoggedIn = loggedIn.split("=")[1] == "True"
-
-                if (isLoggedIn){
-                    document.getElementById("welcome").textContent = "Welcome " + parts[1].split("=")[1]
-                }
-            }
-
-        </script>
     </div>
+    <script src="{{ url_for('static', filename='java/page.js') }}"></script>
 </body>
 </html>

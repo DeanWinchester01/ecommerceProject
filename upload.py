@@ -50,6 +50,7 @@ def GetVehicleImage():
             "tags":tags
         }
         
-        database.UploadVehicle(data)
+        uploaded = database.UploadVehicle(data)
+        print(uploaded)
         #ADD ANOTHER ENTRY TO UPLOAD THE VEHICLE TO THE USER'S PROFILE
         return redirect("/page")

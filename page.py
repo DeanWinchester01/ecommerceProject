@@ -39,12 +39,12 @@ def page():
         items += f"<img class='itemImage' src='static/images/"+str(entry)+".png'>"
         items += "</button>"
 
+        #<form action="/logout" method="post">
+        #</form>
     option1 = f"""
         <p class = 'sideoption' id = 'welcome'>' {username} '</p>
         <button class = sideoption id = "upload">Upload vehicle</button>
-        <form action="/logout" method="post">
         <button class = "sideoption" id = "Logout">Log out</button>
-        </form>
     """
     option2 = """
         <button class = "sideoption" id = "login">Log in</button>

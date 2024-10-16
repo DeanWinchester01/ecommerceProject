@@ -1,4 +1,47 @@
-var items;
+var itemView = document.getElementById("itemview")
+var sidemenu = document.getElementById("sidemenu")
+var layout = document.getElementById("layout")
+var searchBar = document.getElementById("searchbar")
+
+
+function ShowBackground(){
+    itemView.style.visibility = "hidden"
+    sidemenu.style.filter = "none"
+    layout.style.filter = "none"
+    searchBar.style.filter = "none"
+}
+
+document.getElementById("close").addEventListener("click", function(){
+    ShowBackground()
+})
+
+if (document.cookie.includes("email")){
+    let uploadLink = document.getElementById("upload")
+    let logout = document.getElementById("Logout")
+
+    uploadLink.onclick = () => window.location.href = "/upload"
+    logout.onclick = () => window.location.href = "/logout"
+}else{
+    let signup = document.getElementById("signup")
+    let login = document.getElementById("login")
+
+    signup.onclick = () => window.location.href = "/signup"
+    login.onclick = () => window.location.href = "/login"
+}
+
+ShowBackground()
+
+if (document.cookie.includes("email")){
+    let parts = document.cookie.split("; ")
+    console.log(parts)
+    let loggedIn = parts[2]
+    let isLoggedIn = loggedIn.split("=")[1] == "True"
+
+    if (isLoggedIn){
+        document.getElementById("welcome").textContent = "Welcome " + parts[1].split("=")[1]
+    }
+}
+/*var items;
 fetch("vehicles.json")
 .then(response => response.json())
 .then(data => {
@@ -55,7 +98,7 @@ function ShowBackground(){
  * @param {number} index - The index of the item to fetch.
  * @returns {Promise<void>}
  */
-async function ShowItem(index){
+/*async function ShowItem(index){
     let entry = items[index]
     let name = itemName.querySelector("#custom")
     let cat = category.querySelector("#custom")
@@ -95,4 +138,4 @@ if(localStorage.getItem("LoggedIn") == "true"){
     upload.style.visibility = "hidden"
     document.querySelector("#Logout").style.visibility = "hidden"
     document.querySelector("#welcome").style.visibility = "hidden"
-}
+}*/
