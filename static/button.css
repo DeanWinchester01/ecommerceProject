@@ -3,9 +3,29 @@
 }
 
 #blueButton {
-    color: #212121;
+    color: #ebf5fb;
     background-color: #5dade2;
     border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 8px;
+}
+
+#redButton {
+    color: #fdedec;
+    background-color: #ec7063;
+    border: 100%;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 8px;
+}
+
+#greenButton {
+    color: #eafaf1;
+    background-color: #58d68d;
+    border: 100%;
     border-radius: 10px;
     font-weight: 600;
     font-size: 15px;
