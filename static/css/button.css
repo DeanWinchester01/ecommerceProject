@@ -1,5 +1,7 @@
 #plainButton {
     color: #fafafa;
+    font-weight: 400;
+    font-size: 14px;
 }
 
 #blueButton {
@@ -8,8 +10,10 @@
     border: none;
     border-radius: 10px;
     font-weight: 600;
-    font-size: 15px;
-    padding: 8px;
+    font-size: 14px;
+    padding: 6%;
+    padding-left: 20%;
+    padding-right: 20%;
 }
 
 #redButton {
@@ -18,8 +22,10 @@
     border: 100%;
     border-radius: 10px;
     font-weight: 600;
-    font-size: 15px;
-    padding: 8px;
+    font-size: 14px;
+    padding: 6%;
+    padding-left: 20%;
+    padding-right: 20%;
 }
 
 #greenButton {
@@ -28,8 +34,10 @@
     border: 100%;
     border-radius: 10px;
     font-weight: 600;
-    font-size: 15px;
-    padding: 8px;
+    font-size: 14px;
+    padding: 6%;
+    padding-left: 20%;
+    padding-right: 20%;
 }
 
 #whiteButton {
@@ -38,8 +46,10 @@
     border: 100%;
     border-radius: 10px;
     font-weight: 600;
-    font-size: 15px;
-    padding: 8px;
+    font-size: 14px;
+    padding: 6%;
+    padding-left: 20%;
+    padding-right: 20%;
 }
 
 #blackButton {
@@ -48,6 +58,8 @@
     border: 100%;
     border-radius: 10px;
     font-weight: 600;
-    font-size: 15px;
-    padding: 8px;
+    font-size: 14px;
+    padding: 6%;
+    padding-left: 20%;
+    padding-right: 20%;
 }
