@@ -3,6 +3,11 @@ var sidemenu = document.getElementById("sidemenu")
 var layout = document.getElementById("layout")
 var searchBar = document.getElementById("searchbar")
 
+var itemName = document.getElementById("name")
+var category = document.getElementById("category")
+var desc = document.getElementById("description")
+var price = document.getElementById("price")
+let tags = document.getElementById("tags")
 
 function ShowBackground(){
     itemView.style.visibility = "hidden"
@@ -41,6 +46,53 @@ if (document.cookie.includes("email")){
         document.getElementById("welcome").textContent = "Welcome " + parts[1].split("=")[1]
     }
 }
+var vehicles = []
+fetch('/page/getdata')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();  // Return the parsed JSON
+    })
+    .then(data => {
+        console.log(data);  // This should log the JSON data now
+        vehicles = data
+        console.log(vehicles)
+    })
+    .catch(error => console.error('Fetch error:', error));
+
+var buttons = document.getElementsByClassName("item")
+for (let i = 0; i < buttons.length; i++){
+    let button = buttons[i]
+    button.onclick = function(){
+        //console.log("clicked "+i)
+        ShowItem(i)
+    }
+};
+
+function ShowItem(index){
+    let entry = vehicles[index]
+    let name = itemName.querySelector("#custom")
+    let cat = category.querySelector("#custom")
+    let description = desc.querySelector("#custom")
+    let pr = price.querySelector("#custom")
+    let img = document.getElementById("itemImage")
+    let tag = tags.querySelector("#custom")
+
+    console.log(entry)
+    name.textContent = entry.vehicle
+    cat.textContent = entry.category
+    description.textContent = entry.description
+    pr.textContent = "$"+entry.price
+    itemView.style.visibility = "visible"
+    img.src = "static/images/" + index+".png"
+    tag.textContent = entry.tags
+    sidemenu.style.filter = "blur(10px)"
+    layout.style.filter = "blur(10px)"
+    searchBar.style.filter = "blur(10px)"
+}
+//const pythonData = {{ data | tojson }};
+//console.log(pythonData); // This will print: {name: 'Dean', age: 30}
 /*var items;
 fetch("vehicles.json")
 .then(response => response.json())
@@ -79,10 +131,7 @@ var signup = document.getElementById("signup")
 var upload = document.getElementById("upload")
 var logout = document.getElementById("Logout")
 
-var itemName = document.getElementById("name")
-var category = document.getElementById("category")
-var desc = document.getElementById("description")
-var price = document.getElementById("price")
+
 
 var closeButton = document.getElementById("close")
 
@@ -98,24 +147,7 @@ function ShowBackground(){
  * @param {number} index - The index of the item to fetch.
  * @returns {Promise<void>}
  */
-/*async function ShowItem(index){
-    let entry = items[index]
-    let name = itemName.querySelector("#custom")
-    let cat = category.querySelector("#custom")
-    let description = desc.querySelector("#custom")
-    let pr = price.querySelector("#custom")
-    let img = document.getElementById("itemImage")
-
-    name.textContent = entry.name
-    cat.textContent = entry.category
-    description.textContent = entry.description
-    pr.textContent = "$"+entry.price
-    itemView.style.visibility = "visible"
-    img.src = "images/" + index+".png"
-    sidemenu.style.filter = "blur(10px)"
-    layout.style.filter = "blur(10px)"
-    searchBar.style.filter = "blur(10px)"
-}
+/*async 
 
 closeButton.onclick = ShowBackground
 ShowBackground()

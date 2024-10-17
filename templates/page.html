@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
+    
+
+
     <input id = "searchbar" type="text">
     <div id = "layout" class="layout"> 
         {{ items | safe }}
@@ -39,19 +42,23 @@
         <div class = "descriptors" style="top: 12.5%; left: 50%; position: absolute; width: 30%;">
             <p class = "descriptor" id = "name">
                 <span>Name:</span>
-                <span id = "custom">Suzuki 2023</span>
+                <span id = "custom"></span>
             </p>
             <p class = "descriptor" id = "category">
                 <span>Category:</span>
-                <span id = "custom">Motorbike</span>
+                <span id = "custom"></span>
             </p>
             <p class = "descriptor" id = "description">
                 <span>Description:</span>
-                <span id = "custom">i have used this bike for a few months now, it came out in 2023. selling due to having a new bike</span>
+                <span id = "custom"></span>
             </p>
             <p class = "descriptor" id = "price">
                 <span>Price:</span>
-                <span id = "custom">$6000</span>
+                <span id = "custom"></span>
+            </p>
+            <p class="descriptor" id = "tags">
+                <span>Tags:</span>
+                <span id = "custom"></span>
             </p>
             <button class = "descriptor" style = "font-size: 15px; align-items: center;">
                 <span class = "material-symbols-outlined">chat_bubble</span>
@@ -60,8 +67,45 @@
         </div>
         
         <button id = "close" name="close" value="close">X</button>
-
+        <div class = "itemview" id = "itemview" style="background-color: white;">
+            <img id = "itemImage" alt="">
+            <div class = "descriptors" style="top: 12.5%; left: 50%; position: absolute; width: 30%;">
+                <p class = "descriptor" id = "name">
+                    <span style="text-decoration:solid; font-size: large;"">
+                        Name:
+                    </span>
+                    <span id = "custom">
+                        
+                    </span>
+                </p>
+                <p class = "descriptor" id = "category">
+                    <span style="text-decoration:solid; font-size: large;">
+                        Category:
+                    </span>
+                    <span id = "custom">
+    
+                    </span>
+                </p>
+                <p class = "descriptor" id = "description">
+                    <span style="text-decoration:solid; font-size: large;">
+                        Description:
+                    </span>
+                    <span id = "custom">
+    
+                    </span>
+                </p>
+                <p class = "descriptor" id = "price">
+                    <span style="text-decoration:solid; font-size: large;">
+                        Price:
+                    </span>
+                    <span id = "custom">
+    
+                    </span>
+                </p>
+            </div>
+        </div>
     </div>
+    
     <script src="{{ url_for('static', filename='java/page.js') }}"></script>
 </body>
 </html>

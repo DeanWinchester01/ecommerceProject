@@ -1,5 +1,5 @@
 import os
-from flask import Flask, Blueprint, render_template, request
+from flask import Flask, Blueprint, render_template, request, jsonify
 from werkzeug.utils import secure_filename
 import database
 import tempfile
@@ -35,7 +35,7 @@ def page():
         with open(filepath,"wb") as fh:
             fh.write(decoded)
         
-        items += "<button class='item'>"
+        items += "<button class='item' id = '"+str(data[entry]["_id"])+"'>"
         items += f"<img class='itemImage' src='static/images/"+str(entry)+".png'>"
         items += "</button>"
 
@@ -54,3 +54,21 @@ def page():
     if loggedIn == "True":
         return render_template("page.html", items = items, user_specifics = option1)
     return render_template("page.html", items = items, user_specifics = option2)
+
+@pageBP.route("/page/getdata", methods = ["POST","GET"])
+def GetData():
+    newData = []
+    data = database.GetVehicles()
+
+    for entry in data:
+        #print(entry["_id"])
+        #print(type(entry["_id"]))
+        entry["_id"] = str(entry["_id"])
+        #print(type(entry["_id"]))
+        #del entry["_id"]
+        #print(entry)
+        newData.append(entry)
+
+    print("new data")
+    #print(newData)
+    return jsonify(newData)
