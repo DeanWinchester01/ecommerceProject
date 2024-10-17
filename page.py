@@ -10,15 +10,8 @@ pageBP = Blueprint("page",__name__)
 
 @pageBP.route("/page", methods = ["POST","GET"])
 def page():
-    #user = request.cookies.get("username")
-    email = request.cookies.get("email")
-    password = request.cookies.get("pass")
     loggedIn = request.cookies.get("loggedIn")
-    print(loggedIn)
     username = request.cookies.get("username")
-    print("logged in")
-    print(email)
-    print(password)
 
     data = database.GetVehicles()
 
@@ -61,14 +54,7 @@ def GetData():
     data = database.GetVehicles()
 
     for entry in data:
-        #print(entry["_id"])
-        #print(type(entry["_id"]))
         entry["_id"] = str(entry["_id"])
-        #print(type(entry["_id"]))
-        #del entry["_id"]
-        #print(entry)
         newData.append(entry)
 
-    print("new data")
-    #print(newData)
     return jsonify(newData)

@@ -8,7 +8,7 @@ import base64
 from PIL import Image
 
 # Connect to the MongoDB server
-print("[MongoDB] 1: Database Server Connection Check")
+#print("[MongoDB] 1: Database Server Connection Check")
 client = MongoClient(
     "mongodb+srv://jeznerleonidas0:jwduC3xdsqb9SagF@ecommerceproject.sznvj.mongodb.net/?retryWrites=true&w=majority&appName=eCommerceProject",
     tls=True,                         # Enable TLS
@@ -23,7 +23,7 @@ def GetUsers():
 
 def GetVehicles():
     # Access the collection
-    print("[MongoDB] 2: Database Collection Access Check")
+    #print("[MongoDB] 2: Database Collection Access Check")
     collection = client["eCommerceProject"]["vehicles"]
 
     # Insert a single document

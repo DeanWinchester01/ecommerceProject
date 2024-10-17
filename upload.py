@@ -50,7 +50,7 @@ def GetVehicleImage():
         category = data["category"]
         tags = data["tags"]
 
-        print(user, vehiclename, description, price, category, tags)
+        #print(user, vehiclename, description, price, category, tags)
 
         if user == None or vehiclename == None or description == None or price == None or category == None:
             return redirect("/upload")
@@ -64,7 +64,7 @@ def GetVehicleImage():
         data = {
             "user":user,
             "image": b64string,
-            "vehicle":vehiclename,
+            "name":vehiclename,
             "description":description,
             "price":price,
             "category":category,

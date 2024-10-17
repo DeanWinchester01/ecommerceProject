@@ -70,6 +70,10 @@ for (let i = 0; i < buttons.length; i++){
     }
 };
 
+/**
+ * 
+ * @param {Number} index 
+ */
 function ShowItem(index){
     let entry = vehicles[index]
     let name = itemName.querySelector("#custom")
@@ -79,7 +83,6 @@ function ShowItem(index){
     let img = document.getElementById("itemImage")
     let tag = tags.querySelector("#custom")
 
-    console.log(entry)
     name.textContent = entry.vehicle
     cat.textContent = entry.category
     description.textContent = entry.description
@@ -91,6 +94,79 @@ function ShowItem(index){
     layout.style.filter = "blur(10px)"
     searchBar.style.filter = "blur(10px)"
 }
+
+/**
+ * 
+ * @param {Array} parameters 
+ */
+function GetVehicles(parameters){
+    console.log("searching for tags:")
+    console.log(parameters)
+    let matching = []
+
+    for(let vehicle = 0; vehicle < vehicles.length; vehicle++){
+        let missing = false
+        if(!Object.keys(vehicles[vehicle]).includes("tags")) continue;
+        for(let param = 0; param < parameters.length; param++){
+            if(!vehicles[vehicle].tags.includes(parameters[param]))
+                missing = true
+                break
+        }
+
+        if(!missing)
+            matching.push(vehicles[vehicle])
+    }
+    
+    return matching
+}
+
+searchBar.addEventListener("input",function(){
+    let searchParameters = searchBar.value.split(" ")
+    console.log(searchBar.value)
+
+    let vehicleName;
+    let tags = []
+    for(let i = 0; i < searchParameters.length; i++){
+        let param = searchParameters[i].toLowerCase()
+        console.log(param)
+        if (param.includes("#") && param.length > 1){
+            tags.push(param)
+        }else{
+            vehicleName = param.toLowerCase()
+        }
+    }
+
+    if(tags.length != 0){
+        let matching = GetVehicles(tags)
+        console.log(matching)
+        for(let match = 0; match < matching.length; match++){
+            if(Object.keys(matching[match]).includes("vehicle")){
+                let vehicle = matching[match]
+    
+                if(vehicle.vehicle == vehicleName){
+                    console.log(vehicle)
+                }
+            }
+            //console.log(typeof(matching[match]).keys())
+            //if(!matching[match].keys()){
+              //  continue
+            //}
+            /*if(matching[match].vehicle.toLowerCase() != vehicleName){
+                
+                matching.splice(match, 1)
+            }else{
+                
+                console.log(matching[match])
+            }*/
+    
+        }
+
+    }else{
+        
+    }
+    
+    //console.log(matching)
+})
 //const pythonData = {{ data | tojson }};
 //console.log(pythonData); // This will print: {name: 'Dean', age: 30}
 /*var items;

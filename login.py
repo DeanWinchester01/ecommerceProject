@@ -6,10 +6,8 @@ loginBP = Blueprint("login",__name__)
 @loginBP.route("/login", methods = ["POST","GET"])
 def login():
     if request.method == "POST":
-        print("log in")
         email = request.form["email"]
         password = request.form["password"]
-        print(email, password)
                 
         login = LogIn(email, password)
         if login != False:
