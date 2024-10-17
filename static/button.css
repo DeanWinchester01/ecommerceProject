@@ -1,0 +1,33 @@
+#plainButton {
+    color: #fafafa;
+}
+
+#blueButton {
+    color: #212121;
+    background-color: #5dade2;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 8px;
+}
+
+#whiteButton {
+    color: #212121;
+    background-color: #5dade2;
+    border: 100%;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 8px;
+}
+
+#blackButton {
+    color: #212121;
+    background-color: #5dade2;
+    border: 100%;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 8px;
+}

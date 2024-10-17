@@ -10,53 +10,11 @@ body {
     font-style: normal;
 }
 
-.userinfo {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-    padding: 8px;
-    background-color: #212121;
-    border-color: #424242;
-    color: #fafafa;
-}
-
-#icon {
-    height: fit-content;
-    width: fit-content;
-    margin-right: 10px;
-}
-
-#mainButton {
-    color: #212121;
-    background-color: #5dade2;
-    border: none;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 15px;
-    padding: 8px;
-    margin-left: 31%;
-}
-
-#info {
-    position: absolute;
-    left: 20%;
-    top: 20%;
-    display: flex;
-}
-
-#secondaryButton {
-    background-color: transparent;
-    border: 0;
-    padding: 0;
-}
-
-#signup {
-    color: #212121;
-    background-color: #5dade2;
-    border: none;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 15px;
-    padding: 8px;
-    margin-left: 31%;
+.material-symbols-outlined {
+    font-size: large;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
 }

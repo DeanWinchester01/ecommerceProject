@@ -1,0 +1,26 @@
+#info {
+    position: absolute;
+    left: 20%;
+    top: 20%;
+    display: flex;
+}
+
+#icon {
+    height: fit-content;
+    width: fit-content;
+    margin-right: 10px;
+}
+
+.userinfo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    padding: 8px;
+    background-color: #212121;
+    border-color: transparent;
+    color: #fafafa;
+}
+
+#Username, #Email, #Password, #Confirm {
+    outline: 2px solid #424242;
+}

@@ -3,17 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- Title -->
     <title>E-Commerce | Signup</title>
+
     <!-- Style.CSS -->
     <link rel="styleSheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
-    <!-- 
-    <link rel="stylesheet" type="text/css" href="../static/style.css">
-    -->
+
+    <!-- Button.CSS -->
+    <link rel="styleSheet" type="text/css" href="{{url_for('static', filename='button.css')}}">
+
+    <!-- Signup.CSS -->
+    <link rel="styleSheet" type="text/css" href="{{url_for('static', filename='signup.css')}}">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
     <!-- Google Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
@@ -26,12 +33,11 @@
             <input class = "userinfo" name = "email" id = "Email" placeholder = "Email" type = "text" required>
             <input class = "userinfo" name = "password" id = "Password" placeholder = "Password" type = "password" required>
             <input class = "userinfo" name = "confirmPass" id = "Confirm" placeholder = "Confirm Password" type = "password" required>
-            <button class = "userinfo" id = "mainButton" type="submit">Sign up</button>
+            <button class = "userinfo" id = "blueButton" type="submit">Sign Up</button>
         </form>
 
         <form action="/signup/login">
-            <p>Already have an account?</p>
-            <button class = "userinfo" id = "secondaryButton">Login</button>
+            <button class = "userinfo" id = "normalButton">Already have an account?</button>
         </form>
     </div>
 </body>
