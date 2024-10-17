@@ -1,12 +1,12 @@
 from pymongo import MongoClient
-import ssl
+
 from encryption import EncryptMessage, DecryptMessage
 import os
 import io
 from flask import Flask
 import base64
 from PIL import Image
-import zlib
+
 # Connect to the MongoDB server
 print("[MongoDB] 1: Database Server Connection Check")
 client = MongoClient(
@@ -17,6 +17,9 @@ client = MongoClient(
 app = Flask(__name__)
 vehicles = os.path.join("ecommerceProject\\static","images")
 app.config["UPLOAD_FOLDER"] = vehicles
+
+def GetUsers():
+    return client["eCommerceProject"]["users"]
 
 def GetVehicles():
     # Access the collection
@@ -208,6 +211,7 @@ def UploadVehicle(data):
     collection = client["eCommerceProject"]["vehicles"]
     result = collection.insert_one(data)
     return result
+
 
 
 def LogIn(email, password):
