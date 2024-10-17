@@ -4,6 +4,7 @@ from werkzeug.utils import secure_filename
 import database
 import io
 import base64
+from PIL import Image
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = "flaskenv/ecommerceProject/static/images/"
@@ -19,10 +20,16 @@ def GetVehicleImage():
     if request.method == "POST":
         file = request.files["image"]
         file.save(secure_filename(file.filename))
-        binary = file.read()
-        b62string = base64.b32encode(binary).decode("utf-8")
-        data = request.form
+        b64string = ""
+        with Image.open(file.filename) as img:
+            buffered = io.BytesIO()
+            img.save(buffered, format="PNG")
+            binary = buffered.getvalue()
+            #binary = file.read()
+            b64string = base64.b64encode(binary).decode("utf-8")
 
+        os.remove(file.filename)
+        data = request.form
         user = request.cookies["email"]
         vehiclename = data["name"]
         description = data["description"]
@@ -35,14 +42,15 @@ def GetVehicleImage():
         if user == None or vehiclename == None or description == None or price == None or category == None:
             return redirect("/upload")
         
-        allTags = tags.split(" ")
-        for i in range(len(allTags)):
-            if allTags[i][0] != "#" or len(allTags[i]) < 2:
-                return redirect("/upload")
+        if "#" in tags:
+            allTags = tags.split(" ")
+            for i in range(len(allTags)):
+                if allTags[i][0] != "#" or len(allTags[i]) < 2:
+                    return redirect("/upload")
             
         data = {
             "user":user,
-            "image": b62string,
+            "image": b64string,
             "vehicle":vehiclename,
             "description":description,
             "price":price,

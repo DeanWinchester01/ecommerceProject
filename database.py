@@ -15,7 +15,7 @@ client = MongoClient(
     tlsAllowInvalidCertificates=True  # Disable SSL certificate verification
 )
 app = Flask(__name__)
-vehicles = os.path.join("flaskenv\\ecommerceProject\\static","images")
+vehicles = os.path.join("ecommerceProject\\static","images")
 app.config["UPLOAD_FOLDER"] = vehicles
 
 def GetVehicles():
@@ -167,7 +167,7 @@ def GetVehicles():
 
     print("adding image")
     for i in range(len(entries)):
-        fullName = os.path.join(app.config["UPLOAD_FOLDER"], str(i)+"-min.png")
+        fullName = os.path.join(app.config["UPLOAD_FOLDER"], str(i)+".png")
         with Image.open(fullName) as img:
             buffered = io.BytesIO()
             img.save(buffered, format="PNG")
