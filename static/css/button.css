@@ -1,3 +1,13 @@
+.returnButton {
+    color: #fafafa;
+    background-color: #424242;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 1%;
+}
+
 #plainButton {
     color: #fafafa;
     font-weight: 400;

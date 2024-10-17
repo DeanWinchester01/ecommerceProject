@@ -5,9 +5,7 @@ html, body {
 
 body {
     background-color: #212121;
-    font-family: "Ubuntu", sans-serif;
     font-weight: 400;
-    font-style: normal;
 }
 
 .material-symbols-outlined {
@@ -28,9 +26,12 @@ body {
     width: 80%;
     filter: blur(10px);
 }
+
 #itemview{
     visibility: hidden;
+
 }
+
 .item {
     display: flex;
     width: 12.5%;
@@ -39,6 +40,7 @@ body {
     margin-bottom: 4%;
     background-color: #424242;
 }
+
 #searchbar {
     position: relative;
     left: 7%;
@@ -48,6 +50,7 @@ body {
     filter: blur(10px);
     background-color: #424242;
 }
+
 #sidemenu {
     position: absolute;
     left: 90%;
@@ -57,6 +60,7 @@ body {
     top: 6%;
     filter: blur(10px);
 }
+
 .sideoption {
     display: flex;
     margin-bottom: 10%;
@@ -70,10 +74,12 @@ body {
     font-size: 15px;
     padding: 8px;
 }
+
 #sideoptionstyle {
     top: 10%;
     position: relative;
 }
+
 .itemview {
     width: 80%;
     height: 80%;
@@ -82,16 +88,19 @@ body {
     left: 10%;
     background-color: #fafafa;
 }
+
 .descriptor {
     position: relative;
     left: 50%;
 }
+
 #itemImage {
     width: 33%;
     left: 10%;
     position: relative;
     top: 14%;
 }
+
 .itemImage {
     width: 90%;
     height: 90%;
@@ -99,10 +108,12 @@ body {
     left:5%;
     top:5%;
 }
+
 .descriptor {
     top: 0;
     left: 0;
 }
+
 #close{
     position: relative;
     left: 65%;

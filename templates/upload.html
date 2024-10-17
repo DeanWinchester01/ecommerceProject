@@ -10,6 +10,12 @@
     <!-- Style.CSS -->
     <link rel="styleSheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
 
+    <!-- Button.CSS -->
+    <link rel="styleSheet" type="text/css" href="{{url_for('static', filename='css/button.css')}}">
+
+    <!-- Upload.CSS -->
+    <link rel="styleSheet" type="text/css" href="{{url_for('static', filename='css/upload.css')}}">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,91 +23,12 @@
 
     <!-- Google Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <style>
-        html, body{
-            height: 100%;
-            width: 100%;
-        }
-        body{
-            background-color: #212121;
-            font-family: "Ubuntu", sans-serif;
-            font-weight: 400;
-            font-style: normal;
-        }
-        #details {
-            display: flex;
-            flex-direction: column;
-            width: 80%;
-            height: 80%;
-            position: relative;
-            left: 10%;
-            top: 10%;
-            font-family: "Ubuntu", sans-serif;
-            font-weight: 400;
-            font-style: normal;
-        }
-        #imgUpload{
-            left: 0;
-            top:0;
-            position: absolute;
-            font-size: 16px;  /* Increase font size */
-            padding: 8px;     /* Increase padding for better clickability */
-            width: 350px;     /* Control the total width including the white area */
-            height: 40px;     /* Increase height */
-        }
-        #itemImg{
-            width: 40%;
-            height: 40%;
-            left: 30%;
-            position: relative;
-            top: 0;
-        }
-        .detail{
-            height: 10%; /* Container height relative to the body or parent element */
-            width: 100%;
-            top: 10%;
-            position: relative;
-            display: flex; /* Optional: Use flexbox for alignment */
-            align-items: center; /* Optional: Center the input vertically */
-            justify-content: center; /* Optional: Center the input horizontally */
-            font-family: "Ubuntu", sans-serif;
-            font-weight: 400;
-            font-style: normal;
-            color: #fafafa;
-            background-color: #424242;
-        }
-        #Upload{
-            width: 50%;
-            height: 25%;
-            left: 25%;
-            position: relative;
-            color: #2ecc71;
-            background-color: #186a3b;
-            border: none;
-            border-radius: 20px;
-        }
-        .buttonDesign {
-            color: #fafafa;
-            background-color: #424242;
-            font-weight: 600;
-            font-size: 20px;
-            border: none;
-            border-radius: 5px;
-        }
-        #itemName::placeholder,
-        #desc::placeholder,
-        #price::placeholder,
-        #tags::placeholder,
-        #category::placeholder {
-            color: #fafafa;
-        }
-    </style>
 </head>
     <body>
         <div id = "details" >
             <div>
                 <form action="/page" method="POST">
-                    <button class="buttonDesign" id="Return">
+                    <button class="returnButton" id="Return">
                         <span class="material-symbols-outlined">arrow_back</span>
                         Return
                     </button>
