@@ -47,7 +47,7 @@
                     <input class = "detail" name="category" id = "category" type = "text" placeholder = "Category" required>
                     <input class = "detail" name="tags" id = "tags" type="text" placeholder = "#Input #Tags #Like #This">
             
-                    <input type="submit" id = "Upload" style="height: 10%; width: 100%; left: 0; top: 12%;">
+                    <input type="submit" id = "uploadButton" style="height: 10%; width: 50%; left: 25%; top: 12%;">
                 </form>
             </div>
             
@@ -62,6 +62,7 @@
                     let reader = new FileReader();
                     reader.onload = function(e){
                         image.src = e.target.result;
+                        image.style.visibility = "visible"
                     }
                     reader.readAsDataURL(file)
                 }
