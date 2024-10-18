@@ -1,3 +1,23 @@
+#itemImg {
+    width: 40%;
+    height: 40%;
+    left: 30%;
+    position: relative;
+    top: 0;
+    visibility: hidden;
+}
+
+#imgUpload {
+    left: 0;
+    top:0;
+    align-items: center;
+    position: absolute;
+    font-size: 16px;  /* Increase font size */
+    padding: 8px;     /* Increase padding for better clickability */
+    width: 350px;     /* Control the total width including the white area */
+    height: 40px;     /* Increase height */
+}
+
 #details {
     display: flex;
     flex-direction: column;
@@ -25,7 +45,6 @@
     left: 30%;
     position: relative;
     top: 0;
-    visibility: hidden;
 }
 
 .detail{
@@ -33,27 +52,34 @@
     width: 100%;
     top: 10%;
     position: relative;
-    display: flex; /* Optional: Use flexbox for alignment */
-    align-items: center; /* Optional: Center the input vertically */
-    justify-content: center; /* Optional: Center the input horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: 400;
-    color: #fafafa;
     background-color: #424242;
+    color: #fafafa;
+    border: 2px solid #212121;
 }
 
-#Upload{
+.detail::placeholder {
+    color: #fafafa;
+}
+
+.detail:focus {
+    color: #58d68d;
+    border: 2px solid #58d68d;
+    outline: none;
+}
+
+#uploadButton {
     width: 50%;
     height: 25%;
     left: 25%;
     position: relative;
-    color: #2ecc71;
+    color: #58d68d;
     background-color: #186a3b;
     border: none;
     border-radius: 20px;
-}
-
-#itemName::placeholder, #desc::placeholder,
-#price::placeholder, #tags::placeholder,
-#category::placeholder {
-    color: #fafafa;
+    font-size: 18px;
+    font-weight: 600;
 }
