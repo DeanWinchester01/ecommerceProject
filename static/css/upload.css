@@ -25,6 +25,7 @@
     left: 30%;
     position: relative;
     top: 0;
+    visibility: hidden;
 }
 
 .detail{

@@ -52,10 +52,10 @@ fetch('/page/getdata')
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        return response.json();  // Return the parsed JSON
+        return response.json();
     })
     .then(data => {
-        console.log(data);  // This should log the JSON data now
+        console.log(data);
         vehicles = data
         console.log(vehicles)
     })
@@ -65,7 +65,6 @@ var buttons = document.getElementsByClassName("item")
 for (let i = 0; i < buttons.length; i++){
     let button = buttons[i]
     button.onclick = function(){
-        //console.log("clicked "+i)
         ShowItem(i)
     }
 };
@@ -97,34 +96,55 @@ function ShowItem(index){
 
 /**
  * 
- * @param {Array} parameters 
+ * @param {Array} parameters
+ * @returns {Array}
  */
-function GetVehicles(parameters){
-    console.log("searching for tags:")
-    console.log(parameters)
-    let matching = []
+function GetVehiclesByName(name){
+    let allCurrentVehicles = vehicles
+    if(name.length == 0)
+        return allCurrentVehicles
 
-    for(let vehicle = 0; vehicle < vehicles.length; vehicle++){
-        let missing = false
-        if(!Object.keys(vehicles[vehicle]).includes("tags")) continue;
-        for(let param = 0; param < parameters.length; param++){
-            if(!vehicles[vehicle].tags.includes(parameters[param]))
-                missing = true
-                break
+    let newList = []
+
+    for(let i = 0; i < allCurrentVehicles.length; i++){
+        let vehicle = allCurrentVehicles[i]
+        if(!Object.keys(vehicle).includes("vehicle")) continue
+        
+        if(vehicle.vehicle.toLowerCase().includes(name)){
+            newList.push(vehicle)
         }
-
-        if(!missing)
-            matching.push(vehicles[vehicle])
     }
-    
-    return matching
+}
+
+/**
+ * 
+ * @param {Array} vehicles 
+ * @param {Array} tags 
+ * @returns {Array} 
+ */
+function GetVehiclesByTag(vehicles, tags){
+    let allCurrentVehicles = vehicles
+    if(tags.length == 0)
+        return allCurrentVehicles
+
+    for(let vehicle = vehicles.length-1; vehicle >= 0; vehicle--){
+        let currentVehicle = vehicles[vehicle]
+        if(!Object.keys(currentVehicle).includes("tags")) continue
+        for(let tag = 0; tag < tags.length; tag++){
+
+            if(!currentVehicle.tags.includes(tags[tag]))
+                allCurrentVehicles.slice(vehicle,1)
+        }
+    }
+
+    return allCurrentVehicles
 }
 
 searchBar.addEventListener("input",function(){
     let searchParameters = searchBar.value.split(" ")
     console.log(searchBar.value)
 
-    let vehicleName;
+    let vehicleName = "";
     let tags = []
     for(let i = 0; i < searchParameters.length; i++){
         let param = searchParameters[i].toLowerCase()
@@ -136,114 +156,7 @@ searchBar.addEventListener("input",function(){
         }
     }
 
-    if(tags.length != 0){
-        let matching = GetVehicles(tags)
-        console.log(matching)
-        for(let match = 0; match < matching.length; match++){
-            if(Object.keys(matching[match]).includes("vehicle")){
-                let vehicle = matching[match]
-    
-                if(vehicle.vehicle == vehicleName){
-                    console.log(vehicle)
-                }
-            }
-            //console.log(typeof(matching[match]).keys())
-            //if(!matching[match].keys()){
-              //  continue
-            //}
-            /*if(matching[match].vehicle.toLowerCase() != vehicleName){
-                
-                matching.splice(match, 1)
-            }else{
-                
-                console.log(matching[match])
-            }*/
-    
-        }
-
-    }else{
-        
-    }
-    
-    //console.log(matching)
+    let list = GetVehiclesByName(vehicleName)
+    let newList = GetVehiclesByTag(list, tags)
+    console.log(newList)
 })
-//const pythonData = {{ data | tojson }};
-//console.log(pythonData); // This will print: {name: 'Dean', age: 30}
-/*var items;
-fetch("vehicles.json")
-.then(response => response.json())
-.then(data => {
-    items = data
-})
-
-for(let i = 0; i < 23; i++){
-    let layout = document.getElementById("layout")
-    let newButton = document.createElement("button")
-    newButton.className = "item"
-    newButton.id = i
-    layout.appendChild(newButton)
-
-    let image = document.createElement("img")
-    let source = "images/" + i+".png"
-    image.src = source
-    newButton.appendChild(image)
-
-    image.className = "itemImage"
-
-    newButton.onclick = function(){
-        ShowItem(i)
-    }
-}
-
-
-
-var itemView = document.getElementById("itemview")
-var sidemenu = document.getElementById("sidemenu")
-var layout = document.getElementById("layout")
-var searchBar = document.getElementById("searchbar")
-
-var login = document.getElementById("login")
-var signup = document.getElementById("signup")
-var upload = document.getElementById("upload")
-var logout = document.getElementById("Logout")
-
-
-
-var closeButton = document.getElementById("close")
-
-function ShowBackground(){
-    itemView.style.visibility = "hidden"
-    sidemenu.style.filter = "none"
-    layout.style.filter = "none"
-    searchBar.style.filter = "none"
-}
-
-
-/**
- * @param {number} index - The index of the item to fetch.
- * @returns {Promise<void>}
- */
-/*async 
-
-closeButton.onclick = ShowBackground
-ShowBackground()
-
-login.onclick = () => window.open("login.html","_self")
-signup.onclick = () => window.open("signup.html","_self")
-upload.onclick = () => window.open("upload.html","_self")
-
-logout.onclick = function(){
-    localStorage.setItem("LoggedIn",false)
-    window.open("login.html","_self_")
-}
-
-if(localStorage.getItem("LoggedIn") == "true"){
-    login.style.visibility = "hidden"
-    signup.style.visibility = "hidden"
-    document.querySelector("#welcome").textContent = "Welcome " + localStorage.getItem("username")
-}else{
-    console.log("logged out")
-    upload.style.visibility = "hidden"
-    document.querySelector("#Logout").style.visibility = "hidden"
-    document.querySelector("#welcome").style.visibility = "hidden"
-}*/
