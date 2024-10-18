@@ -26,6 +26,7 @@ def GetVehicleImage():
     if request.method == "POST":
         file = request.files["image"]
         filename = secure_filename(file.filename)
+        os.mkdir("ecommerceProject/static","uploads")
         file_path = os.path.join("ecommerceProject", "static", "uploads", filename)
         file.save(file_path)
         #file.save("ecommerceProject\\static\\uploads\\"+secure_filename(file.filename))
@@ -90,4 +91,6 @@ def GetVehicleImage():
                 { 'vehicles' : vehicles }
             }
             users.update_one(updatefilter, update_operation)
+
+            os.rmdir(os.path.join("ecommerceProject/static","uploads"))
         return redirect("/page")

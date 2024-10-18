@@ -46,28 +46,42 @@ if (document.cookie.includes("email")){
         document.getElementById("welcome").textContent = "Welcome " + parts[1].split("=")[1]
     }
 }
-var vehicles = []
-fetch('/page/getdata')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log(data);
-        vehicles = data
-        console.log(vehicles)
-    })
-    .catch(error => console.error('Fetch error:', error));
 
-var buttons = document.getElementsByClassName("item")
+/**
+ * @param {Array} vehicleList 
+ */
+function ShowVehicles(vehicleList){
+    let index = 0
+    vehicleList.forEach(function(vehicle){
+        let button = document.createElement("button")
+        button.id = vehicle["_id"]
+        button.className = "item"
+
+        let image = document.createElement("img")
+        image.className = "itemImage"
+        image.src = "static/images/"+vehicle["_id"]+".png"
+
+        button.appendChild(image)
+        layout.appendChild(button)
+
+        let i = index
+        button.onclick = function(){
+            console.log(i)
+            ShowItem(i)
+        }
+        index++
+    })
+}
+
+
+
+/*var buttons = document.getElementsByClassName("item")
 for (let i = 0; i < buttons.length; i++){
     let button = buttons[i]
     button.onclick = function(){
         ShowItem(i)
     }
-};
+}*/
 
 /**
  * 
@@ -101,8 +115,10 @@ function ShowItem(index){
  */
 function GetVehiclesByName(name){
     let allCurrentVehicles = vehicles
-    if(name.length == 0)
+    if(name == ""){
+        console.log("returned all vehicles")
         return allCurrentVehicles
+    }
 
     let newList = []
 
@@ -114,6 +130,8 @@ function GetVehiclesByName(name){
             newList.push(vehicle)
         }
     }
+    console.log("returned new list")
+    return newList
 }
 
 /**
@@ -127,36 +145,80 @@ function GetVehiclesByTag(vehicles, tags){
     if(tags.length == 0)
         return allCurrentVehicles
 
+    let newList = []
+
+    console.log(tags)
     for(let vehicle = vehicles.length-1; vehicle >= 0; vehicle--){
         let currentVehicle = vehicles[vehicle]
         if(!Object.keys(currentVehicle).includes("tags")) continue
         for(let tag = 0; tag < tags.length; tag++){
-
-            if(!currentVehicle.tags.includes(tags[tag]))
-                allCurrentVehicles.slice(vehicle,1)
+            console.log("searching tag: "+tags[tag])
+            if(!currentVehicle.tags.includes(tags[tag])){
+                allCurrentVehicles.slice(vehicle,vehicle+1)
+                console.log(allCurrentVehicles)
+            }else{
+                newList.push(currentVehicle)
+                console.log("vehicle "+vehicle+" includes "+tags[tag])
+                break
+            }
         }
     }
 
-    return allCurrentVehicles
+    return newList
 }
 
-searchBar.addEventListener("input",function(){
-    let searchParameters = searchBar.value.split(" ")
-    console.log(searchBar.value)
-
+/**
+ * 
+ * @param {string} search 
+ * @returns {Array}
+ */
+function SearchForVehicles(search){
+    let searchParameters = search.split(" ")
     let vehicleName = "";
     let tags = []
     for(let i = 0; i < searchParameters.length; i++){
         let param = searchParameters[i].toLowerCase()
-        console.log(param)
-        if (param.includes("#") && param.length > 1){
+        if (param[0] == "#" && param.length > 1){
             tags.push(param)
-        }else{
+            console.log("pushed tag")
+        }
+
+        if(!param.includes("#")){
+            console.log(param)
             vehicleName = param.toLowerCase()
         }
     }
 
     let list = GetVehiclesByName(vehicleName)
+    console.log(list)
     let newList = GetVehiclesByTag(list, tags)
     console.log(newList)
+    return newList
+}
+
+searchBar.addEventListener("input",function(){
+    let searchParameters = searchBar.value
+
+    let vehicles = SearchForVehicles(searchParameters)
+    let buttons = document.getElementsByClassName("item")
+    for(let i = buttons.length-1; i >= 0; i--){
+        buttons[i].remove()
+    }
+    console.log(vehicles)
+    ShowVehicles(vehicles)
 })
+
+var vehicles = []
+fetch('/page/getdata')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data);
+        vehicles = data
+        ShowVehicles(vehicles)
+    })
+    .catch(error => console.error('Fetch error:', error));

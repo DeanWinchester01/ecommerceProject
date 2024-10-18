@@ -13,24 +13,14 @@ def page():
     loggedIn = request.cookies.get("loggedIn")
     username = request.cookies.get("username")
 
-    data = database.GetVehicles()
+    #data = database.GetVehicles()
 
     items = """"""
-    saveFolder = "ecommerceProject/static/images/"
-    for entry in range(len(data)):
-        decoded = base64.b64decode(data[entry]["image"])
-        imgStream = io.BytesIO(decoded)
-        image = Image.open(imgStream)
-        buffered = io.BytesIO()
-        image.save(buffered,format="PNG")
-        filepath = os.path.join(saveFolder,f"{entry}.png")
+    
         
-        with open(filepath,"wb") as fh:
-            fh.write(decoded)
-        
-        items += "<button class='item' id = '"+str(data[entry]["_id"])+"'>"
-        items += f"<img class='itemImage' src='static/images/"+str(entry)+".png'>"
-        items += "</button>"
+        #items += "<button class='item' id = '"+str(id)+"'>"
+        #items += f"<img class='itemImage' src='static/images/"+str(id)+".png'>"
+        #items += "</button>"
 
         #<form action="/logout" method="post">
         #</form>
@@ -44,14 +34,30 @@ def page():
         <button class = "sideoption" id = "signup">Sign up</button>
     """
         
+    #if loggedIn == "True":
+        #return render_template("page.html", items = items, user_specifics = option1)
+    #return render_template("page.html", items = items, user_specifics = option2)
     if loggedIn == "True":
-        return render_template("page.html", items = items, user_specifics = option1)
-    return render_template("page.html", items = items, user_specifics = option2)
+        return render_template("page.html", user_specifics = option1)
+    return render_template("page.html", user_specifics = option2)
 
 @pageBP.route("/page/getdata", methods = ["POST","GET"])
 def GetData():
-    newData = []
+    saveFolder = "ecommerceProject/static/images/"
     data = database.GetVehicles()
+    for entry in range(len(data)):
+        decoded = base64.b64decode(data[entry]["image"])
+        imgStream = io.BytesIO(decoded)
+        image = Image.open(imgStream)
+        buffered = io.BytesIO()
+        image.save(buffered,format="PNG")
+        id = data[entry]["_id"]
+        filepath = os.path.join(saveFolder,f"{id}.png")
+        
+        with open(filepath,"wb") as fh:
+            fh.write(decoded)
+
+    newData = []
 
     for entry in data:
         entry["_id"] = str(entry["_id"])
