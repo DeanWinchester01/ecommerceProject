@@ -19,14 +19,17 @@ specialChars = {
 
 @uploadBP.route("/upload", methods = ["GET","POST"])
 def UploadVehicle():
+    if request.cookies.get("loggedIn") != "True":
+        return redirect("/login")
     return render_template("upload.html")
 
 @uploadBP.route("/upload/vehicle", methods = ["GET","POST"])
 def GetVehicleImage():
+    
     if request.method == "POST":
         file = request.files["image"]
         filename = secure_filename(file.filename)
-        os.mkdir("ecommerceProject/static","uploads")
+        os.mkdir("ecommerceProject/static/uploads")
         file_path = os.path.join("ecommerceProject", "static", "uploads", filename)
         file.save(file_path)
         #file.save("ecommerceProject\\static\\uploads\\"+secure_filename(file.filename))
@@ -92,5 +95,6 @@ def GetVehicleImage():
             }
             users.update_one(updatefilter, update_operation)
 
+            os.remove("ecommerceProject/static/uploads/"+filename)
             os.rmdir(os.path.join("ecommerceProject/static","uploads"))
         return redirect("/page")

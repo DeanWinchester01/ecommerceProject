@@ -16,6 +16,7 @@ function ShowBackground(){
     searchBar.style.filter = "none"
 }
 
+ShowBackground()
 document.getElementById("close").addEventListener("click", function(){
     ShowBackground()
 })
@@ -34,7 +35,6 @@ if (document.cookie.includes("email")){
     login.onclick = () => window.location.href = "/login"
 }
 
-ShowBackground()
 
 if (document.cookie.includes("email")){
     let parts = document.cookie.split("; ")
@@ -67,28 +67,14 @@ function ShowVehicles(vehicleList){
         let i = index
         button.onclick = function(){
             console.log(i)
-            ShowItem(i)
+            ShowItem(vehicle)
         }
         index++
     })
 }
 
 
-
-/*var buttons = document.getElementsByClassName("item")
-for (let i = 0; i < buttons.length; i++){
-    let button = buttons[i]
-    button.onclick = function(){
-        ShowItem(i)
-    }
-}*/
-
-/**
- * 
- * @param {Number} index 
- */
-function ShowItem(index){
-    let entry = vehicles[index]
+function ShowItem(vehicle){
     let name = itemName.querySelector("#custom")
     let cat = category.querySelector("#custom")
     let description = desc.querySelector("#custom")
@@ -96,13 +82,13 @@ function ShowItem(index){
     let img = document.getElementById("itemImage")
     let tag = tags.querySelector("#custom")
 
-    name.textContent = entry.vehicle
-    cat.textContent = entry.category
-    description.textContent = entry.description
-    pr.textContent = "$"+entry.price
+    name.textContent = Object.keys(vehicle, "vehicle") && vehicle.vehicle || vehicle.name
+    cat.textContent = vehicle.category
+    description.textContent = vehicle.description
+    pr.textContent = "$"+vehicle.price
     itemView.style.visibility = "visible"
-    img.src = "static/images/" + index+".png"
-    tag.textContent = entry.tags
+    img.src = "static/images/" + vehicle["_id"]+".png"
+    tag.textContent = vehicle.tags
     sidemenu.style.filter = "blur(10px)"
     layout.style.filter = "blur(10px)"
     searchBar.style.filter = "blur(10px)"
@@ -110,7 +96,7 @@ function ShowItem(index){
 
 /**
  * 
- * @param {Array} parameters
+ * @param {String} name
  * @returns {Array}
  */
 function GetVehiclesByName(name){
@@ -124,9 +110,9 @@ function GetVehiclesByName(name){
 
     for(let i = 0; i < allCurrentVehicles.length; i++){
         let vehicle = allCurrentVehicles[i]
-        if(!Object.keys(vehicle).includes("vehicle")) continue
+        let vehicleName = Object.keys(vehicle).includes("vehicle") && vehicle.vehicle || vehicle.name
         
-        if(vehicle.vehicle.toLowerCase().includes(name)){
+        if(vehicleName.toLowerCase().includes(name)){
             newList.push(vehicle)
         }
     }
@@ -183,7 +169,7 @@ function SearchForVehicles(search){
             console.log("pushed tag")
         }
 
-        if(!param.includes("#")){
+        if(!param.includes("#") && vehicleName == ""){
             console.log(param)
             vehicleName = param.toLowerCase()
         }
