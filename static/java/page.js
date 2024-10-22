@@ -61,7 +61,24 @@ function ShowVehicles(vehicleList){
         image.className = "itemImage"
         image.src = "static/images/"+vehicle["_id"]+".png"
 
+        let priceElement = document.createElement("div");
+        priceElement.className = "itemPrice";
+        let formattedPrice;
+        if (vehicle.price % 1 === 0) {
+            formattedPrice = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(vehicle.price);
+        } else {
+            formattedPrice = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(vehicle.price);
+        }
+        priceElement.textContent = formattedPrice;
+        /*priceElement.textContent = "$" + vehicle.price;*/
+
+        let nameElement = document.createElement("div")
+        nameElement.className = "itemName"
+        nameElement.textContent = vehicle.name || vehicle.vehicle;
+
         button.appendChild(image)
+        button.appendChild(priceElement)
+        button.appendChild(nameElement)
         layout.appendChild(button)
 
         let i = index

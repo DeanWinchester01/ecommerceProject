@@ -10,35 +10,37 @@ body {
 
 .material-symbols-outlined {
     font-size: large;
-    font-variation-settings:
+    font-variation-settings: 
     'FILL' 0,
     'wght' 400,
     'GRAD' 0,
-    'opsz' 24
+    'opsz' 24;
 }
 
 .layout {
     display: flex;
     flex-wrap: wrap;
     position: relative;
-    left:9%;
-    top:13%;
+    left: 9%;
+    top: 13%;
     width: 80%;
     filter: blur(10px);
 }
 
-#itemview{
+#itemview {
     visibility: hidden;
-
 }
 
 .item {
     display: flex;
+    flex-direction: column; /* Stack image and name vertically */
+    align-items: center;    /* Center align items horizontally */
     width: 12.5%;
     height: 130px;
-    margin-right: 4%;
-    margin-bottom: 4%;
-    background-color: #424242;
+    margin-right: 2%;
+    margin-bottom: 5%;
+    background-color: #212121;
+    border: none;
 }
 
 #searchbar {
@@ -67,7 +69,6 @@ body {
     margin-left: 26%;
     color: #212121;
     background-color: #5dade2;
-    /* border-color: #42a5f5; */
     border: none;
     border-radius: 10px;
     font-weight: 600;
@@ -104,9 +105,12 @@ body {
 .itemImage {
     width: 90%;
     height: 90%;
-    position: relative;
-    left:5%;
-    top:5%;
+    margin-bottom: 10px; /* Add space below the image */
+}
+
+.itemPrice, .itemName {
+    color: #fafafa; 
+    text-align: center; 
 }
 
 .descriptor {
@@ -114,14 +118,14 @@ body {
     left: 0;
 }
 
-#close{
+#close {
     position: relative;
     left: 65%;
     top: -34%;
     background-color: #ec7063;
 }
 
-.filterview{
+.filterview {
     background-color: #424242;
     position: fixed;
     top: 24%;
