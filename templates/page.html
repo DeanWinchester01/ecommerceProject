@@ -35,7 +35,7 @@
     </div>
     
     <div class = "itemview" id = "itemview" style="background-color: #fafafa;">
-        <img src="{{url_for('static', filename = 'images/0.png')}}" id = "itemImage" >
+        <img  id = "itemImage" >
         <div class = "descriptors" style="top: 12.5%; left: 50%; position: absolute; width: 30%;">
             <p class = "descriptor" id = "name">
                 <span>Name:</span>
@@ -100,6 +100,24 @@
                     </span>
                 </p>
             </div>
+        </div>
+    </div>
+    <div class = "filterview" id = "filterview">
+        <div class = "sideoption">
+            <p>slightly used</p>
+            <input type="checkbox" id = "used">
+        </div>
+        <div class = "sideoption">
+            <p>4 cylinder</p>
+            <input type="checkbox" id = "cylinder">
+        </div>
+        <div class = "sideoption">
+            <p>200km top speed</p>
+            <input type="checkbox" id = "speed">
+        </div>
+        <div class = "sideoption">
+            <p>4 seater</p>
+            <input type="checkbox" id = "medium">
         </div>
     </div>
     
