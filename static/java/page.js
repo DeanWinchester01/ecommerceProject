@@ -199,8 +199,19 @@ function SearchForVehicles(search){
     return newList
 }
 
+function Search(searchText){
+    let vehicles = SearchForVehicles(searchText)
+    let buttons = document.getElementsByClassName("item")
+    for(let i = buttons.length-1; i >= 0; i--){
+        buttons[i].remove()
+    }
+    console.log(vehicles)
+    ShowVehicles(vehicles)
+}
+
 searchBar.addEventListener("input",function(){
-    let searchParameters = searchBar.value
+    Search(searchBar.value)
+    /*let searchParameters = searchBar.value
 
     let vehicles = SearchForVehicles(searchParameters)
     let buttons = document.getElementsByClassName("item")
@@ -208,7 +219,7 @@ searchBar.addEventListener("input",function(){
         buttons[i].remove()
     }
     console.log(vehicles)
-    ShowVehicles(vehicles)
+    ShowVehicles(vehicles)*/
 })
 
 var vehicles = []
@@ -225,3 +236,39 @@ fetch('/page/getdata')
         ShowVehicles(vehicles)
     })
     .catch(error => console.error('Fetch error:', error));
+
+var used = document.getElementById("used")
+var cylinder = document.getElementById("cylinder")
+var speed = document.getElementById("speed")
+var medium = document.getElementById("medium")
+var chrissy = document.getElementById("chrissy")
+
+function GetFilters(){
+    let filters = ""
+    console.log(used.checked)
+    if(used.checked)
+        filters += "#slightlyused "
+
+    if(cylinder.checked)
+        filters += "#4cylinder "
+
+    if(speed.checked)
+        filters += "#200km "
+
+    if(medium.checked)
+        filters += "#4seater "
+
+    if(chrissy.checked)
+        filters += "#sexy "
+
+    filters += searchBar.value
+
+    console.log("searching with tags: "+filters)
+    Search(filters)
+}
+
+used.onclick = GetFilters
+cylinder.onclick = GetFilters
+speed.onclick = GetFilters
+medium.onclick = GetFilters
+chrissy.onclick = GetFilters
