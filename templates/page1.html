@@ -103,37 +103,38 @@
         </div>
     </div>
     
-    <div class="filterview" id="filterview" style="overflow: scroll;">
-    <div class="option">
-        <label>Price range</label>
-        <div>
-            <input type="radio" id="price1" name="price">
-            <label for="price1">$5,001 - $10,000</label>
-        </div>
-        <div>
-            <input type="radio" id="price2" name="price">
-            <label for="price2">$10,001 - $20,000</label>
-        </div>
-    </div>
+    <div class = "filterview" id = "filterview" style="overflow: scroll;">
+        <div class = "option">
+            <label>Price range</label>
+            
 
-    <div class="sideoption">
-        <input type="checkbox" id="cylinder">
-        <label for="cylinder">4 cylinder</label>
+            
+            <input type="radio" name = "price">
+            <label for="huey">Huey</label>
+            <input type="radio" name = "price">$5,001 - $10,000
+            <input type="radio" name = "price">$10,001 - $20,000
+            <!--
+            <input type="checkbox" id = "used">-->
+        </div>
+        <!--
+        <div class = "sideoption">
+            <p>4 cylinder</p>
+            <input type="checkbox" id = "cylinder">
+        </div>
+        <div class = "sideoption">
+            <p>200km top speed</p>
+            <input type="checkbox" id = "speed">
+        </div>
+        <div class = "sideoption">
+            <p>4 seater</p>
+            <input type="checkbox" id = "medium">
+        </div>
+        <div class = "sideoption">
+            <p>chrissy</p>
+            <input type="checkbox" id = "chrissy">
+        </div>
+    -->
     </div>
-    <div class="sideoption">
-        <input type="checkbox" id="speed">
-        <label for="speed">200km top speed</label>
-    </div>
-    <div class="sideoption">
-        <input type="checkbox" id="medium">
-        <label for="medium">4 seater</label>
-    </div>
-    <div class="sideoption">
-        <input type="checkbox" id="chrissy">
-        <label for="chrissy">chrissy</label>
-    </div>
-</div>
-
     
     <script src="{{ url_for('static', filename='java/page.js') }}"></script>
 </body>

@@ -127,9 +127,13 @@ body {
     top: 24%;
     left: 0;
     height: 57%;
-    width: 8%;
+    width: 11%;
+    overflow: scroll;
+    display: grid;
+    align-content: baseline;
 }
-.check{
+.option{
     background-color: #5dade2;
-    display: flex;
+    display: grid;
+    align-content: center;
 }

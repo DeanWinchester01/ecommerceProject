@@ -245,8 +245,6 @@ function GetFilters(){
         filters += "#sexy "
 
     filters += searchBar.value
-
-    console.log("searching with tags: "+filters)
     Search(filters)
 }
 
