@@ -35,12 +35,17 @@ body {
     display: flex;
     flex-direction: column; /* Stack image and name vertically */
     align-items: center;    /* Center align items horizontally */
-    width: 12.5%;
-    height: 130px;
-    margin-right: 2%;
-    margin-bottom: 5%;
+    width: 15%;
+    height: auto;
+    margin-bottom: 2%;
     background-color: #212121;
     border: none;
+}
+
+.item img {
+    width: 200px;       /* Full width of the item */
+    height: 150px;      /* Auto height to maintain aspect ratio */
+    object-fit: cover;
 }
 
 #searchbar {
@@ -97,6 +102,7 @@ body {
 
 #itemImage {
     width: 33%;
+    height: 20% !important; 
     left: 10%;
     position: relative;
     top: 14%;
@@ -111,6 +117,11 @@ body {
 .itemPrice, .itemName {
     color: #fafafa; 
     text-align: center; 
+}
+
+.itemPrice {
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .descriptor {
