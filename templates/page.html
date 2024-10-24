@@ -103,35 +103,7 @@
         </div>
     </div>
     
-    <div class="filterview" id="filterview">
-    <div class="option">
-        <label>Price range</label>
-        <div>
-            <input type="radio" id="price1" name="price">
-            <label for="price1">$5,001 - $10,000</label>
-        </div>
-        <div>
-            <input type="radio" id="price2" name="price">
-            <label for="price2">$10,001 - $20,000</label>
-        </div>
-    </div>
-
-    <div class="sideoption">
-        <input type="checkbox" id="cylinder">
-        <label for="cylinder">4 cylinder</label>
-    </div>
-    <div class="sideoption">
-        <input type="checkbox" id="speed">
-        <label for="speed">200km top speed</label>
-    </div>
-    <div class="sideoption">
-        <input type="checkbox" id="medium">
-        <label for="medium">4 seater</label>
-    </div>
-    <div class="sideoption">
-        <input type="checkbox" id="chrissy">
-        <label for="chrissy">chrissy</label>
-    </div>
+    {{ searchoptions | safe }}
 </div>
 
     

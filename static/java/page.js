@@ -23,10 +23,15 @@ document.getElementById("close").addEventListener("click", function(){
 
 if (document.cookie.includes("email")){
     let uploadLink = document.getElementById("upload")
+    let userLink = document.getElementById("uploads")
     let logout = document.getElementById("Logout")
+
+    var cookies = document.cookie;
+    let username = cookies.split("; ")[1].split("=")[1];
 
     uploadLink.onclick = () => window.location.href = "/upload"
     logout.onclick = () => window.location.href = "/logout"
+    userLink.onclick = () => window.location.href = "/page/"+username
 }else{
     let signup = document.getElementById("signup")
     let login = document.getElementById("login")

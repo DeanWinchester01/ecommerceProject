@@ -15,7 +15,36 @@ def page():
 
     #data = database.GetVehicles()
 
-    items = """"""
+    items = """
+    <div class="filterview" id="filterview">
+        <div class="option">
+            <label>Price range</label>
+            <div>
+                <input type="radio" id="price1" name="price">
+                <label for="price1">$5,001 - $10,000</label>
+            </div>
+            <div>
+                <input type="radio" id="price2" name="price">
+                <label for="price2">$10,001 - $20,000</label>
+            </div>
+        </div>
+
+        <div class="sideoption">
+            <input type="checkbox" id="cylinder">
+            <label for="cylinder">4 cylinder</label>
+        </div>
+        <div class="sideoption">
+            <input type="checkbox" id="speed">
+            <label for="speed">200km top speed</label>
+        </div>
+        <div class="sideoption">
+            <input type="checkbox" id="medium">
+            <label for="medium">4 seater</label>
+        </div>
+        <div class="sideoption">
+            <input type="checkbox" id="chrissy">
+            <label for="chrissy">chrissy</label>
+        </div>"""
     
         
         #items += "<button class='item' id = '"+str(id)+"'>"
@@ -27,6 +56,7 @@ def page():
     option1 = f"""
         <p class = 'sideoption' id = 'welcome'>' {username} '</p>
         <button class = sideoption id = "upload">Upload vehicle</button>
+        <button class = sideoption id = "uploads">My vehicles</button>
         <button class = "sideoption" id = "Logout">Log out</button>
     """
     option2 = """
@@ -38,11 +68,17 @@ def page():
         #return render_template("page.html", items = items, user_specifics = option1)
     #return render_template("page.html", items = items, user_specifics = option2)
     if loggedIn == "True":
-        return render_template("page.html", user_specifics = option1)
+        return render_template("page.html", user_specifics = option1, searchoptions = items)
     return render_template("page.html", user_specifics = option2)
 
-#@pageBP.route("/page/<user>")
-#def userpage(user):
+@pageBP.route("/page/<user>")
+def userpage(user):
+    loggedIn = request.cookies.get("loggedIn")
+    username = request.cookies.get("username")
+
+    if loggedIn == "True" and username == user:
+        return render_template("page.html")
+    return render_template("error.html")
 
 
 @pageBP.route("/page/getdata/<data>", methods = ["POST","GET"])
