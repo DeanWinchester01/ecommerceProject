@@ -223,7 +223,7 @@ searchBar.addEventListener("input",function(){
 })
 
 var vehicles = []
-fetch('/page/getdata')
+fetch('/page/getdata/vehicles_temp')
     .then(response => {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);

@@ -21,10 +21,10 @@ app.config["UPLOAD_FOLDER"] = vehicles
 def GetUsers():
     return client["eCommerceProject"]["users"]
 
-def GetVehicles():
+def GetVehicles(data):
     # Access the collection
     #print("[MongoDB] 2: Database Collection Access Check")
-    collection = client["eCommerceProject"]["vehicles"]
+    collection = client["eCommerceProject"][data]
 
     # Insert a single document
     data = []
@@ -208,7 +208,7 @@ def GetVehicles():
     print("[MongoDB] 3: Database Final Check")
 #GetVehicles()
 def UploadVehicle(data):
-    collection = client["eCommerceProject"]["vehicles"]
+    collection = client["eCommerceProject"]["vehicles_temp"]
     result = collection.insert_one(data)
     return result
 

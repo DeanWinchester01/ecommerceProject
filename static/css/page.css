@@ -131,8 +131,8 @@ body {
     top: 24%;
     left: 0;
     height: 57%;
-    width: 11%;
-    overflow: scroll;
+    width: 9%;
+    overflow-y: hidden;
     display: grid;
     align-content: baseline;
 }

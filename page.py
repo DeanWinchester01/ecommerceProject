@@ -41,10 +41,14 @@ def page():
         return render_template("page.html", user_specifics = option1)
     return render_template("page.html", user_specifics = option2)
 
-@pageBP.route("/page/getdata", methods = ["POST","GET"])
-def GetData():
+#@pageBP.route("/page/<user>")
+#def userpage(user):
+
+
+@pageBP.route("/page/getdata/<data>", methods = ["POST","GET"])
+def GetData(data):
     saveFolder = "ecommerceProject/static/images/"
-    data = database.GetVehicles()
+    data = database.GetVehicles(data)
     for entry in range(len(data)):
         decoded = base64.b64decode(data[entry]["image"])
         imgStream = io.BytesIO(decoded)
