@@ -1,3 +1,30 @@
 .textBody {
-    padding: 50px;
+    color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.textBody .material-symbols-outlined {
+    font-size: 100px;
+}
+
+.textBody h1 {
+    font-weight: 600;
+    font-size: 100px;
+    margin-bottom: 10px;
+}
+
+.textBody p {
+    font-size: 25px;
+    margin-top: 0;
+}
+
+.textBody button {
+    display: flex;
+    padding: 1% !important;
+    border: none;
+    margin-bottom: 15px;
 }
