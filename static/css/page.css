@@ -101,8 +101,8 @@ body {
 }
 
 #itemImage {
-    width: 33%;
-    height: 20% !important; 
+    width: 20%;
+    height: 20%; 
     left: 10%;
     position: relative;
     top: 14%;
@@ -130,9 +130,9 @@ body {
 }
 
 #close {
-    position: relative;
+    position: absolute;
     left: 65%;
-    top: -34%;
+    top: 0%;
     background-color: #ec7063;
 }
 
