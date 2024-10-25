@@ -24,7 +24,7 @@ body {
     left: 9%;
     top: 13%;
     width: 80%;
-    filter: blur(10px);
+    /*filter: blur(10px);*/
 }
 
 #itemview {
@@ -54,7 +54,7 @@ body {
     top: 5%;
     width: 80%;
     height: 35px;
-    filter: blur(10px);
+    /*filter: blur(10px);*/
     background-color: #424242;
 }
 
@@ -65,7 +65,7 @@ body {
     height: 100%;
     width: 10%;
     top: 6%;
-    filter: blur(10px);
+    /*filter: blur(10px);*/
 }
 
 .sideoption {

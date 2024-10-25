@@ -75,32 +75,31 @@ def page():
 def userpage(user):
     loggedIn = request.cookies.get("loggedIn")
     username = request.cookies.get("username")
-
+    
     if loggedIn == "True" and username == user:
-        return render_template("page.html")
+        return render_template("userpage.html")
     return render_template("error.html")
 
 
 @pageBP.route("/page/getdata/<data>", methods = ["POST","GET"])
 def GetData(data):
     saveFolder = "ecommerceProject/static/images/"
-    data = database.GetVehicles(data)
-    for entry in range(len(data)):
-        decoded = base64.b64decode(data[entry]["image"])
+    vehicles = database.GetVehicles(data)
+    for entry in range(len(vehicles)):
+        decoded = base64.b64decode(vehicles[entry]["image"])
         imgStream = io.BytesIO(decoded)
         image = Image.open(imgStream)
         buffered = io.BytesIO()
         image.save(buffered,format="PNG")
-        id = data[entry]["_id"]
+        id = vehicles[entry]["_id"]
         filepath = os.path.join(saveFolder,f"{id}.png")
         
         with open(filepath,"wb") as fh:
             fh.write(decoded)
 
     newData = []
-
-    for entry in data:
+    for entry in vehicles:
         entry["_id"] = str(entry["_id"])
         newData.append(entry)
-
+        
     return jsonify(newData)
