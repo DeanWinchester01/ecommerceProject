@@ -8,10 +8,10 @@
     <title>E-Commerce | Home</title>
 
     <!-- Style.CSS -->
-    <link rel="styleSheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
 
     <!-- Page.CSS -->
-    <link rel="styleSheet" type="text/css" href="{{url_for('static', filename='css/page.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/page.css')}}">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,90 +22,50 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
-    <input id = "searchbar" type="text">
-    <div id = "layout" class="layout"> 
+    <input id="searchbar" type="text">
+    <div id="layout" class="layout"> 
         <!--{{ items | safe }}-->
     </div>
 
-    <div id = "sidemenu">
-        <div id = "sideoptionstyle">
+    <div id="sidemenu">
+        <div id="sideoptionstyle">
             {{user_specifics | safe}}
-            
         </div> 
     </div>
     
-    <div class = "itemview" id = "itemview" style="background-color: #fafafa;">
-        <img  id = "itemImage" >
-        <div class = "descriptors" style="top: 12.5%; left: 50%; position: absolute; width: 30%;">
-            <p class = "descriptor" id = "name">
-                <span>Name:</span>
-                <span id = "custom"></span>
-            </p>
-            <p class = "descriptor" id = "category">
-                <span>Category:</span>
-                <span id = "custom"></span>
-            </p>
-            <p class = "descriptor" id = "description">
-                <span>Description:</span>
-                <span id = "custom"></span>
-            </p>
-            <p class = "descriptor" id = "price">
-                <span>Price:</span>
-                <span id = "custom"></span>
-            </p>
-            <p class="descriptor" id = "tags">
-                <span>Tags:</span>
-                <span id = "custom"></span>
-            </p>
-            <button class = "descriptor" style = "font-size: 15px; align-items: center;">
-                <span class = "material-symbols-outlined">chat_bubble</span>
-                Message
-            </button>
-        </div>
-        
-        <button id = "close" name="close" value="close">X</button>
-        <div class = "itemview" id = "itemview" style="background-color: white;">
-            <img id = "itemImage" alt="">
-            <div class = "descriptors" style="top: 12.5%; left: 50%; position: absolute; width: 30%;">
-                <p class = "descriptor" id = "name">
-                    <span style="text-decoration:solid; font-size: large;"">
-                        Name:
-                    </span>
-                    <span id = "custom">
-                        
-                    </span>
-                </p>
-                <p class = "descriptor" id = "category">
-                    <span style="text-decoration:solid; font-size: large;">
-                        Category:
-                    </span>
-                    <span id = "custom">
+    <div class="itemview" id="itemview">
+        <button id="close" name="close" value="close">X</button> <!-- Close button inside itemview -->
+        <img id="itemImage" alt="Item Image">
     
-                    </span>
-                </p>
-                <p class = "descriptor" id = "description">
-                    <span style="text-decoration:solid; font-size: large;">
-                        Description:
-                    </span>
-                    <span id = "custom">
+        <div class="itemTable">
+            <div class="itemTableRow">
+                <p class="itemTableTitle">Name:</p>
+                <p class="itemTableDetails"><span id="name-custom"></span></p> <!-- Unique ID -->
+            </div>
+            
+            <div class="itemTableRow">
+                <p class="itemTableTitle">Price:</p>
+                <p class="itemTableDetails"><span id="price-custom"></span></p> <!-- Unique ID -->
+            </div>
+            
+            <div class="itemTableRow">
+                <p class="itemTableTitle">Category:</p>
+                <p class="itemTableDetails"><span id="category-custom"></span></p> <!-- Unique ID -->
+            </div>
     
-                    </span>
-                </p>
-                <p class = "descriptor" id = "price">
-                    <span style="text-decoration:solid; font-size: large;">
-                        Price:
-                    </span>
-                    <span id = "custom">
+            <div class="itemTableRow">
+                <p class="itemTableTitle">Tags:</p>
+                <p class="itemTableDetails"><span id="tags-custom"></span></p> <!-- Unique ID -->
+            </div>
     
-                    </span>
-                </p>
+            <div class="itemTableRow">
+                <p class="itemTableTitle">Description:</p>
+                <p class="itemTableDetails"><span id="description-custom"></span></p> <!-- Unique ID -->
             </div>
         </div>
-    </div>
+    </div>    
     
     {{ searchoptions | safe }}
-</div>
-
     
     <script src="{{ url_for('static', filename='java/page.js') }}"></script>
 </body>

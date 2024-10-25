@@ -24,7 +24,7 @@ def GetUsers():
 def GetVehicles(data):
     # Access the collection
     #print("[MongoDB] 2: Database Collection Access Check")
-    collection = client["eCommerceProject"][data]
+    collection = client["eCommerceProject"]["vehicles"]
 
     # Insert a single document
     data = []

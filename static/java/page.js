@@ -96,25 +96,27 @@ function ShowVehicles(vehicleList){
 }
 
 
-function ShowItem(vehicle){
-    let name = itemName.querySelector("#custom")
-    let cat = category.querySelector("#custom")
-    let description = desc.querySelector("#custom")
-    let pr = price.querySelector("#custom")
-    let img = document.getElementById("itemImage")
-    let tag = tags.querySelector("#custom")
+function ShowItem(vehicle) {
+    let name = document.querySelector("#name-custom");
+    let cat = document.querySelector("#category-custom");
+    let description = document.querySelector("#description-custom");
+    let pr = document.querySelector("#price-custom");
+    let img = document.getElementById("itemImage");
+    let tag = document.querySelector("#tags-custom");
 
-    name.textContent = Object.keys(vehicle, "vehicle") && vehicle.vehicle || vehicle.name
-    cat.textContent = vehicle.category
-    description.textContent = vehicle.description
-    pr.textContent = "$"+vehicle.price
-    itemView.style.visibility = "visible"
-    img.src = "static/images/" + vehicle["_id"]+".png"
-    tag.textContent = vehicle.tags
-    sidemenu.style.filter = "blur(10px)"
-    layout.style.filter = "blur(10px)"
-    searchBar.style.filter = "blur(10px)"
+    name.textContent = Object.keys(vehicle, "vehicle") && vehicle.vehicle || vehicle.name;
+    cat.textContent = vehicle.category;
+    description.textContent = vehicle.description;
+    pr.textContent = "$" + vehicle.price;
+    img.src = "static/images/" + vehicle["_id"] + ".png";
+    tag.textContent = vehicle.tags;
+
+    itemView.style.visibility = "visible";
+    sidemenu.style.filter = "blur(10px)";
+    layout.style.filter = "blur(10px)";
+    searchBar.style.filter = "blur(10px)";
 }
+
 
 /**
  * 
