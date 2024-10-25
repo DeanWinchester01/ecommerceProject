@@ -21,16 +21,24 @@ app.config["UPLOAD_FOLDER"] = vehicles
 def GetUsers():
     return client["eCommerceProject"]["users"]
 
-def GetVehicles(data):
+def GetVehicles(search):
     # Access the collection
     #print("[MongoDB] 2: Database Collection Access Check")
     collection = client["eCommerceProject"]["vehicles"]
 
     # Insert a single document
     data = []
-    #result = collection.insert_one({"x": 1})
-    for x in collection.find():
-        data.append(x)
+    print("searching",search)
+    if search == "public":
+        for x in collection.find():
+            data.append(x)
+        
+    else:
+        print("searching for user vehicles")
+        for x in collection.find({"user":search}):
+            print("found vehicle")
+            data.append(x)
+        
 
     return data
 

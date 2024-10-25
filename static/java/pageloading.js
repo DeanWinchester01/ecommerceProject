@@ -9,54 +9,34 @@ var desc = document.getElementById("description")
 var price = document.getElementById("price")
 let tags = document.getElementById("tags")
 
+let uploadLink = document.getElementById("upload")
+let mainLink = document.getElementById("mainPage")
+let logout = document.getElementById("Logout")
+
+var cookies = document.cookie.split(";");
+let username = cookies[1].split("=")[1]
+let email = cookies[0].split("=")[1]
+document.getElementById("welcome").textContent = "Welcome " + cookies[1].split("=")[1]
+
 function ShowBackground(){
     itemView.style.visibility = "hidden"
     sidemenu.style.filter = "none"
     layout.style.filter = "none"
     searchBar.style.filter = "none"
 }
-
-ShowBackground()
 document.getElementById("close").addEventListener("click", function(){
     ShowBackground()
 })
 
-if (document.cookie.includes("email")){
-    let uploadLink = document.getElementById("upload")
-    let userLink = document.getElementById("uploads")
-    let logout = document.getElementById("Logout")
 
-    var cookies = document.cookie;
-    let username = cookies.split("; ")[1].split("=")[1];
-
-    uploadLink.onclick = () => window.location.href = "/upload"
-    logout.onclick = () => window.location.href = "/logout"
-    userLink.onclick = () => window.location.href = "/page/"+username
-}else{
-    let signup = document.getElementById("signup")
-    let login = document.getElementById("login")
-
-    signup.onclick = () => window.location.href = "/signup"
-    login.onclick = () => window.location.href = "/login"
-}
-
-
-if (document.cookie.includes("email")){
-    let parts = document.cookie.split("; ")
-    console.log(parts)
-    let loggedIn = parts[2]
-    let isLoggedIn = loggedIn.split("=")[1] == "True"
-
-    if (isLoggedIn){
-        document.getElementById("welcome").textContent = "Welcome " + parts[1].split("=")[1]
-    }
-}
+uploadLink.onclick = () => window.location.href = "/upload"
+logout.onclick = () => window.location.href = "/logout"
+//mainLink.onclick = () => window.location.href = "/page"
 
 /**
  * @param {Array} vehicleList 
  */
 function ShowVehicles(vehicleList){
-    let index = 0
     vehicleList.forEach(function(vehicle){
         let button = document.createElement("button")
         button.id = vehicle["_id"]
@@ -64,16 +44,17 @@ function ShowVehicles(vehicleList){
 
         let image = document.createElement("img")
         image.className = "itemImage"
-        image.src = "static/images/"+vehicle["_id"]+".png"
+        console.log(vehicle["_id"])
+        image.src = "/static/images/"+vehicle["_id"]+".png"
 
         let priceElement = document.createElement("div");
         priceElement.className = "itemPrice";
         let formattedPrice;
-        if (vehicle.price % 1 === 0) {
+        if (vehicle.price % 1 === 0) 
             formattedPrice = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(vehicle.price);
-        } else {
+         else 
             formattedPrice = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(vehicle.price);
-        }
+        
         priceElement.textContent = formattedPrice;
         /*priceElement.textContent = "$" + vehicle.price;*/
 
@@ -86,37 +67,31 @@ function ShowVehicles(vehicleList){
         button.appendChild(nameElement)
         layout.appendChild(button)
 
-        let i = index
         button.onclick = function(){
-            console.log(i)
             ShowItem(vehicle)
         }
-        index++
     })
 }
 
+function ShowItem(vehicle){
+    let name = itemName.querySelector("#custom")
+    let cat = category.querySelector("#custom")
+    let description = desc.querySelector("#custom")
+    let pr = price.querySelector("#custom")
+    let img = document.getElementById("itemImage")
+    let tag = tags.querySelector("#custom")
 
-function ShowItem(vehicle) {
-    let name = document.querySelector("#name-custom");
-    let cat = document.querySelector("#category-custom");
-    let description = document.querySelector("#description-custom");
-    let pr = document.querySelector("#price-custom");
-    let img = document.getElementById("itemImage");
-    let tag = document.querySelector("#tags-custom");
-
-    name.textContent = Object.keys(vehicle, "vehicle") && vehicle.vehicle || vehicle.name;
-    cat.textContent = vehicle.category;
-    description.textContent = vehicle.description;
-    pr.textContent = "$" + vehicle.price;
-    img.src = "static/images/" + vehicle["_id"] + ".png";
-    tag.textContent = vehicle.tags;
-
-    itemView.style.visibility = "visible";
-    sidemenu.style.filter = "blur(10px)";
-    layout.style.filter = "blur(10px)";
-    searchBar.style.filter = "blur(10px)";
+    name.textContent = Object.keys(vehicle, "vehicle") && vehicle.vehicle || vehicle.name
+    cat.textContent = vehicle.category
+    description.textContent = vehicle.description
+    pr.textContent = "$"+vehicle.price
+    itemView.style.visibility = "visible"
+    img.src = "/static/images/" + vehicle["_id"]+".png"
+    tag.textContent = vehicle.tags
+    sidemenu.style.filter = "blur(10px)"
+    layout.style.filter = "blur(10px)"
+    searchBar.style.filter = "blur(10px)"
 }
-
 
 /**
  * 
@@ -218,62 +193,7 @@ function Search(searchText){
 
 searchBar.addEventListener("input",function(){
     Search(searchBar.value)
-    /*let searchParameters = searchBar.value
-
-    let vehicles = SearchForVehicles(searchParameters)
-    let buttons = document.getElementsByClassName("item")
-    for(let i = buttons.length-1; i >= 0; i--){
-        buttons[i].remove()
-    }
-    console.log(vehicles)
-    ShowVehicles(vehicles)*/
 })
 
 var vehicles = []
-fetch('/page/getdata/vehicles_temp')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log(data);
-        vehicles = data
-        ShowVehicles(vehicles)
-    })
-    .catch(error => console.error('Fetch error:', error));
 
-var used = document.getElementById("used")
-var cylinder = document.getElementById("cylinder")
-var speed = document.getElementById("speed")
-var medium = document.getElementById("medium")
-var chrissy = document.getElementById("chrissy")
-
-function GetFilters(){
-    let filters = ""
-    console.log(used.checked)
-    if(used.checked)
-        filters += "#slightlyused "
-
-    if(cylinder.checked)
-        filters += "#4cylinder "
-
-    if(speed.checked)
-        filters += "#200km "
-
-    if(medium.checked)
-        filters += "#4seater "
-
-    if(chrissy.checked)
-        filters += "#sexy "
-
-    filters += searchBar.value
-    Search(filters)
-}
-
-used.onclick = GetFilters
-cylinder.onclick = GetFilters
-speed.onclick = GetFilters
-medium.onclick = GetFilters
-chrissy.onclick = GetFilters
