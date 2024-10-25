@@ -195,5 +195,4 @@ searchBar.addEventListener("input",function(){
     Search(searchBar.value)
 })
 
-var vehicles = []
-
+//var vehicles = []

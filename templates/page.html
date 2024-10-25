@@ -67,8 +67,10 @@
     
     {{ searchoptions | safe }}
     
-<script src="{{ url_for('static', filename='java/pageloading.js') }}"></script>
-<script src="{{ url_for('static', filename='java/loadData.js')}}"></script>
-<script src="{{ url_for('static', filename='java/mainPage.js') }}"></script>
+    
+    
+    <script src="{{ url_for('static', filename='java/pageloading.js') }}"></script>
+    <script src="{{ url_for('static', filename='java/loadData.js') }}" vehicles='{{ dynamic|tojson|safe }}'></script>
+    <script src="{{ url_for('static', filename='java/mainPage.js') }}"></script>
 </body>
 </html>

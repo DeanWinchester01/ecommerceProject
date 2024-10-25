@@ -68,8 +68,9 @@ def page():
         #return render_template("page.html", items = items, user_specifics = option1)
     #return render_template("page.html", items = items, user_specifics = option2)
     if loggedIn == "True":
-        return render_template("page.html", user_specifics = option1, searchoptions = items)
-    return render_template("page.html", user_specifics = option2)
+        data = GetData("public")
+        return render_template("page.html", dynamic = data, user_specifics = option1, searchoptions = items)
+    return render_template("page.html", dynamic = data, user_specifics = option2)
 
 @pageBP.route("/page/<user>")
 def userpage(user):
@@ -77,11 +78,14 @@ def userpage(user):
     username = request.cookies.get("username")
     
     if loggedIn == "True" and username == user:
-        return render_template("userpage.html")
+        email = request.cookies.get("email")
+        data = GetData(email)
+        print(data)
+        return render_template("userpage.html", dynamic = data)
     return render_template("error.html")
 
 
-@pageBP.route("/page/getdata/<data>", methods = ["POST","GET"])
+#@pageBP.route("/page/getdata/<data>", methods = ["POST","GET"])
 def GetData(data):
     saveFolder = "ecommerceProject/static/images/"
     vehicles = database.GetVehicles(data)
@@ -102,4 +106,4 @@ def GetData(data):
         entry["_id"] = str(entry["_id"])
         newData.append(entry)
         
-    return jsonify(newData)
+    return newData
