@@ -8,6 +8,7 @@ if(window.location.pathname.length > 5){
 }else{
     target = "public"
 }
+    
 fetch("/page/getdata/"+target)
 .then(response =>{
     if(!response.ok){
@@ -20,6 +21,7 @@ fetch("/page/getdata/"+target)
 }).catch(error => console.log(error))*/
 // Retrieve and parse the JSON data from the "vehicles" attribute
 const vehicleData = JSON.parse(document.currentScript.getAttribute('vehicles'));
+vehicles = vehicleData
 console.log(vehicleData); // Should log the vehicle data array
 ShowVehicles(vehicleData)
 

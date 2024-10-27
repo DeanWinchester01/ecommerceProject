@@ -6,6 +6,7 @@ import tempfile
 import base64
 import io
 from PIL import Image
+import Search
 pageBP = Blueprint("page",__name__)
 
 @pageBP.route("/page", methods = ["POST","GET"])
@@ -69,6 +70,8 @@ def page():
     #return render_template("page.html", items = items, user_specifics = option2)
     if loggedIn == "True":
         data = GetData("public")
+        Search.vehicles = data
+        #print(currentVehicles[0]["_id"])
         return render_template("page.html", dynamic = data, user_specifics = option1, searchoptions = items)
     return render_template("page.html", dynamic = data, user_specifics = option2)
 
@@ -80,7 +83,8 @@ def userpage(user):
     if loggedIn == "True" and username == user:
         email = request.cookies.get("email")
         data = GetData(email)
-        print(data)
+        Search.vehicles = data
+        #print(data)
         return render_template("userpage.html", dynamic = data)
     return render_template("error.html")
 

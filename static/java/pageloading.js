@@ -181,8 +181,7 @@ function SearchForVehicles(search){
     return newList
 }
 
-function Search(searchText){
-    let vehicles = SearchForVehicles(searchText)
+function Search(vehicles){
     let buttons = document.getElementsByClassName("item")
     for(let i = buttons.length-1; i >= 0; i--){
         buttons[i].remove()
@@ -191,8 +190,44 @@ function Search(searchText){
     ShowVehicles(vehicles)
 }
 
+/**
+ * 
+ * @param {Array} ids 
+ */
+function GetVehicles(ids){
+    let searchvehicles = []
+    for(let vehicle = 0; vehicle < vehicles.length; vehicle++){
+        if(ids.includes(vehicles[vehicle]["_id"])){
+            searchvehicles.push(vehicles[vehicle])
+        }
+    }
+
+    Search(searchvehicles)
+}
+
 searchBar.addEventListener("input",function(){
-    Search(searchBar.value)
+    //Search(searchBar.value)
+    let search = JSON.stringify(searchBar.value)
+    fetch("/search",{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(search)
+    }).then(response =>{
+        //console.log(response)
+        if(!response.ok){
+            throw new Error("HTTP error! status: "+response.status)
+        }
+        return response.json()
+    }).then(data =>{
+        console.log(data)
+        GetVehicles(data)
+        //vehicles = data
+        //ShowVehicles(vehicles)
+        //console.log(typeof(data))
+    }).catch(error => console.log(error))
 })
 
-//var vehicles = []
+var vehicles = []
+
