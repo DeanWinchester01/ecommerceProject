@@ -3,8 +3,8 @@ searchBp = Blueprint("Search", __name__)
 
 vehicles = []
 
-def GetVehiclesByName(name: str, vehicles: list):
-    allCurrentVehicles = vehicles
+def GetVehiclesByName(name: str, vehiclesList: list):
+    allCurrentVehicles = vehiclesList
     name = name[1:-1]
     print(name)
     if name == "":
@@ -22,19 +22,19 @@ def GetVehiclesByName(name: str, vehicles: list):
     print("returned new list")
     return newList
 
-def GetVehiclesByTag(vehicles: list, tags: list):
-    allCurrentVehicles = vehicles
+def GetVehiclesByTag(vehiclesList: list, tags: list):
+    allCurrentVehicles = vehiclesList
     if len(tags) == 0:
         return allCurrentVehicles
     
     newList = []
-    for vehicle in range(len(vehicles)-1, 0, -1):
-        if vehicles[vehicle].get("tags") == None:
-            vehicles.pop(vehicle)
+    for vehicle in range(len(allCurrentVehicles)-1, 0, -1):
+        if allCurrentVehicles[vehicle].get("tags") == None:
+            allCurrentVehicles.pop(vehicle)
 
     #print(tags)
-    for vehicle in range(len(vehicles)-1, 0, -1):
-        currentVehicle: dict = vehicles[vehicle]
+    for vehicle in range(len(allCurrentVehicles)-1, 0, -1):
+        currentVehicle: dict = allCurrentVehicles[vehicle]
 
         #print(currentVehicle.get("tags"))
         #print(currentVehicle)
@@ -73,7 +73,7 @@ def SearchForVehicles(search: str, allVehicles: list):
 
     
     vehicleList = GetVehiclesByName(vehicleName, allVehicles)
-    #print(vehicleList)
+    print(len(vehicleList))
     newList = GetVehiclesByTag(vehicleList, tags)
     #print(newList)
     return newList
@@ -81,6 +81,7 @@ def SearchForVehicles(search: str, allVehicles: list):
 @searchBp.route("/search", methods = ["POST"])
 def Search():
     data = request.get_json()
+    print("all vehicles: ",len(vehicles))
     search = SearchForVehicles(data, vehicles)
     vehicleList = []
 
