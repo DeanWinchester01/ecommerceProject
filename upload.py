@@ -32,9 +32,6 @@ def GetVehicleImage():
         os.mkdir("ecommerceProject/static/uploads")
         file_path = os.path.join("ecommerceProject", "static", "uploads", filename)
         file.save(file_path)
-        #file.save("ecommerceProject\\static\\uploads\\"+secure_filename(file.filename))
-        #file.filename = "ecommerceProject\\" + file.filename
-        #file.filename = file.filename.replace("\\","/")
                 
         b64string = ""
 
@@ -42,10 +39,8 @@ def GetVehicleImage():
             buffered = io.BytesIO()
             img.save(buffered, format="PNG")
             binary = buffered.getvalue()
-            #binary = file.read()
             b64string = base64.b64encode(binary).decode("utf-8")
 
-        #os.remove(file.filename)
         data = request.form
         user = request.cookies["email"]
         vehiclename = data["name"]
@@ -53,8 +48,6 @@ def GetVehicleImage():
         price = int(data["price"])
         category = data["category"]
         tags = data["tags"]
-
-        #print(user, vehiclename, description, price, category, tags)
 
         if user == None or vehiclename == None or description == None or price == None or category == None:
             return redirect("/upload")

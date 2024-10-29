@@ -24,14 +24,6 @@ function ShowBackground(){
     layout.style.filter = "none"
     searchBar.style.filter = "none"
 }
-document.getElementById("close").addEventListener("click", function(){
-    ShowBackground()
-})
-
-
-uploadLink.onclick = () => window.location.href = "/upload"
-logout.onclick = () => window.location.href = "/logout"
-//mainLink.onclick = () => window.location.href = "/page"
 
 /**
  * @param {Array} vehicleList 
@@ -56,7 +48,6 @@ function ShowVehicles(vehicleList){
             formattedPrice = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(vehicle.price);
         
         priceElement.textContent = formattedPrice;
-        /*priceElement.textContent = "$" + vehicle.price;*/
 
         let nameElement = document.createElement("div")
         nameElement.className = "itemName"
@@ -92,13 +83,68 @@ function ShowItem(vehicle){
     layout.style.filter = "blur(10px)"
     searchBar.style.filter = "blur(10px)"
 }
+function Search(vehicles){
+    let buttons = document.getElementsByClassName("item")
+    for(let i = buttons.length-1; i >= 0; i--){
+        buttons[i].remove()
+    }
+    console.log(vehicles)
+    ShowVehicles(vehicles)
+}
 
+/**
+ * 
+ * @param {Array} ids 
+ */
+function GetVehicles(ids){
+    let searchvehicles = []
+    for(let vehicle = 0; vehicle < vehicles.length; vehicle++){
+        if(ids.includes(vehicles[vehicle]["_id"])){
+            searchvehicles.push(vehicles[vehicle])
+        }
+    }
+
+    Search(searchvehicles)
+}
+
+function Fetch(){
+    console.log("fetching")
+    let filters = GetFilters()
+    let search = JSON.stringify(filters+searchBar.value)
+    fetch("/search",{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(search)
+    }).then(response =>{
+        if(!response.ok){
+            throw new Error("HTTP error! status: "+response.status)
+        }
+        return response.json()
+    }).then(data =>{
+        GetVehicles(data)
+    }).catch(error => console.log(error))
+}
+
+searchBar.addEventListener("input",function(){
+    Fetch()
+})
+
+document.getElementById("close").onclick = () => ShowBackground()
+uploadLink.onclick = () => window.location.href = "/upload"
+logout.onclick = () => window.location.href = "/logout"
+
+var vehicles = JSON.parse(document.currentScript.getAttribute('vehicles'));
+ShowVehicles(vehicles)
+
+//OLD CODE PUT IN PYTHON
 /**
  * 
  * @param {String} name
  * @returns {Array}
  */
-function GetVehiclesByName(name){
+/*function GetVehiclesByName(name){
     let allCurrentVehicles = vehicles
     if(name == ""){
         console.log("returned all vehicles")
@@ -124,7 +170,7 @@ function GetVehiclesByName(name){
  * @param {Array} vehicles 
  * @param {Array} tags 
  * @returns {Array} 
- */
+ 
 function GetVehiclesByTag(vehicles, tags){
     let allCurrentVehicles = vehicles
     if(tags.length == 0)
@@ -156,7 +202,7 @@ function GetVehiclesByTag(vehicles, tags){
  * 
  * @param {string} search 
  * @returns {Array}
- */
+ 
 function SearchForVehicles(search){
     let searchParameters = search.split(" ")
     let vehicleName = "";
@@ -179,55 +225,5 @@ function SearchForVehicles(search){
     let newList = GetVehiclesByTag(list, tags)
     console.log(newList)
     return newList
-}
-
-function Search(vehicles){
-    let buttons = document.getElementsByClassName("item")
-    for(let i = buttons.length-1; i >= 0; i--){
-        buttons[i].remove()
-    }
-    console.log(vehicles)
-    ShowVehicles(vehicles)
-}
-
-/**
- * 
- * @param {Array} ids 
- */
-function GetVehicles(ids){
-    let searchvehicles = []
-    for(let vehicle = 0; vehicle < vehicles.length; vehicle++){
-        if(ids.includes(vehicles[vehicle]["_id"])){
-            searchvehicles.push(vehicles[vehicle])
-        }
-    }
-
-    Search(searchvehicles)
-}
-
-searchBar.addEventListener("input",function(){
-    //Search(searchBar.value)
-    let search = JSON.stringify(searchBar.value)
-    fetch("/search",{
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(search)
-    }).then(response =>{
-        //console.log(response)
-        if(!response.ok){
-            throw new Error("HTTP error! status: "+response.status)
-        }
-        return response.json()
-    }).then(data =>{
-        console.log(data)
-        GetVehicles(data)
-        //vehicles = data
-        //ShowVehicles(vehicles)
-        //console.log(typeof(data))
-    }).catch(error => console.log(error))
-})
-
-var vehicles = []
+}*/
 

@@ -20,8 +20,9 @@ fetch("/page/getdata/"+target)
     ShowVehicles(vehicles)
 }).catch(error => console.log(error))*/
 // Retrieve and parse the JSON data from the "vehicles" attribute
-const vehicleData = JSON.parse(document.currentScript.getAttribute('vehicles'));
+/*const vehicleData = JSON.parse(document.currentScript.getAttribute('vehicles'));
 vehicles = vehicleData
-console.log(vehicleData); // Should log the vehicle data array
 ShowVehicles(vehicleData)
+console.log(vehicleData); // Should log the vehicle data array
 
+*/

@@ -111,40 +111,10 @@
         </div>
     </div>
     
-    <!--<div class = "filterview" id = "filterview" style="overflow: scroll;">
-        <div class = "option">
-            <label>Price range</label>
-            
-
-            
-            <input type="radio" name = "price">
-            <label for="huey">Huey</label>
-            <input type="radio" name = "price">$5,001 - $10,000
-            <input type="radio" name = "price">$10,001 - $20,000
-            
-            <input type="checkbox" id = "used">
-        </div>
-        
-        <div class = "sideoption">
-            <p>4 cylinder</p>
-            <input type="checkbox" id = "cylinder">
-        </div>
-        <div class = "sideoption">
-            <p>200km top speed</p>
-            <input type="checkbox" id = "speed">
-        </div>
-        <div class = "sideoption">
-            <p>4 seater</p>
-            <input type="checkbox" id = "medium">
-        </div>
-        <div class = "sideoption">
-            <p>chrissy</p>
-            <input type="checkbox" id = "chrissy">
-        </div>
-    </div>
+    <!--
     -->
     
-    <script src="{{ url_for('static', filename='java/pageloading.js') }}"></script>
-    <script src="{{ url_for('static', filename='java/loadData.js') }}" vehicles='{{ dynamic|tojson|safe }}'></script>
+    <script src="{{ url_for('static', filename='java/pageloading.js') }}"vehicles='{{ dynamic|tojson|safe }}'></script>
+    <script src="{{ url_for('static', filename='java/loadData.js') }}"></script>
 </body>
 </html>

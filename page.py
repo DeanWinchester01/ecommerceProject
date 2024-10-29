@@ -14,8 +14,6 @@ def page():
     loggedIn = request.cookies.get("loggedIn")
     username = request.cookies.get("username")
 
-    #data = database.GetVehicles()
-
     items = """
     <div class="filterview" id="filterview">
         <div class="option">
@@ -47,13 +45,6 @@ def page():
             <label for="chrissy">chrissy</label>
         </div>"""
     
-        
-        #items += "<button class='item' id = '"+str(id)+"'>"
-        #items += f"<img class='itemImage' src='static/images/"+str(id)+".png'>"
-        #items += "</button>"
-
-        #<form action="/logout" method="post">
-        #</form>
     option1 = f"""
         <p class = 'sideoption' id = 'welcome'>' {username} '</p>
         <button class = sideoption id = "upload">Upload vehicle</button>
@@ -65,13 +56,10 @@ def page():
         <button class = "sideoption" id = "signup">Sign up</button>
     """
         
-    #if loggedIn == "True":
-        #return render_template("page.html", items = items, user_specifics = option1)
-    #return render_template("page.html", items = items, user_specifics = option2)
     if loggedIn == "True":
         data = GetData("public")
         Search.vehicles = data
-        #print(currentVehicles[0]["_id"])
+
         return render_template("page.html", dynamic = data, user_specifics = option1, searchoptions = items)
     return render_template("page.html", dynamic = data, user_specifics = option2)
 
@@ -84,7 +72,7 @@ def userpage(user):
         email = request.cookies.get("email")
         data = GetData(email)
         Search.vehicles = data
-        #print(data)
+        
         return render_template("userpage.html", dynamic = data)
     return render_template("error.html")
 

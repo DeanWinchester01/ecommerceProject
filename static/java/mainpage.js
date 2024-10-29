@@ -1,26 +1,4 @@
 var layout = document.getElementById("layout")
-/*var itemView = document.getElementById("itemview")
-var sidemenu = document.getElementById("sidemenu")
-var searchBar = document.getElementById("searchbar")
-
-var itemName = document.getElementById("name")
-var category = document.getElementById("category")
-var desc = document.getElementById("description")
-var price = document.getElementById("price")
-let tags = document.getElementById("tags")
-
-function ShowBackground(){
-    itemView.style.visibility = "hidden"
-    sidemenu.style.filter = "none"
-    layout.style.filter = "none"
-    searchBar.style.filter = "none"
-}
-
-ShowBackground()
-document.getElementById("close").addEventListener("click", function(){
-    ShowBackground()
-})
-*/
 if (document.cookie.includes("email")){
     let uploadLink = document.getElementById("upload")
     let userLink = document.getElementById("uploads")
@@ -45,6 +23,61 @@ if (document.cookie.includes("email")){
     signup.onclick = () => window.location.href = "/signup"
     login.onclick = () => window.location.href = "/login"
 }
+
+var used = document.getElementById("used")
+var cylinder = document.getElementById("cylinder")
+var speed = document.getElementById("speed")
+var medium = document.getElementById("medium")
+var chrissy = document.getElementById("chrissy")
+
+function GetFilters(){
+    let filters = ""
+    console.log(used.checked)
+    if(used.checked)
+        filters += "#slightlyused "
+
+    if(cylinder.checked)
+        filters += "#4cylinder "
+
+    if(speed.checked)
+        filters += "#200km "
+
+    if(medium.checked)
+        filters += "#4seater "
+
+    if(chrissy.checked)
+        filters += "#sexy "
+
+    return filters
+}
+
+//used.onclick 
+cylinder.onclick = Fetch
+speed.onclick = Fetch
+medium.onclick = Fetch
+chrissy.onclick = Fetch
+/*var itemView = document.getElementById("itemview")
+var sidemenu = document.getElementById("sidemenu")
+var searchBar = document.getElementById("searchbar")
+
+var itemName = document.getElementById("name")
+var category = document.getElementById("category")
+var desc = document.getElementById("description")
+var price = document.getElementById("price")
+let tags = document.getElementById("tags")
+
+function ShowBackground(){
+    itemView.style.visibility = "hidden"
+    sidemenu.style.filter = "none"
+    layout.style.filter = "none"
+    searchBar.style.filter = "none"
+}
+
+ShowBackground()
+document.getElementById("close").addEventListener("click", function(){
+    ShowBackground()
+})
+*/
 
 
 /*if (document.cookie.includes("email")){
@@ -246,36 +279,5 @@ fetch('/page/getdata/public')
     })
     .catch(error => console.error('Fetch error:', error));
 */
-var used = document.getElementById("used")
-var cylinder = document.getElementById("cylinder")
-var speed = document.getElementById("speed")
-var medium = document.getElementById("medium")
-var chrissy = document.getElementById("chrissy")
 
-function GetFilters(){
-    let filters = ""
-    console.log(used.checked)
-    if(used.checked)
-        filters += "#slightlyused "
-
-    if(cylinder.checked)
-        filters += "#4cylinder "
-
-    if(speed.checked)
-        filters += "#200km "
-
-    if(medium.checked)
-        filters += "#4seater "
-
-    if(chrissy.checked)
-        filters += "#sexy "
-
-    filters += searchBar.value
-    Search(filters)
-}
-
-/*used.onclick = GetFilters
-cylinder.onclick = GetFilters
-speed.onclick = GetFilters
-medium.onclick = GetFilters
-chrissy.onclick = GetFilters*/
+/**/

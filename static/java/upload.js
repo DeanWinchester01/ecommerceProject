@@ -7,19 +7,16 @@ var returnButton = document.getElementById("Return")
 
 console.log(uploadButton)
 uploadButton.onchange = function(){
-    console.log("got file")
     let file = uploadButton.files[0]
     let reader = new FileReader()
     reader.onload = function(e){
         vehicleImg.src = e.target.result
     }
     reader.readAsDataURL(file)
-    //vehicleImg.src = file.name
     console.log(file)
 }
 
 upload.onclick = function(){
-    //input fields
     let itemName = document.getElementById("itemName")
     let desc = document.getElementById("desc")
     let price = document.getElementById("price")

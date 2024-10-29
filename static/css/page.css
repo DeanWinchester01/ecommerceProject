@@ -126,13 +126,12 @@
     z-index: 10;
     padding: 10px; /* Add padding for better touch target */
     cursor: pointer; /* Change cursor to pointer */
-    visibility: hidden; /* Initially hidden */
 }
 
-/* Make close button visible when itemview is visible */
+/* Make close button visible when itemview is visible 
 #itemview:has(.itemview) #close {
-    visibility: visible; /* Show close button when itemview is displayed */
-}
+    visibility: visible; /* Show close button when itemview is displayed 
+}*/
 
 .descriptor {
     position: relative;

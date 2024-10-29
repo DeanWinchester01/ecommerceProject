@@ -172,15 +172,7 @@ def GetRandomNum(lower, upper):
 
 def RemoveGarbage(message):
     messageFound = math.floor(math.sqrt(len(message)))
-    '''int a = 1;
-    int b = 1;
-    int length = message.length() * -1;
-    int discriminant = b * b - 4 * a * length;
-    int x1 = (-b + sqrt(discriminant)) / (2 * a);
-    string actualMessage = message.substr(x1, x1);
-    '''
     actualMessage = message[messageFound:messageFound+messageFound]
-    #print(message)
     return actualMessage
 
 def GetRandomChar(randomNum):
@@ -229,18 +221,12 @@ def DecryptMessage(message):
         decrypted = "Message too short to decrypt"
     else:
         decrypted = RemoveGarbage(message)
-        #print(decrypted)
         decrypted = Decrypt(decrypted, secondKey)
-        #print(decrypted)
         decrypted = unmix(decrypted)
-        #print(decrypted)
         decrypted = Decrypt(decrypted, secondKey)
-        #print(decrypted)
 
         for i in range(3):
             decrypted = unmix(decrypted)
-            #print(decrypted)
             decrypted = Decrypt(decrypted, secondKey)
-            #print(decrypted)
 
     return decrypted
