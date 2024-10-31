@@ -64,25 +64,34 @@ function ShowVehicles(vehicleList){
     })
 }
 
-function ShowItem(vehicle){
-    let name = itemName.querySelector("#custom")
-    let cat = category.querySelector("#custom")
-    let description = desc.querySelector("#custom")
-    let pr = price.querySelector("#custom")
-    let img = document.getElementById("itemImage")
-    let tag = tags.querySelector("#custom")
+function ShowItem(vehicle) {
+    let name = document.getElementById("name-custom");
+    let cat = document.getElementById("category-custom");
+    let description = document.getElementById("description-custom");
+    let pr = document.getElementById("price-custom");
+    let img = document.getElementById("itemImage");
+    let tag = document.getElementById("tags-custom");
 
-    name.textContent = Object.keys(vehicle, "vehicle") && vehicle.vehicle || vehicle.name
-    cat.textContent = vehicle.category
-    description.textContent = vehicle.description
-    pr.textContent = "$"+vehicle.price
-    itemView.style.visibility = "visible"
-    img.src = "/static/images/" + vehicle["_id"]+".png"
-    tag.textContent = vehicle.tags
-    sidemenu.style.filter = "blur(10px)"
-    layout.style.filter = "blur(10px)"
-    searchBar.style.filter = "blur(10px)"
+    name.textContent = vehicle.vehicle || vehicle.name || "Unknown Vehicle";
+    cat.textContent = vehicle.category || "Uncategorized";
+    description.textContent = vehicle.description || "No description available";
+    pr.textContent = "$" + (vehicle.price || "0.00");
+    
+    img.src = "/static/images/" + vehicle["_id"] + ".png";
+    
+    if (Object.keys(vehicles, "tags")) {
+        tag.textContent = vehicle.tags;
+    } else {
+        tag.textContent = "N/A";
+    }
+
+    itemView.style.visibility = "visible";
+    sidemenu.style.filter = "blur(10px)";
+    layout.style.filter = "blur(10px)";
+    searchBar.style.filter = "blur(10px)";
 }
+
+
 function Search(vehicles){
     let buttons = document.getElementsByClassName("item")
     for(let i = buttons.length-1; i >= 0; i--){
