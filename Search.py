@@ -59,7 +59,7 @@ def SearchForVehicles(search: str, allVehicles: list):
     for i in range(len(searchParameters)):
         param = searchParameters[i].lower()
         print(param)
-        if param[1] == "#" and  len(param) > 3:
+        if param[0] == "#" and  len(param) > 1:
             tags.append(param)
 
         if not "#" in param and vehicleName == "":

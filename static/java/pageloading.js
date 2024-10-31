@@ -78,18 +78,16 @@ function ShowItem(vehicle) {
     pr.textContent = "$" + (vehicle.price || "0.00");
     
     img.src = "/static/images/" + vehicle["_id"] + ".png";
-    
-    if (Object.keys(vehicles, "tags")) {
-        tag.textContent = vehicle.tags;
-    } else {
-        tag.textContent = "N/A";
-    }
+
+    // Handle tags directly as a string
+    tag.textContent = vehicle.tags || "N/A";
 
     itemView.style.visibility = "visible";
     sidemenu.style.filter = "blur(10px)";
     layout.style.filter = "blur(10px)";
     searchBar.style.filter = "blur(10px)";
 }
+
 
 
 function Search(vehicles){
