@@ -24,38 +24,57 @@ if (document.cookie.includes("email")){
     login.onclick = () => window.location.href = "/login"
 }
 
-var used = document.getElementById("used")
+var options = document.getElementsByClassName("sideoption")
+/*var used = document.getElementById("used")
 var cylinder = document.getElementById("cylinder")
 var speed = document.getElementById("speed")
 var medium = document.getElementById("medium")
 var chrissy = document.getElementById("chrissy")
-
+*/
 function GetFilters(){
     let filters = ""
     console.log(used.checked)
-    if(used.checked)
+    for(let i = 0; i < options.length; i++){
+        let selector = options[i].querySelector(".selector")
+        let data = options[i].querySelector(".data")
+        
+        if(selector.checked){
+            //console.log(data.getAttribute("value"))
+            filters += data.getAttribute("value") + " "
+        }
+    }
+    /*if(used.checked)
         filters += "#slightlyused "
-
+    
     if(cylinder.checked)
         filters += "#4cylinder "
-
+    
     if(speed.checked)
         filters += "#200km "
-
+    
     if(medium.checked)
         filters += "#4seater "
-
+    
     if(chrissy.checked)
         filters += "#sexy "
-
+    */
     return filters
 }
 
+for(let i = 0; i < options.length; i++){
+    let child = options[i].querySelector(".selector")
+    let data = options[i].querySelector(".data")
+    child.onclick = function(){
+        Fetch()
+        //console.log(data)
+        //console.log(data.getAttribute("value"))
+    }
+}
 //used.onclick 
-cylinder.onclick = Fetch
-speed.onclick = Fetch
-medium.onclick = Fetch
-chrissy.onclick = Fetch
+//cylinder.onclick = Fetch
+//speed.onclick = Fetch
+//medium.onclick = Fetch
+//chrissy.onclick = Fetch
 /*var itemView = document.getElementById("itemview")
 var sidemenu = document.getElementById("sidemenu")
 var searchBar = document.getElementById("searchbar")

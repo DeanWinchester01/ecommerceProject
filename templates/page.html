@@ -67,30 +67,38 @@
     <div class = "filterview" id = "filterview" style="overflow: scroll;">
         <div class = "option">
             <label>Price range</label>
+            <div class = "sideoption">
+                <input type="radio" name = "price" style="width: 10px;" class = "selector">
+                <p class = "data">$500,1 - $10,000</p>
+            </div>
+            <div class = "sideoption">
+                <input type="radio" name = "price" style="width: 10px;" class = "selector">
+                <p class = "data">$10,001 - $20,000</p>
+            </div>
+            <div class = "sideoption">
+                <input type="radio" name = "price" style="width: 10px;" class = "selector">
+                <p class = "data">$20,001 - $50,000</p>
+            </div>
             
-            <input type="radio" name = "price">
-            <label for="huey">Huey</label>
-            <input type="radio" name = "price">$5,001 - $10,000
-            <input type="radio" name = "price">$10,001 - $20,000
             
             <input type="checkbox" id = "used">
         </div>
         
         <div class = "sideoption">
-            <p>4 cylinder</p>
-            <input type="checkbox" id = "cylinder">
+            <p class = "data" value="#4cylinder"> 4 cylinder</p>
+            <input type="checkbox" id = "cylinder" class = "selector">
         </div>
         <div class = "sideoption">
-            <p>200km top speed</p>
-            <input type="checkbox" id = "speed">
+            <p class = "data" value="#200kmph">200km top speed</p>
+            <input type="checkbox" id = "speed" class = "selector">
         </div>
         <div class = "sideoption">
-            <p>4 seater</p>
-            <input type="checkbox" id = "medium">
+            <p class = "data" value = "#4seater">4 seater</p>
+            <input type="checkbox" id = "medium" class = "selector">
         </div>
         <div class = "sideoption">
-            <p>chrissy</p>
-            <input type="checkbox" id = "chrissy">
+            <p class = "data" value="#singer">chrissy</p>
+            <input type="checkbox" id = "chrissy" class = "selector">
         </div>
     </div>
     <!--{{ searchoptions | safe }}-->

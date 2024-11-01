@@ -18,7 +18,7 @@
     /*filter: blur(10px);*/
 }
 
-.sideoption {
+.sidemenu {
     display: flex;
     margin-bottom: 10%;
     margin-left: 26%;
@@ -29,6 +29,18 @@
     font-weight: 600;
     font-size: 15px;
     padding: 8px;
+}
+.sideoption{
+    display: flex;
+    margin-bottom: 10%;
+    color: #212121;
+    background-color: #5dade2;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
 }
 
 #sideoptionstyle {

@@ -46,14 +46,14 @@ def page():
         </div>"""
     
     option1 = f"""
-        <p class = 'sideoption' id = 'welcome'>' {username} '</p>
-        <button class = sideoption id = "upload">Upload vehicle</button>
-        <button class = sideoption id = "uploads">My vehicles</button>
-        <button class = "sideoption" id = "Logout">Log out</button>
+        <p class = 'sidemenu' id = 'welcome'>' {username} '</p>
+        <button class = sidemenu id = "upload">Upload vehicle</button>
+        <button class = sidemenu id = "uploads">My vehicles</button>
+        <button class = "sidemenu" id = "Logout">Log out</button>
     """
     option2 = """
-        <button class = "sideoption" id = "login">Log in</button>
-        <button class = "sideoption" id = "signup">Sign up</button>
+        <button class = "sidemenu" id = "login">Log in</button>
+        <button class = "sidemenu" id = "signup">Sign up</button>
     """
         
     if loggedIn == "True":
