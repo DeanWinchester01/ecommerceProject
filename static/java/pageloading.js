@@ -9,9 +9,9 @@ var desc = document.getElementById("description")
 var price = document.getElementById("price")
 let tags = document.getElementById("tags")
 
-let uploadLink = document.getElementById("upload")
-let mainLink = document.getElementById("mainPage")
-let logout = document.getElementById("Logout")
+//let uploadLink = document.getElementById("upload")
+//let mainLink = document.getElementById("mainPage")
+//let logout = document.getElementById("Logout")
 
 var cookies = document.cookie.split(";");
 let username = cookies[1].split("=")[1]
@@ -138,9 +138,14 @@ searchBar.addEventListener("input",function(){
     Fetch()
 })
 
+let links = document.getElementsByClassName("sidemenu")
+for(let i = 0; i < links.length; i++){
+    if(links[i].nodeName != "BUTTON") continue;
+    links[i].onclick = () => window.location.href = links[i].getAttribute("value")
+}
 document.getElementById("close").onclick = () => ShowBackground()
-uploadLink.onclick = () => window.location.href = "/upload"
-logout.onclick = () => window.location.href = "/logout"
+//uploadLink.onclick = () => window.location.href = "/upload"
+//logout.onclick = () => window.location.href = "/logout"
 
 var vehicles = JSON.parse(document.currentScript.getAttribute('vehicles'));
 ShowVehicles(vehicles)

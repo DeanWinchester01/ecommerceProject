@@ -47,13 +47,13 @@ def page():
     
     option1 = f"""
         <p class = 'sidemenu' id = 'welcome'>' {username} '</p>
-        <button class = sidemenu id = "upload">Upload vehicle</button>
-        <button class = sidemenu id = "uploads">My vehicles</button>
-        <button class = "sidemenu" id = "Logout">Log out</button>
+        <button class = sidemenu id = "upload" value = "/upload">Upload vehicle</button>
+        <button class = sidemenu id = "uploads" value = "/page/"""+username+"""">My vehicles</button>
+        <button class = "sidemenu" id = "Logout" value = "/logout">Log out</button>
     """
     option2 = """
-        <button class = "sidemenu" id = "login">Log in</button>
-        <button class = "sidemenu" id = "signup">Sign up</button>
+        <button class = "sidemenu" id = "login" value = "/login">Log in</button>
+        <button class = "sidemenu" id = "signup" value = "/signup">Sign up</button>
     """
         
     if loggedIn == "True":

@@ -1,74 +1,52 @@
 var layout = document.getElementById("layout")
 if (document.cookie.includes("email")){
-    let uploadLink = document.getElementById("upload")
-    let userLink = document.getElementById("uploads")
-    let logout = document.getElementById("Logout")
-
+    //let uploadLink = document.getElementById("upload")
+    //let userLink = document.getElementById("uploads")
+    //let logout = document.getElementById("Logout")
+    
     let parts = document.cookie.split("; ")
     let loggedIn = parts[2]
     let isLoggedIn = loggedIn.split("=")[1] == "True"
     let username = parts[1].split("=")[1]
-
+    
     if (isLoggedIn)
         document.getElementById("welcome").textContent = "Welcome " + parts[1].split("=")[1]
-
     
-    uploadLink.onclick = () => window.location.href = "/upload"
-    logout.onclick = () => window.location.href = "/logout"
-    userLink.onclick = () => window.location.href = "/page/"+username
+    let links = document.getElementsByClassName("sidemenu")
+    for(let i = 0; i < links.length; i++){
+        if(links[i].nodeName != "BUTTON") continue;
+        links[i].onclick = () => window.location.href = links[i].getAttribute("value")
+    }
+    
+    //uploadLink.onclick = () => window.location.href = "/upload"
+    //logout.onclick = () => window.location.href = "/logout"
+    //userLink.onclick = () => window.location.href = "/page/"+username
 }else{
-    let signup = document.getElementById("signup")
-    let login = document.getElementById("login")
+    //let signup = document.getElementById("signup")
+    //let login = document.getElementById("login")
 
-    signup.onclick = () => window.location.href = "/signup"
-    login.onclick = () => window.location.href = "/login"
+    //signup.onclick = () => window.location.href = "/signup"
+    //login.onclick = () => window.location.href = "/login"
 }
 
 var options = document.getElementsByClassName("sideoption")
-/*var used = document.getElementById("used")
-var cylinder = document.getElementById("cylinder")
-var speed = document.getElementById("speed")
-var medium = document.getElementById("medium")
-var chrissy = document.getElementById("chrissy")
-*/
 function GetFilters(){
     let filters = ""
-    console.log(used.checked)
     for(let i = 0; i < options.length; i++){
         let selector = options[i].querySelector(".selector")
         let data = options[i].querySelector(".data")
         
-        if(selector.checked){
-            //console.log(data.getAttribute("value"))
+        if(selector.checked)
             filters += data.getAttribute("value") + " "
-        }
     }
-    /*if(used.checked)
-        filters += "#slightlyused "
     
-    if(cylinder.checked)
-        filters += "#4cylinder "
-    
-    if(speed.checked)
-        filters += "#200km "
-    
-    if(medium.checked)
-        filters += "#4seater "
-    
-    if(chrissy.checked)
-        filters += "#sexy "
-    */
     return filters
 }
 
 for(let i = 0; i < options.length; i++){
     let child = options[i].querySelector(".selector")
-    let data = options[i].querySelector(".data")
-    child.onclick = function(){
-        Fetch()
-        //console.log(data)
-        //console.log(data.getAttribute("value"))
-    }
+    child.onclick = Fetch
+        
 }
 //used.onclick 
 //cylinder.onclick = Fetch

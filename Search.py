@@ -62,6 +62,7 @@ def SearchForVehicles(search: str, allVehicles: list):
         if len(param) == 0:#empty parameter
             continue
 
+        
         if param[0] == "#" and  len(param) > 1:
             tags.append(param)
 
