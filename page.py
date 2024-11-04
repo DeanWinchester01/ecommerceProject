@@ -7,6 +7,7 @@ import base64
 import io
 from PIL import Image
 import Search
+import datetime
 pageBP = Blueprint("page",__name__)
 
 @pageBP.route("/page", methods = ["POST","GET"])
@@ -76,11 +77,35 @@ def userpage(user):
         return render_template("userpage.html", dynamic = data)
     return render_template("error.html")
 
+def FilterUserVehicles(email:str, vehicleList: list):
+    returnList = []
+    for i in range(len(vehicleList)):
+        printItem = {}
+        for key, value in vehicleList[i].items():
+            if key == "image": continue
+            printItem[key] = value
 
-#@pageBP.route("/page/getdata/<data>", methods = ["POST","GET"])
+        if not "user" in vehicleList[i]:
+            continue
+
+        if vehicleList[i]["user"] == email:
+            returnList.append(vehicleList[i])
+
+    return returnList
+
+
 def GetData(data):
     saveFolder = "ecommerceProject/static/images/"
-    vehicles = database.GetVehicles(data)
+    vehicles = []
+    if data == "public":
+        vehicles = database.GetVehicles(data)
+    else:
+        if len(Search.vehicles) == 0:
+            vehicles = database.GetVehicles(data)
+        else:
+            vehicles = FilterUserVehicles(data, Search.vehicles)
+
+    now = datetime.datetime.now()
     for entry in range(len(vehicles)):
         decoded = base64.b64decode(vehicles[entry]["image"])
         imgStream = io.BytesIO(decoded)
@@ -92,6 +117,7 @@ def GetData(data):
         
         with open(filepath,"wb") as fh:
             fh.write(decoded)
+    print(datetime.datetime.now() - now)
 
     newData = []
     for entry in vehicles:

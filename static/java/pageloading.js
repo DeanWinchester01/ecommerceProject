@@ -65,12 +65,12 @@ function ShowVehicles(vehicleList){
 }
 
 function ShowItem(vehicle) {
-    let name = document.getElementById("name-custom");
-    let cat = document.getElementById("category-custom");
-    let description = document.getElementById("description-custom");
-    let pr = document.getElementById("price-custom");
+    let name = document.getElementById("name-custom") || document.getElementById("name");
+    let cat = document.getElementById("category-custom") || document.getElementById("category");
+    let description = document.getElementById("description-custom") || document.getElementById("description");
+    let pr = document.getElementById("price-custom") || document.getElementById("price");
     let img = document.getElementById("itemImage");
-    let tag = document.getElementById("tags-custom");
+    let tag = document.getElementById("tags-custom") || document.getElementById("tags");
 
     name.textContent = vehicle.vehicle || vehicle.name || "Unknown Vehicle";
     cat.textContent = vehicle.category || "Uncategorized";

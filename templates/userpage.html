@@ -76,7 +76,7 @@
             <img id = "itemImage" alt="">
             <div class = "descriptors" style="top: 12.5%; left: 50%; position: absolute; width: 30%;">
                 <p class = "descriptor" id = "name">
-                    <span style="text-decoration:solid; font-size: large;"">
+                    <span style="text-decoration:solid; font-size: large;">
                         Name:
                     </span>
                     <span id = "custom">
@@ -115,6 +115,5 @@
     -->
     
     <script src="{{ url_for('static', filename='java/pageloading.js') }}"vehicles='{{ dynamic|tojson|safe }}'></script>
-    <script src="{{ url_for('static', filename='java/loadData.js') }}"></script>
 </body>
 </html>
