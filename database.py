@@ -35,7 +35,7 @@ def GetVehicles(search):
     return data
 
 def UploadVehicle(data):
-    collection = client["eCommerceProject"]["vehicles_temp"]
+    collection = client["eCommerceProject"]["vehicles"]
     result = collection.insert_one(data)
     return result
 
