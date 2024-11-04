@@ -105,9 +105,8 @@
 
 .itemTable {
     width: 70%; /* Ensure it takes the rest of the space */
-    background-color: #212121;
     color: #fafafa;
-    padding: 10px; /* Padding for the table */
+    padding: 0; /* Remove padding for the table */
     border-radius: 8px;
     margin: 0; /* Remove margin to avoid additional space */
     max-height: 51%; /* Maximum height */
@@ -116,17 +115,19 @@
 
 .itemTableRow {
     display: flex;
-    padding: 10px 0; /* Maintain padding for rows */
-    border-bottom: 1px solid #333;
+    padding: 5px 0; /* Reduce padding for rows */
 }
 
 .itemTableTitle {
     width: 30%;
-    font-weight: 600;
+    background-color: #757575;
+    padding: 5px; /* Reduce padding */
 }
 
 .itemTableDetails {
     width: 70%;
+    background-color: #9e9e9e;
+    padding: 5px; /* Reduce padding */
 }
 
 #close {
