@@ -162,9 +162,13 @@
     text-align: center; 
 }
 
-.itemPrice {
+.itemName {
     font-size: 18px;
     font-weight: 600;
+}
+
+.itemDelete {
+    /* aa  */
 }
 
 .descriptor {

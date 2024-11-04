@@ -28,40 +28,41 @@ function ShowBackground(){
 /**
  * @param {Array} vehicleList 
  */
-function ShowVehicles(vehicleList){
-    vehicleList.forEach(function(vehicle){
-        let button = document.createElement("button")
-        button.id = vehicle["_id"]
-        button.className = "item"
+function ShowVehicles(vehicleList) {
+    vehicleList.forEach(function(vehicle) {
+        let button = document.createElement("button");
+        button.id = vehicle["_id"];
+        button.className = "item";
 
-        let image = document.createElement("img")
-        image.className = "itemImage"
-        console.log(vehicle["_id"])
-        image.src = "/static/images/"+vehicle["_id"]+".png"
+        let image = document.createElement("img");
+        image.className = "itemImage";
+        console.log(vehicle["_id"]);
+        image.src = "/static/images/" + vehicle["_id"] + ".png";
+
+        let nameElement = document.createElement("div");
+        nameElement.className = "itemName";
+        nameElement.textContent = vehicle.name || vehicle.vehicle;
 
         let priceElement = document.createElement("div");
         priceElement.className = "itemPrice";
         let formattedPrice;
-        if (vehicle.price % 1 === 0) 
+        if (vehicle.price % 1 === 0)
             formattedPrice = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(vehicle.price);
-         else 
+        else
             formattedPrice = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(vehicle.price);
-        
+
         priceElement.textContent = formattedPrice;
 
-        let nameElement = document.createElement("div")
-        nameElement.className = "itemName"
-        nameElement.textContent = vehicle.name || vehicle.vehicle;
+        // Append name first, then price
+        button.appendChild(image);
+        button.appendChild(nameElement);
+        button.appendChild(priceElement);
+        layout.appendChild(button);
 
-        button.appendChild(image)
-        button.appendChild(priceElement)
-        button.appendChild(nameElement)
-        layout.appendChild(button)
-
-        button.onclick = function(){
-            ShowItem(vehicle)
-        }
-    })
+        button.onclick = function() {
+            ShowItem(vehicle);
+        };
+    });
 }
 
 function ShowItem(vehicle) {

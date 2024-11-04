@@ -40,6 +40,10 @@ def UploadVehicle(data):
     return result
 
 
+def DeleteVehicle():
+    collection = client["eCommerceProject"]["vehicles"]
+
+
 
 def LogIn(email, password):
     collection = client["eCommerceProject"]["users"]
