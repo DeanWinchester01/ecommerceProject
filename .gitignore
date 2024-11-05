@@ -1,4 +1,7 @@
-# Ignore PNG files
+# Ignore PNG files in the static/images directory
+static/images/*.png
+
+# Ignore all PNG files in any directory
 *.png
 
 # Byte-compiled / optimized / DLL files
