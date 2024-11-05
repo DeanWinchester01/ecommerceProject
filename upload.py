@@ -11,11 +11,6 @@ app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = "flaskenv/ecommerceProject/static/images/"
 
 uploadBP = Blueprint("upload",__name__)
-specialChars = {
-    "ä":"a",
-    "å":"a",
-    "ö":"o"
-}
 
 @uploadBP.route("/upload", methods = ["GET","POST"])
 def UploadVehicle():

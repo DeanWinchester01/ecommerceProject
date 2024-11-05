@@ -80,11 +80,6 @@ def userpage(user):
 def FilterUserVehicles(email:str, vehicleList: list):
     returnList = []
     for i in range(len(vehicleList)):
-        printItem = {}
-        for key, value in vehicleList[i].items():
-            if key == "image": continue
-            printItem[key] = value
-
         if not "user" in vehicleList[i]:
             continue
 
@@ -97,6 +92,7 @@ def FilterUserVehicles(email:str, vehicleList: list):
 def GetData(data):
     saveFolder = "ecommerceProject/static/images/"
     vehicles = []
+    now = datetime.datetime.now()
     if data == "public":
         vehicles = database.GetVehicles(data)
     else:
@@ -104,8 +100,8 @@ def GetData(data):
             vehicles = database.GetVehicles(data)
         else:
             vehicles = FilterUserVehicles(data, Search.vehicles)
+    print(datetime.datetime.now() - now)
 
-    now = datetime.datetime.now()
     for entry in range(len(vehicles)):
         decoded = base64.b64decode(vehicles[entry]["image"])
         imgStream = io.BytesIO(decoded)
@@ -117,7 +113,6 @@ def GetData(data):
         
         with open(filepath,"wb") as fh:
             fh.write(decoded)
-    print(datetime.datetime.now() - now)
 
     newData = []
     for entry in vehicles:
