@@ -16,6 +16,8 @@ client = MongoClient(
 app = Flask(__name__)
 vehicles = os.path.join("ecommerceProject\\static","images")
 app.config["UPLOAD_FOLDER"] = vehicles
+imageFolder = "ecommerceProject/static/images/"
+directory = os.fsencode(imageFolder)
 
 def GetUsers():
     return client["eCommerceProject"]["users"]
@@ -33,14 +35,16 @@ def GetVehicles(search):
         for x in vehicleData.find({"user":search}):
             data.append(x)
     
-    return data
+    
 
     images = []
     for x in vehicleImages.find():
         images.append(x)
         
-    '''getVehicles = []
+    getVehicles = []
+    imageNames = []
     for vehicle in data:
+        imageNames.append(str(vehicle["_id"])+".png")
         if not os.path.exists("ecommerceProject/static/images/"+str(vehicle["_id"])+".png"):
             getVehicles.append({"link":vehicle["_id"]})
             print("need to download vehicle",str(vehicle["_id"]))
@@ -59,7 +63,16 @@ def GetVehicles(search):
         with open(filepath,"wb") as fh:
             fh.write(decoded)
 
-    return data'''
+    for file in os.listdir(directory):
+        filename = os.fsdecode(file)
+        if filename == "ecommerce_logo.png":
+            continue
+
+        if not filename in imageNames:
+            print(filename," not in array")
+            os.remove(imageFolder+filename)
+
+    return data
  # You can also insert multiple documents as shown below:
     document_list = [
         {"vehicle": "car", "seller": "nico", "year":2001},
