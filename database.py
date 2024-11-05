@@ -35,8 +35,9 @@ def GetVehicles(search):
         
     getVehicles = []
     for vehicle in data:
-        if not os.path.exists("ecommerceProject/static/images/"+str(vehicle["_id"])):
+        if not os.path.exists("ecommerceProject/static/images/"+str(vehicle["_id"])+".png"):
             getVehicles.append({"link":vehicle["_id"]})
+            print("need to download vehicle",str(vehicle["_id"]))
 
     saveFolder = "ecommerceProject/static/images/"
     for i in range(len(getVehicles)):
