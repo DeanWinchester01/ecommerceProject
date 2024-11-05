@@ -32,8 +32,14 @@ def GetVehicles(search):
     else:
         for x in vehicleData.find({"user":search}):
             data.append(x)
+    
+    return data
+
+    images = []
+    for x in vehicleImages.find():
+        images.append(x)
         
-    getVehicles = []
+    '''getVehicles = []
     for vehicle in data:
         if not os.path.exists("ecommerceProject/static/images/"+str(vehicle["_id"])+".png"):
             getVehicles.append({"link":vehicle["_id"]})
@@ -53,7 +59,7 @@ def GetVehicles(search):
         with open(filepath,"wb") as fh:
             fh.write(decoded)
 
-    return data
+    return data'''
  # You can also insert multiple documents as shown below:
     document_list = [
         {"vehicle": "car", "seller": "nico", "year":2001},
@@ -188,15 +194,16 @@ def GetVehicles(search):
 
     ]
 
-    for i in range(len(entries)):
-        entries[i]["tags"] = entries[i]["category"] == "Car" and "#car" or "#motorcycle"
-        entries[i]["user"] = random.randint(1,2) == 1 and "ioo.andersson@gmail.com" or "diddy@gmail.com"
+    #for i in range(len(entries)):
+    #    entries[i]["tags"] = entries[i]["category"] == "Car" and "#car" or "#motorcycle"
+    #    entries[i]["user"] = random.randint(1,2) == 1 and "ioo.andersson@gmail.com" or "diddy@gmail.com"
         
         
-    result = vehicleData.insert_many(entries)
+    #result = vehicleData.insert_many(entries)
+
     
-    for i in range(len(result.inserted_ids)):
-        fullName = "ecommerceProject/static/images/"+str(i)+".png"
+    for vehicle in images:
+        fullName = "ecommerceProject/static/images/"+str(vehicle["link"])+".png"
         with Image.open(fullName) as img:
             buffered = io.BytesIO()
             img.save(buffered, format="PNG")
@@ -205,9 +212,12 @@ def GetVehicles(search):
             #binary = img.tobytes()
             #compressed = zlib.compress(binary)
             b64string = base64.b64encode(binary).decode("utf-8")
+            update = {"$set":{"image":b64string}}
+            vehicleImages.update_one({"link":vehicle["link"]}, update)
+            print("updated image ",vehicle["link"])
 
-            newDoc = {"link":result.inserted_ids[i], "image": b64string}
-            vehicleImages.insert_one(newDoc)
+            #newDoc = {"link":result.inserted_ids[i], "image": b64string}
+            #vehicleImages.insert_one(newDoc)
 
     '''
     print(fullName)
@@ -245,7 +255,7 @@ def GetVehicles(search):
     #print(f"{len(result.inserted_ids)} documents inserted.")
 
     print("[MongoDB] 3: Database Final Check")
-GetVehicles("public")
+#etVehicles("public")
 
 def UploadVehicle(data):
     collection = client["eCommerceProject"]["vehicles"]
