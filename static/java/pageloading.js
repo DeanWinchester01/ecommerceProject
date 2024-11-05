@@ -2,6 +2,7 @@ var itemView = document.getElementById("itemview")
 var sidemenu = document.getElementById("sidemenu")
 var layout = document.getElementById("layout")
 var searchBar = document.getElementById("searchbar")
+var filterview = document.getElementById("filterview")
 
 var itemName = document.getElementById("name")
 var category = document.getElementById("category")
@@ -23,6 +24,7 @@ function ShowBackground(){
     sidemenu.style.filter = "none"
     layout.style.filter = "none"
     searchBar.style.filter = "none"
+    filterview.style.filter = "none"
 }
 
 /**
@@ -87,6 +89,7 @@ function ShowItem(vehicle) {
     sidemenu.style.filter = "blur(10px)";
     layout.style.filter = "blur(10px)";
     searchBar.style.filter = "blur(10px)";
+    filterview.style.filter = "blur(10px)";
 }
 
 

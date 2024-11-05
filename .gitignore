@@ -1,4 +1,6 @@
 # Ignore PNG files in the static/images directory
+*.static/images/*.png
+.static/images/*.png
 static/images/*.png
 
 # Ignore all PNG files in any directory
