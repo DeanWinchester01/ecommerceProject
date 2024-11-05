@@ -102,7 +102,7 @@ def GetData(data):
             vehicles = FilterUserVehicles(data, Search.vehicles)
     print(datetime.datetime.now() - now)
 
-    for entry in range(len(vehicles)):
+    '''for entry in range(len(vehicles)):
         decoded = base64.b64decode(vehicles[entry]["image"])
         imgStream = io.BytesIO(decoded)
         image = Image.open(imgStream)
@@ -113,7 +113,8 @@ def GetData(data):
         
         with open(filepath,"wb") as fh:
             fh.write(decoded)
-
+    '''
+    
     newData = []
     for entry in vehicles:
         entry["_id"] = str(entry["_id"])

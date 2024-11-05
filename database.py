@@ -21,17 +21,36 @@ def GetUsers():
     return client["eCommerceProject"]["users"]
 
 def GetVehicles(search):
-    collection = client["eCommerceProject"]["vehicles"]
+    vehicleData = client["eCommerceProject"]["vehicles"]
+    vehicleImages = client["eCommerceProject"]["images"]
 
     data = []
     if search == "public":
-        for x in collection.find():
+        for x in vehicleData.find():
             data.append(x)
         
     else:
-        for x in collection.find({"user":search}):
+        for x in vehicleData.find({"user":search}):
             data.append(x)
         
+    getVehicles = []
+    for vehicle in data:
+        if not os.path.exists("ecommerceProject/static/images/"+str(vehicle["_id"])):
+            getVehicles.append({"link":vehicle["_id"]})
+
+    saveFolder = "ecommerceProject/static/images/"
+    for i in range(len(getVehicles)):
+        vehicleImage = vehicleImages.find_one(getVehicles[i])
+        decoded = base64.b64decode(vehicleImage["image"])
+        imgStream = io.BytesIO(decoded)
+        image = Image.open(imgStream)
+        buffered = io.BytesIO()
+        image.save(buffered,format="PNG")
+        id = getVehicles[i]["link"]
+        filepath = os.path.join(saveFolder,f"{id}.png")
+        
+        with open(filepath,"wb") as fh:
+            fh.write(decoded)
 
     return data
  # You can also insert multiple documents as shown below:
@@ -168,11 +187,15 @@ def GetVehicles(search):
 
     ]
 
-    print("adding image")
     for i in range(len(entries)):
         entries[i]["tags"] = entries[i]["category"] == "Car" and "#car" or "#motorcycle"
         entries[i]["user"] = random.randint(1,2) == 1 and "ioo.andersson@gmail.com" or "diddy@gmail.com"
-        fullName = os.path.join(app.config["UPLOAD_FOLDER"], str(i)+".png")
+        
+        
+    result = vehicleData.insert_many(entries)
+    
+    for i in range(len(result.inserted_ids)):
+        fullName = "ecommerceProject/static/images/"+str(i)+".png"
         with Image.open(fullName) as img:
             buffered = io.BytesIO()
             img.save(buffered, format="PNG")
@@ -181,11 +204,24 @@ def GetVehicles(search):
             #binary = img.tobytes()
             #compressed = zlib.compress(binary)
             b64string = base64.b64encode(binary).decode("utf-8")
-            entries[i]["image"] = b64string
-            print(str(i)+" done")
-        
-    print("inserting")
-    collection.insert_many(entries)
+
+            newDoc = {"link":result.inserted_ids[i], "image": b64string}
+            vehicleImages.insert_one(newDoc)
+
+    '''
+    print(fullName)
+    #fullName = os.path.join(app.config["UPLOAD_FOLDER"], str(i)+".png")
+        buffered = io.BytesIO()
+        img.save(buffered, format="PNG")
+        binary = buffered.getvalue()
+
+        #binary = img.tobytes()
+        #compressed = zlib.compress(binary)
+        b64string = base64.b64encode(binary).decode("utf-8")
+        images[i]["image"] = b64string
+        print(str(i)+" done")
+        '''
+
     
     #read_img = matplotlib.image.imread('your_image.png')
     '''for i in range(len(entries)):
@@ -208,7 +244,7 @@ def GetVehicles(search):
     #print(f"{len(result.inserted_ids)} documents inserted.")
 
     print("[MongoDB] 3: Database Final Check")
-#GetVehicles("public")
+GetVehicles("public")
 
 def UploadVehicle(data):
     collection = client["eCommerceProject"]["vehicles"]
