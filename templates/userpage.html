@@ -13,6 +13,9 @@
     <!-- Page.CSS -->
     <link rel="styleSheet" type="text/css" href="{{url_for('static', filename='css/page.css')}}">
 
+    <!-- Userpage.CSS -->
+    <link rel="styleSheet" type="text/css" href="{{url_for('static', filename='css/userpage.css')}}">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,7 +45,7 @@
         </div> 
     </div>
     
-    <div class = "itemview" id = "itemview" style="background-color: #fafafa;">
+    <div class = "itemview" id = "itemview">
         <img  id = "itemImage" >
         <div class = "descriptors" style="top: 12.5%; left: 50%; position: absolute; width: 30%;">
             <p class = "descriptor" id = "name">
@@ -72,7 +75,7 @@
         </div>
         
         <button id = "close" name="close" value="close"><span class="material-symbols-outlined">close</span></button>
-        <div class = "itemview" id = "itemview" style="background-color: white;">
+        <div class = "itemview" id = "itemview">
             <img id = "itemImage" alt="">
             <div class = "descriptors" style="top: 12.5%; left: 50%; position: absolute; width: 30%;">
                 <p class = "descriptor" id = "name">
