@@ -1,5 +1,5 @@
 import os
-from flask import Flask, Blueprint, render_template, request, jsonify
+from flask import Flask, Blueprint, render_template, request, jsonify, redirect
 from werkzeug.utils import secure_filename
 import database
 import tempfile
@@ -13,7 +13,9 @@ pageBP = Blueprint("page",__name__)
 @pageBP.route("/page", methods = ["POST","GET"])
 def page():
     loggedIn = request.cookies.get("loggedIn")
-    username = request.cookies.get("username")
+    username = ""
+    if loggedIn == "True":
+        username = request.cookies.get("username")
 
     items = """
     <div class="filterview" id="filterview">
@@ -56,11 +58,11 @@ def page():
         <button class = "sidemenu" id = "login" value = "/login">Log in</button>
         <button class = "sidemenu" id = "signup" value = "/signup">Sign up</button>
     """
-        
-    if loggedIn == "True":
-        data = GetData("public")
-        Search.vehicles = data
+    data = []
+    data = GetData("public")
+    Search.vehicles = data
 
+    if loggedIn == "True":
         return render_template("page.html", dynamic = data, user_specifics = option1, searchoptions = items)
     return render_template("page.html", dynamic = data, user_specifics = option2)
 
@@ -75,11 +77,17 @@ def userpage(user):
         Search.vehicles = data
         
         return render_template("userpage.html", dynamic = data)
+    print("page not found")
     return render_template("error.html")
 
 @pageBP.route("/delete/<id>")
 def deletevehicle(id):
     database.DeleteVehicle(id)
+    username = request.cookies.get("username")
+    Search.vehicles = []
+
+    return redirect("/page/"+username)
+
 
 def FilterUserVehicles(email:str, vehicleList: list):
     returnList = []

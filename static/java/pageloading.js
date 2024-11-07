@@ -15,9 +15,12 @@ let tags = document.getElementById("tags")
 //let logout = document.getElementById("Logout")
 
 var cookies = document.cookie.split(";");
-let username = cookies[1].split("=")[1]
-let email = cookies[0].split("=")[1]
-document.getElementById("welcome").textContent = "Welcome " + cookies[1].split("=")[1]
+
+if(cookies.length > 1){
+    let username = cookies[1].split("=")[1]
+    document.getElementById("welcome").textContent = "Welcome " + username
+}
+
 
 function ShowBackground(){
     itemView.style.visibility = "hidden"
@@ -32,11 +35,24 @@ function ShowBackground(){
  */
 function ShowVehicles(vehicleList) {
     vehicleList.forEach(function(vehicle) {
+        let div = document.createElement("div")
+        div.className = "item"
+        div.id = vehicle["_id"]
+
         let button = document.createElement("button");
         button.id = vehicle["_id"];
         button.className = "item";
 
-        let del = document.createElement("button");
+        console.log(window.location.href.length)
+        if(window.location.href.length > 26){
+            let del = document.createElement("button");
+            del.className = "delete"
+            div.append(del)
+
+            del.onclick = function(){
+                window.location.href = "/delete/"+vehicle["_id"]
+            }
+        }
 
         let image = document.createElement("img");
         image.className = "itemImage";
@@ -59,14 +75,11 @@ function ShowVehicles(vehicleList) {
 
         // Append name first, then price
         button.appendChild(image);
-        button.appendChild(del);
         button.appendChild(nameElement);
         button.appendChild(priceElement);
-        layout.appendChild(button);
-
-        del.onclick = function(){
-            window.location.href = "/delete/"+vehicle["_id"]
-        }
+        div.appendChild(button);
+        layout.appendChild(div)
+        
 
         button.onclick = function() {
             ShowItem(vehicle);
