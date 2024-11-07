@@ -22,17 +22,72 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
-    <input id="searchbar" type="text">
+    <div class="header">
+        <h1>E-Commerce</h1>
+        <div class="searchbar-container">
+            <span class="searchbar-icon material-symbols-outlined">search</span>
+            <input id="searchbar" type="text" placeholder="Search Vehicle"></input>
+        </div>
+
+        <!-- Menu on the right -->
+        <div class="header-right">
+            <p class="header-right-buttons" id="welcome">{{ username }}</p>
+            <button class="header-right-buttons" id="logout" value="/logout">Log out</button>
+        </div>
+    </div>
+
     <div id="layout" class="layout"> 
         <!--{{ items | safe }}-->
     </div>
 
+    <!--
     <div id="sidemenu">
         <div id="sideoptionstyle">
             {{user_specifics | safe}}
         </div> 
     </div>
-    
+
+    <div class = "filterview" id = "filterview" style="overflow: scroll;">
+        <div class = "option">
+            <label>Price range</label>
+            <div class = "sideoption">
+                <input type="radio" name = "price" style="width: 10px;" class = "selector">
+                <p class = "data">$500, - $10,000</p>
+            </div>
+            <div class = "sideoption">
+                <input type="radio" name = "price" style="width: 10px;" class = "selector">
+                <p class = "data">$10,000 - $20,000</p>
+            </div>
+            <div class = "sideoption">
+                <input type="radio" name = "price" style="width: 10px;" class = "selector">
+                <p class = "data">$20,000 - $50,000</p>
+            </div>     
+        </div>
+        
+        <div class = "sideoption">
+            <p class = "data" value = "#used">Used Cars</p>
+            <input type="checkbox" id = "used" class = "selector">
+        </div>
+        <div class = "sideoption">
+            <p class = "data" value="#4cylinder"> 4-Cylinder Engine</p>
+            <input type="checkbox" id = "cylinder" class = "selector">
+        </div>
+        <div class = "sideoption">
+            <p class = "data" value="#200kmph">200 km Top Speed</p>
+            <input type="checkbox" id = "speed" class = "selector">
+        </div>
+        <div class = "sideoption">
+            <p class = "data" value = "#4seater">4 Seater Cars</p>
+            <input type="checkbox" id = "medium" class = "selector">
+        </div>
+        <div class = "sideoption">
+            <p class = "data" value="#singer">chrissy</p>
+            <input type="checkbox" id = "chrissy" class = "selector">
+        </div>
+    </div>
+    -->
+    <!--{{ searchoptions | safe }}-->
+
     <div class="itemview" id="itemview">
         <button id="close" name="close" value="close"><span class="material-symbols-outlined">close</span></button> <!-- Close button inside itemview -->
         <img id="itemImage" alt="Item Image">
@@ -64,47 +119,6 @@
             </div>
         </div>
     </div>    
-    <div class = "filterview" id = "filterview" style="overflow: scroll;">
-        <div class = "option">
-            <label>Price range</label>
-            <div class = "sideoption">
-                <input type="radio" name = "price" style="width: 10px;" class = "selector">
-                <p class = "data">$500,1 - $10,000</p>
-            </div>
-            <div class = "sideoption">
-                <input type="radio" name = "price" style="width: 10px;" class = "selector">
-                <p class = "data">$10,001 - $20,000</p>
-            </div>
-            <div class = "sideoption">
-                <input type="radio" name = "price" style="width: 10px;" class = "selector">
-                <p class = "data">$20,001 - $50,000</p>
-            </div>     
-        </div>
-        
-        <div class = "sideoption">
-            <p class = "data" value = "#used">Used</p>
-            <input type="checkbox" id = "used" class = "selector">
-        </div>
-        <div class = "sideoption">
-            <p class = "data" value="#4cylinder"> 4 cylinder</p>
-            <input type="checkbox" id = "cylinder" class = "selector">
-        </div>
-        <div class = "sideoption">
-            <p class = "data" value="#200kmph">200km top speed</p>
-            <input type="checkbox" id = "speed" class = "selector">
-        </div>
-        <div class = "sideoption">
-            <p class = "data" value = "#4seater">4 seater</p>
-            <input type="checkbox" id = "medium" class = "selector">
-        </div>
-        <div class = "sideoption">
-            <p class = "data" value="#singer">chrissy</p>
-            <input type="checkbox" id = "chrissy" class = "selector">
-        </div>
-    </div>
-    <!--{{ searchoptions | safe }}-->
-    
-    
     
     <script src="{{ url_for('static', filename='java/pageloading.js') }}" vehicles='{{ dynamic|tojson|safe }}'></script>
     <script src="{{ url_for('static', filename='java/mainPage.js') }}"></script>

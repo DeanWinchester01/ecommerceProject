@@ -10,7 +10,7 @@ if (document.cookie.includes("email")){
     let username = parts[1].split("=")[1]
     
     if (isLoggedIn)
-        document.getElementById("welcome").textContent = "Welcome " + parts[1].split("=")[1]
+        document.getElementById("welcome").textContent = parts[1].split("=")[1]
     
     let links = document.getElementsByClassName("sidemenu")
     for(let i = 0; i < links.length; i++){

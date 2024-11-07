@@ -17,7 +17,7 @@ let tags = document.getElementById("tags")
 var cookies = document.cookie.split(";");
 let username = cookies[1].split("=")[1]
 let email = cookies[0].split("=")[1]
-document.getElementById("welcome").textContent = "Welcome " + cookies[1].split("=")[1]
+document.getElementById("welcome").textContent = cookies[1].split("=")[1]
 
 function ShowBackground(){
     itemView.style.visibility = "hidden"
