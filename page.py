@@ -77,6 +77,10 @@ def userpage(user):
         return render_template("userpage.html", dynamic = data)
     return render_template("error.html")
 
+@pageBP.route("/delete/<id>")
+def deletevehicle(id):
+    database.DeleteVehicle(id)
+
 def FilterUserVehicles(email:str, vehicleList: list):
     returnList = []
     for i in range(len(vehicleList)):

@@ -36,6 +36,8 @@ function ShowVehicles(vehicleList) {
         button.id = vehicle["_id"];
         button.className = "item";
 
+        let del = document.createElement("button");
+
         let image = document.createElement("img");
         image.className = "itemImage";
         console.log(vehicle["_id"]);
@@ -57,9 +59,14 @@ function ShowVehicles(vehicleList) {
 
         // Append name first, then price
         button.appendChild(image);
+        button.appendChild(del);
         button.appendChild(nameElement);
         button.appendChild(priceElement);
         layout.appendChild(button);
+
+        del.onclick = function(){
+            window.location.href = "/delete/"+vehicle["_id"]
+        }
 
         button.onclick = function() {
             ShowItem(vehicle);
@@ -148,10 +155,10 @@ for(let i = 0; i < links.length; i++){
     links[i].onclick = () => window.location.href = links[i].getAttribute("value")
 }
 document.getElementById("close").onclick = () => ShowBackground()
+var vehicles = JSON.parse(document.currentScript.getAttribute('vehicles'));
 //uploadLink.onclick = () => window.location.href = "/upload"
 //logout.onclick = () => window.location.href = "/logout"
 
-var vehicles = JSON.parse(document.currentScript.getAttribute('vehicles'));
 ShowVehicles(vehicles)
 
 //OLD CODE PUT IN PYTHON
