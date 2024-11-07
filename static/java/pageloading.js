@@ -32,9 +32,24 @@ function ShowBackground(){
  */
 function ShowVehicles(vehicleList) {
     vehicleList.forEach(function(vehicle) {
+        let div = document.createElement("div")
+        div.className = "item"
+        div.id = vehicle["_id"]
+
         let button = document.createElement("button");
         button.id = vehicle["_id"];
         button.className = "item";
+
+        console.log(window.location.href.length)
+        if(window.location.href.length > 26){
+            let del = document.createElement("button");
+            del.className = "delete"
+            div.append(del)
+
+            del.onclick = function(){
+                window.location.href = "/delete/"+vehicle["_id"]
+            }
+        }
 
         let image = document.createElement("img");
         image.className = "itemImage";
@@ -59,7 +74,9 @@ function ShowVehicles(vehicleList) {
         button.appendChild(image);
         button.appendChild(nameElement);
         button.appendChild(priceElement);
-        layout.appendChild(button);
+        div.appendChild(button);
+        layout.appendChild(div)
+        
 
         button.onclick = function() {
             ShowItem(vehicle);
@@ -148,10 +165,10 @@ for(let i = 0; i < links.length; i++){
     links[i].onclick = () => window.location.href = links[i].getAttribute("value")
 }
 document.getElementById("close").onclick = () => ShowBackground()
+var vehicles = JSON.parse(document.currentScript.getAttribute('vehicles'));
 //uploadLink.onclick = () => window.location.href = "/upload"
 //logout.onclick = () => window.location.href = "/logout"
 
-var vehicles = JSON.parse(document.currentScript.getAttribute('vehicles'));
 ShowVehicles(vehicles)
 
 //OLD CODE PUT IN PYTHON

@@ -1,3 +1,4 @@
+from bson import ObjectId
 from pymongo import MongoClient
 
 from encryption import EncryptMessage, DecryptMessage
@@ -277,8 +278,9 @@ def UploadVehicle(data):
 
 
 def DeleteVehicle(id:str):
+    print(id)
     collection = client["eCommerceProject"]["vehicles"]
-    deleted = collection.delete_one({"_id":id})
+    deleted = collection.delete_one({"_id": ObjectId(id)})
     print(deleted)
 
 
