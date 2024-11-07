@@ -5,7 +5,6 @@ vehicles = []
 
 def GetVehiclesByName(name: str, vehiclesList: list):
     allCurrentVehicles = vehiclesList
-    name = name[1:-1]
     
     if name == "":
         return allCurrentVehicles
@@ -41,7 +40,6 @@ def GetVehiclesByTag(vehiclesList: list, tags: list):
         if currentVehicle.get("tags") == None or len(currentVehicle.get("tags")) < 1: continue
         for tag in range(len(tags)):
             currentTag:str = tags[tag]
-            currentTag = currentTag[1:-1]
             
             if not currentTag in currentVehicle.get("tags"):
                 allCurrentVehicles.pop(vehicle)
@@ -81,7 +79,6 @@ def SearchForVehicles(search: str, allVehicles: list):
         
         if len(param) == 0:#empty parameter
             continue
-
         
         if param[0] == "#" and  len(param) > 1:
             tags.append(param)
@@ -103,7 +100,6 @@ def SearchForVehicles(search: str, allVehicles: list):
 def Search():
     data = request.get_json()
     data = data[1:-1]
-    
     search = SearchForVehicles(data, vehicles)
     vehicleList = []
 

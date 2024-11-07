@@ -40,7 +40,6 @@ function ShowVehicles(vehicleList) {
         button.id = vehicle["_id"];
         button.className = "item";
 
-        console.log(window.location.href.length)
         if(window.location.href.length > 26){
             let del = document.createElement("button");
             del.className = "delete"
@@ -53,7 +52,6 @@ function ShowVehicles(vehicleList) {
 
         let image = document.createElement("img");
         image.className = "itemImage";
-        console.log(vehicle["_id"]);
         image.src = "/static/images/" + vehicle["_id"] + ".png";
 
         let nameElement = document.createElement("div");

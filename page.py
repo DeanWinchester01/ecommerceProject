@@ -1,5 +1,5 @@
 import os
-from flask import Flask, Blueprint, render_template, request, jsonify, redirect
+from flask import Flask, Blueprint, render_template, request, jsonify, redirect, send_from_directory
 from werkzeug.utils import secure_filename
 import database
 import tempfile
