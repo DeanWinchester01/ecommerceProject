@@ -66,7 +66,7 @@ def GetVehicleImage():
             "tags":tags
         }
         
-        uploaded = database.UploadVehicle(data)
+        data,image = database.UploadVehicle(data)
         users = database.GetUsers()
 
         for user in users.find():
@@ -79,7 +79,7 @@ def GetVehicleImage():
             if "vehicles" in user:
                 vehicles = user["vehicles"]
             
-            vehicles.append(uploaded.inserted_id)
+            vehicles.append(data.inserted_id)
             updatefilter = {"_id": user["_id"]}
             update_operation = { '$set' : 
                 { 'vehicles' : vehicles }

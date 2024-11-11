@@ -271,10 +271,26 @@ def GetVehicles(search):
     print("[MongoDB] 3: Database Final Check")
 #etVehicles("public")
 
-def UploadVehicle(data):
-    collection = client["eCommerceProject"]["vehicles"]
-    result = collection.insert_one(data)
-    return result
+def UploadVehicle(data: dict):
+    #connect to database (helps if there was a quick temporary disconnection)
+    vehicleDatabase = client["eCommerceProject"]["vehicles"]
+    imageDatabase = client["eCommerceProject"]["images"]
+
+    #separate image from rest of data
+    image = data.pop("image")
+
+    #upload vehicle data
+    result = vehicleDatabase.insert_one(data)
+    
+    #set vehicle image data
+    imageData = {}
+    imageData["image"] = image
+    imageData["link"] = result.inserted_id
+
+    #upload vehicle image
+    imageResult = imageDatabase.insert_one(imageData)
+    
+    return result, imageResult
 
 
 def DeleteVehicle(id:str):

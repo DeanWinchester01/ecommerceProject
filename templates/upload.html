@@ -40,7 +40,7 @@
             <img id = "itemImg" alt="">
             <div style="display: flex; height: 90%; width: 80%; left: 12%; top: 40%; position: absolute;">
                 <form action="/upload/vehicle" method="post" enctype="multipart/form-data" style="width: 100%;">
-                    <input name = "image" type="file" id = "imgUpload" accept="image/*" style="left: 0%;" required>
+                    <input name = "image" type="file" id = "imgUpload" accept="image/*" style="left: 0%; color: transparent;" required>
                     <input class = "detail" name="name" id = "itemName" type = "text" placeholder = "Name" required>
                     <input class = "detail" name="description" id = "desc" type = "text" placeholder = "Description">
                     <input class = "detail" name="price" id = "price" type = "text" placeholder = "Price" required>
@@ -67,6 +67,7 @@
                     }
                     reader.readAsDataURL(file)
                 }
+                //imageinput.hidden = true
             })
         </script>
     </body>
