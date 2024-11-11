@@ -32,22 +32,33 @@ function ShowBackground(){
  */
 function ShowVehicles(vehicleList) {
     vehicleList.forEach(function(vehicle) {
-        let div = document.createElement("div")
-        div.className = "item"
-        div.id = vehicle["_id"]
+        let div = document.createElement("div");
+        div.className = "item-container";
+        div.id = vehicle["_id"];
 
         let button = document.createElement("button");
         button.id = vehicle["_id"];
         button.className = "item";
 
-        if(window.location.href.length > 26){
+        if(window.location.href.length > 26) {
             let del = document.createElement("button");
-            del.className = "delete"
-            div.append(del)
+            del.className = "delete";
+            div.append(del);
 
-            del.onclick = function(){
-                window.location.href = "/delete/"+vehicle["_id"]
-            }
+            // Create and append the span for the delete icon
+            let iconSpan = document.createElement("span");
+            iconSpan.className = "material-symbols-outlined";
+            iconSpan.textContent = "delete"; // Material icon text
+            del.append(iconSpan);
+
+            // Create and append the paragraph for the text "Delete"
+            let deleteText = document.createElement("p");
+            deleteText.textContent = "Delete";
+            del.append(deleteText);
+
+            del.onclick = function() {
+                window.location.href = "/delete/" + vehicle["_id"];
+            };
         }
 
         let image = document.createElement("img");
@@ -73,8 +84,7 @@ function ShowVehicles(vehicleList) {
         button.appendChild(nameElement);
         button.appendChild(priceElement);
         div.appendChild(button);
-        layout.appendChild(div)
-        
+        layout.appendChild(div);
 
         button.onclick = function() {
             ShowItem(vehicle);
