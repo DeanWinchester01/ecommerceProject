@@ -49,7 +49,7 @@ def page():
         </div>"""
     
     option1 = f"""
-        <p class = 'sidemenu' id = 'welcome'>' {username} '</p>
+        <p class = 'sidemenu' id = 'welcome'>{username}</p>
         <button class = sidemenu id = "upload" value = "/upload">Upload vehicle</button>
         <button class = sidemenu id = "uploads" value = "/page/"""+username+"""">My vehicles</button>
         <button class = "sidemenu" id = "Logout" value = "/logout">Log out</button>

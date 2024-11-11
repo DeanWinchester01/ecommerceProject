@@ -25,8 +25,21 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
-    <input id = "searchbar" type="text">
-    <div id = "layout" class="layout"> 
+    <div class="header">
+        <h1>E-Commerce</h1>
+        <div class="searchbar-container">
+            <span class="searchbar-icon material-symbols-outlined">search</span>
+            <input id="searchbar" type="text" placeholder="Search Vehicle"></input>
+        </div>
+
+        <!-- Menu on the right -->
+        <div class="header-right">
+            <p class="header-right-buttons" id="welcome">{{ username }}</p>
+            <button class="header-right-buttons" id="Logout" value="/logout">Log out</button>
+        </div>
+    </div>
+
+    <div id="layout" class="layout"> 
         <!--{{ items | safe }}-->
     </div>
 
