@@ -13,6 +13,7 @@ let tags = document.getElementById("tags")
 //let uploadLink = document.getElementById("upload")
 //let mainLink = document.getElementById("mainPage")
 //let logout = document.getElementById("Logout")
+var privatePage = false
 
 var cookies = document.cookie.split(";");
 let username = cookies[1].split("=")[1]
@@ -24,7 +25,9 @@ function ShowBackground(){
     sidemenu.style.filter = "none"
     layout.style.filter = "none"
     searchBar.style.filter = "none"
-    filterview.style.filter = "none"
+
+    if(!privatePage)
+        filterview.style.filter = "none"
 }
 
 /**
@@ -41,6 +44,7 @@ function ShowVehicles(vehicleList) {
         button.className = "item";
 
         if(window.location.href.length > 26) {
+            privatePage = true
             let del = document.createElement("button");
             del.className = "delete";
             div.append(del);
@@ -93,6 +97,9 @@ function ShowVehicles(vehicleList) {
 }
 
 function ShowItem(vehicle) {
+    let updateForm = document.getElementById("form")
+    updateForm.action = "/update/"+vehicle["_id"]
+    
     let name = document.getElementById("name-custom") || document.getElementById("name");
     let cat = document.getElementById("category-custom") || document.getElementById("category");
     let description = document.getElementById("description-custom") || document.getElementById("description");
@@ -100,21 +107,23 @@ function ShowItem(vehicle) {
     let img = document.getElementById("itemImage");
     let tag = document.getElementById("tags-custom") || document.getElementById("tags");
 
-    name.textContent = vehicle.vehicle || vehicle.name || "Unknown Vehicle";
-    cat.textContent = vehicle.category || "Uncategorized";
-    description.textContent = vehicle.description || "No description available";
-    pr.textContent = "$" + (vehicle.price || "0.00");
+    name.value = vehicle.name || "Unknown Vehicle";
+    cat.value = vehicle.category || "Uncategorized";
+    description.value = vehicle.description || "No description available";
+    pr.value = "$" + (vehicle.price || "0.00");
     
     img.src = "/static/images/" + vehicle["_id"] + ".png";
 
     // Handle tags directly as a string
-    tag.textContent = vehicle.tags || "N/A";
+    tag.value = vehicle.tags || "N/A";
 
     itemView.style.visibility = "visible";
     sidemenu.style.filter = "blur(10px)";
     layout.style.filter = "blur(10px)";
     searchBar.style.filter = "blur(10px)";
-    filterview.style.filter = "blur(10px)";
+    
+    if(!privatePage)
+        filterview.style.filter = "blur(10px)";
 }
 
 

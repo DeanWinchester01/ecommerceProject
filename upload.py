@@ -18,6 +18,31 @@ def UploadVehicle():
         return redirect("/login")
     return render_template("upload.html")
 
+@uploadBP.route("/update/<id>", methods = ["GET","POST"])
+def UpdateVehicle(id):
+    form = request.form
+    name = form["name"]
+    category = form["category"]
+    description = form["description"]
+    price = form["price"]
+    tags = form["tags"]
+    print(price)
+
+    if "$" in price:
+        price = price[1:]
+    print(name, category, description, price, tags)
+
+    data = {
+        "name":name,
+        "category":category,
+        "description":description,
+        "price": int(price),
+        "tags":tags
+    }
+
+    database.UpdateVehicle(data, id)
+    return redirect("/page/"+request.cookies.get("username"))
+
 @uploadBP.route("/upload/vehicle", methods = ["GET","POST"])
 def GetVehicleImage():
     

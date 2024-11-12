@@ -60,75 +60,42 @@
     
     <div class = "itemview" id = "itemview">
         <img  id = "itemImage" >
-        <div class = "descriptors" style="top: 12.5%; left: 50%; position: absolute; width: 30%;">
-            <p class = "descriptor" id = "name">
-                <span>Name:</span>
-                <span id = "custom"></span>
-            </p>
-            <p class = "descriptor" id = "category">
-                <span>Category:</span>
-                <span id = "custom"></span>
-            </p>
-            <p class = "descriptor" id = "description">
-                <span>Description:</span>
-                <span id = "custom"></span>
-            </p>
-            <p class = "descriptor" id = "price">
-                <span>Price:</span>
-                <span id = "custom"></span>
-            </p>
-            <p class="descriptor" id = "tags">
-                <span>Tags:</span>
-                <span id = "custom"></span>
-            </p>
-            <button class = "descriptor" style = "font-size: 15px; align-items: center;">
-                <span class = "material-symbols-outlined">chat_bubble</span>
-                Message
-            </button>
-        </div>
-        
-        <button id = "close" name="close" value="close"><span class="material-symbols-outlined">close</span></button>
-        <div class = "itemview" id = "itemview">
-            <img id = "itemImage" alt="">
+        <form action = "/update" method = "post" id = "form">
             <div class = "descriptors" style="top: 12.5%; left: 50%; position: absolute; width: 30%;">
                 <p class = "descriptor" id = "name">
-                    <span style="text-decoration:solid; font-size: large;">
-                        Name:
-                    </span>
-                    <span id = "custom">
-                        
-                    </span>
+                    <span>Name:</span>
+                    <input type="text" id = "name-custom" placeholder = "Unknown Vehicle" name="name">
                 </p>
                 <p class = "descriptor" id = "category">
-                    <span style="text-decoration:solid; font-size: large;">
-                        Category:
-                    </span>
-                    <span id = "custom">
-    
-                    </span>
+                    <span>Category:</span>
+                    <input type="text" id = "category-custom" placeholder = "Uncategorized" name="category">
                 </p>
                 <p class = "descriptor" id = "description">
-                    <span style="text-decoration:solid; font-size: large;">
-                        Description:
-                    </span>
-                    <span id = "custom">
-    
-                    </span>
+                    <span>Description:</span>
+                    <input type="text" id = "description-custom" placeholder = "No description" name="description">
                 </p>
                 <p class = "descriptor" id = "price">
-                    <span style="text-decoration:solid; font-size: large;">
-                        Price:
-                    </span>
-                    <span id = "custom">
-    
-                    </span>
+                    <span>Price:</span>
+                    <input type="text" id = "price-custom" placeholder = "0" name="price">
                 </p>
+                <p class="descriptor" id = "tags">
+                    <span>Tags:</span>
+                    <input type="text" id = "tags-custom" placeholder = "N/A" name="tags">
+                </p>
+                <button class = "descriptor" style = "font-size: 15px; align-items: center;">
+                    <span class = "material-symbols-outlined">chat_bubble</span>
+                    Message
+                </button>
             </div>
-        </div>
+        
+        
+            <button id = "update" type="submit">
+                Update vehicle
+            </button>
+            
+        </form>
+        <button id = "close" name="close" value="close"><span class="material-symbols-outlined">close</span></button>
     </div>
-    
-    <!--
-    -->
     
     <script src="{{ url_for('static', filename='java/pageloading.js') }}"vehicles='{{ dynamic|tojson|safe }}'></script>
 </body>

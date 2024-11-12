@@ -292,6 +292,15 @@ def UploadVehicle(data: dict):
     
     return result, imageResult
 
+def UpdateVehicle(data:dict, id: str):
+    collection = client["eCommerceProject"]["vehicles"]
+    updatefilter = {"_id": ObjectId(id)}
+    update_operation = { '$set' : 
+        data
+    }
+    result = collection.update_one(updatefilter, update_operation)
+    print(result)
+    return result
 
 def DeleteVehicle(id:str):
     print(id)
