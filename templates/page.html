@@ -31,11 +31,10 @@
         </div>
 
         <div class="header-right">
-            <button class="header-right-buttons" id="Logout" value="/logout">Upload</button>
-            <button class="header-right-buttons" id="Logout" value="/logout">My Vehicles</button>
-            <p class="header-right-buttons" id="welcome">{{ username }}</p>
-            <button class="header-right-buttons" id="Logout" value="/logout">Log out</button>
-            <!-- Add more buttons here as needed -->
+            <p class="header-right-buttons sidemenu" id="welcome">{{ username }}</p>
+            <button class="header-right-buttons sidemenu" id="upload" value="/upload">Upload</button>
+            <button class="header-right-buttons sidemenu" id="uploads" value="/page/{{ username }}">My Vehicles</button>
+            <button class="header-right-buttons sidemenu" id="Logout" value="/logout">Log out</button>
         </div>
     </div>
 

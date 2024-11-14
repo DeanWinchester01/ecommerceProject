@@ -32,30 +32,16 @@
             <input id="searchbar" type="text" placeholder="Search Vehicle"></input>
         </div>
 
-        <!-- Menu on the right -->
         <div class="header-right">
-            <p class="header-right-buttons" id="welcome">{{ username }}</p>
-            <button class="header-right-buttons" id="Logout" value="/logout">Log out</button>
+            <p class="header-right-buttons sidemenu" id="welcome">{{ username }}</p>
+            <button class="header-right-buttons sidemenu" id="upload" value="/upload">Upload</button>
+            <button class="header-right-buttons sidemenu" id="mainPage" value="/page">Main Page</button>
+            <button class="header-right-buttons side" id="Logout" value="/logout">Log out</button>
         </div>
     </div>
 
     <div id="layout" class="layout"> 
         <!--{{ items | safe }}-->
-    </div>
-
-    <div id = "sidemenu">
-        <div id = "sideoptionstyle">
-            <p class = "sidemenu" id = "welcome"></p>
-            <form action="/upload" method="post">
-                <button class = "sidemenu" id = "upload">Upload vehicle</button>
-            </form>
-            <form action="/page" method="post">
-                <button class = "sidemenu" id = "mainPage">Main page</button>
-            </form>
-            <form action="/logout" method="post">
-                <button class = "sidemenu" id = "Logout">Log out</button>
-            </form>
-        </div> 
     </div>
     
     <div class = "itemview" id = "itemview">
@@ -87,7 +73,6 @@
                     Message
                 </button>
             </div>
-        
         
             <button id = "update" type="submit">
                 Update vehicle
