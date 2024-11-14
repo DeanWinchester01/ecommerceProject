@@ -99,7 +99,7 @@ function ShowVehicles(vehicleList) {
 function ShowItem(vehicle) {
     let updateForm = document.getElementById("form")
     updateForm.action = "/update/"+vehicle["_id"]
-    
+
     let name = document.getElementById("name-custom") || document.getElementById("name");
     let cat = document.getElementById("category-custom") || document.getElementById("category");
     let description = document.getElementById("description-custom") || document.getElementById("description");

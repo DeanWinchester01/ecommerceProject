@@ -1,76 +1,76 @@
 .returnButton {
-    color: #fafafa;
     background-color: #424242;
     border: none;
     border-radius: 5px;
-    font-weight: 600;
-    font-size: 14px;
-    padding: 1%;
+    color: #fafafa;
     display: flex;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 1%;
     align-items: center;
 }
 
 #plainButton {
     color: #fafafa;
-    font-weight: 400;
     font-size: 14px;
+    font-weight: 400;
 }
 
 #blueButton {
-    color: #ebf5fb;
     background-color: #5dade2;
     border: none;
     border-radius: 10px;
-    font-weight: 600;
+    color: #ebf5fb;
     font-size: 14px;
+    font-weight: 600;
     padding: 6%;
     padding-left: 20%;
     padding-right: 20%;
 }
 
 #redButton {
-    color: #fdedec;
     background-color: #ec7063;
     border: 100%;
     border-radius: 10px;
-    font-weight: 600;
+    color: #fdedec;
     font-size: 14px;
+    font-weight: 600;
     padding: 6%;
     padding-left: 20%;
     padding-right: 20%;
 }
 
 #greenButton {
-    color: #eafaf1;
     background-color: #58d68d;
     border: 100%;
     border-radius: 10px;
-    font-weight: 600;
+    color: #eafaf1;
     font-size: 14px;
+    font-weight: 600;
     padding: 6%;
     padding-left: 20%;
     padding-right: 20%;
 }
 
 #whiteButton {
-    color: #212121;
     background-color: #fafafa;
     border: 100%;
     border-radius: 10px;
-    font-weight: 600;
+    color: #212121;
     font-size: 14px;
+    font-weight: 600;
     padding: 6%;
     padding-left: 20%;
     padding-right: 20%;
 }
 
 #blackButton {
-    color: #fafafa;
     background-color: #424242;
     border: 100%;
     border-radius: 10px;
-    font-weight: 600;
+    color: #fafafa;
     font-size: 14px;
+    font-weight: 600;
     padding: 6%;
     padding-left: 20%;
     padding-right: 20%;

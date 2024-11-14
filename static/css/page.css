@@ -1,143 +1,97 @@
 .header {
-    display: flex;
-    justify-content: space-between; /* Space out the elements */
     align-items: center;
-    padding: 0 20px;
-    height: auto; /* Set a specific height for the header */
-    width: 100%;
     background-color: #424242;
-    box-sizing: border-box; /* Ensure padding doesn't affect width */
-    overflow: hidden; /* Hide overflow if any elements go outside */
+    display: flex;
+    height: auto;
+    justify-content: space-between;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 0 20px;
+    width: 100%;
 }
 
-/* H1 element */
 .header h1 {
     color: #fafafa;
-    margin: 0; /* Remove any default margin */
-    white-space: nowrap; /* Prevent wrapping of text */
-    overflow: hidden; /* Hide overflowing text */
-    text-overflow: ellipsis; /* Add ellipsis if text overflows */
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-/* Search bar container */
 .searchbar-container {
+    min-width: 250px;
     position: relative;
-    width: 60%; /* Adjust the width as needed */
-    min-width: 250px; /* Prevent the container from getting too small */
+    width: 60%;
 }
 
-/* Search icon */
 .searchbar-icon {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
     color: #888;
     font-size: 20px;
+    left: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-/* Search bar input */
 #searchbar {
-    width: 100%;
-    height: 35px;
-    padding-left: 35px;
-    color: #fafafa;
     background-color: #616161;
     border: 2px solid transparent;
     border-radius: 8px;
+    color: #fafafa;
+    height: 35px;
     outline: none;
+    padding-left: 35px;
+    width: 100%;
 }
 
 #searchbar:focus {
     border-color: #fafafa;
 }
 
-/* Right-side buttons container */
 .header-right {
-    display: flex;
     align-items: center;
-    justify-content: flex-start; /* Align buttons on the left side */
+    display: flex;
+    flex-shrink: 0;
     gap: 10px;
-    flex-shrink: 0; /* Prevent buttons from shrinking */
+    justify-content: flex-start;
 }
 
-/* Individual buttons */
 .header-right-buttons {
-    color: #ebf5fb;
-    background-color: #5dade2;
-    border: none;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 14px;
-    width: 100px;
-    height: 20px;
-    white-space: normal;
-    text-align: center;
-    word-wrap: normal;
     align-content: center;
-}
-
-#sidemenu {
-    position: absolute;
-    left: 90%;
-    background: #424242;
-    height: 100%;
-    width: 10%;
-    top: 6%;
-    /*filter: blur(10px);*/
-}
-
-.sidemenu {
-    display: flex;
-    margin-bottom: 10%;
-    margin-left: 26%;
-    color: #212121;
     background-color: #5dade2;
     border: none;
     border-radius: 10px;
+    color: #ebf5fb;
+    font-size: 14px;
     font-weight: 600;
-    font-size: 15px;
-    padding: 8px;
-}
-
-.sideoption{
-    display: flex;
-    margin-bottom: 10%;
-    color: #212121;
-    background-color: #5dade2;
-    border: none;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 15px;
-    padding: 0;
-    margin: 0;
-}
-
-#sideoptionstyle {
-    top: 10%;
-    position: relative;
+    margin-right: 10px;
+    padding: 4%;
+    text-align: center;
+    white-space: normal;
+    width: 100px;
+    word-wrap: normal;
 }
 
 .layout {
     display: flex;
     flex-wrap: wrap;
-    position: relative;
     justify-content: center;
+    position: relative;
 }
 
 .item {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 200px;
-    height: 240px;
     background-color: #212121;
     border: 2px solid #424242;
     border-radius: 8px;
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 240px;
+    justify-content: center;
     margin: 10px;
+    padding: 10px;
     position: relative;
+    width: 200px;
 }
 
 .item:hover {
@@ -145,45 +99,45 @@
 }
 
 .item img {
+    height: 150px;
+    object-fit: cover;
     width: 100%;
-    height: 150px; /* Fixed height to standardize image size */
-    object-fit: cover; /* Ensures the image fills the space while maintaining aspect ratio */
 }
 
 #itemview {
-    visibility: hidden; /* Keep this for hiding the item view initially */
-    padding: 20px; /* Add padding to create space inside the item view */
-    box-sizing: border-box; /* Ensure box-sizing is applied */
+    visibility: hidden;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .itemview {
-    display: flex; /* Use flexbox to position children horizontally */
-    align-items: stretch; /* Make items stretch to full height */
-    justify-content: flex-start; /* Align items to the start */
-    width: 80%;
-    height: 80%;
-    position: fixed;
-    top: 10%;
-    left: 10%;
-    color: #fafafa;
+    align-items: stretch;
     background-color: #424242;
     border: 5px solid #212121;
+    color: #fafafa;
+    display: flex;
+    height: 80%;
+    justify-content: flex-start;
+    left: 10%;
     overflow: hidden;
+    position: fixed;
+    top: 10%;
+    width: 80%;
 }
 
 #itemImage {
-    width: 50vw; /* Adjust as needed */
-    height: 40vh; /* Adjust as needed */
-    margin: 5px; /* No margins for the image */
-    object-fit: cover; /* Maintain aspect ratio */
+    height: 40vh;
+    margin: 5px;
+    object-fit: cover;
+    width: 50vw;
 }
 
 .itemTable {
-    margin-top: 50px;
-    width: 50%; /* Ensure it takes the rest of the space */
     color: #fafafa;
-    padding: 0; /* Remove padding for the table */
-    overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
+    margin-top: 50px;
+    overflow-y: auto;
+    padding: 0;
+    width: 50%;
 }
 
 .itemTableRow {
@@ -191,51 +145,46 @@
 }
 
 .itemTableTitle {
-    width: 20%;
     background-color: #757575;
     border: 1px solid #212121;
     padding: 10px;
     margin: 0px;
+    width: 20%;
 }
 
 .itemTableDetails {
-    width: 80%;
     background-color: #9e9e9e;
     border: 1px solid #212121;
     padding: 10px;
     margin: 0px;
+    width: 80%;
 }
 
 #close {
-    position: absolute; /* Position the close button inside itemview */
-    top: 10px; /* Space from the top */
-    right: 10px; /* Space from the right */
     background-color: #ec7063;
     border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
     z-index: 10;
-    padding: 10px; /* Add padding for better touch target */
-    cursor: pointer; /* Change cursor to pointer */
 }
 
-/* Make close button visible when itemview is visible 
-#itemview:has(.itemview) #close {
-    visibility: visible; /* Show close button when itemview is displayed 
-}*/
-
 .descriptor {
-    position: relative;
     left: 50%;
+    position: relative;
 }
 
 .itemImage {
-    width: 90%;
     height: 90%;
-    margin-bottom: 10px; /* Add space below the image */
+    margin-bottom: 10px;
+    width: 90%;
 }
 
 .itemPrice, .itemName {
-    color: #fafafa; 
-    text-align: center; 
+    color: #fafafa;
+    text-align: center;
 }
 
 .itemName {
@@ -244,36 +193,35 @@
 }
 
 .delete {
-    position: relative;
-    top: 10px; /* Position the button near the top of the image */
-    left: 50%; /* Horizontally center the button */
-    transform: translateX(-50%); /* Adjust to perfectly center the button */
-    display: inline-flex;
     align-items: center;
-    border: none;
-    color: #fdedec;
     background-color: #ec7063;
+    border: none;
     border-radius: 10px;
-    font-weight: 600;
+    color: #fdedec;
+    display: inline-flex;
     font-size: 14px;
+    font-weight: 600;
+    left: 50%;
     margin-bottom: 5px;
+    position: relative;
+    top: 10px;
+    transform: translateX(-50%);
 }
 
 .descriptor {
-    top: 0;
     left: 0;
+    top: 0;
 }
 
 .filterview {
     background-color: #424242;
+    display: grid;
+    height: 57%;
+    left: 0;
+    overflow-y: hidden;
     position: absolute;
     top: 24%;
-    left: 0;
-    height: 57%;
     width: 9%;
-    overflow-y: hidden;
-    display: grid;
-    align-content: baseline;
 }
 
 .option {

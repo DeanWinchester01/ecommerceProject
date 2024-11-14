@@ -24,102 +24,144 @@
 <body>
     <div class="header">
         <h1>E-Commerce</h1>
+
         <div class="searchbar-container">
             <span class="searchbar-icon material-symbols-outlined">search</span>
-            <input id="searchbar" type="text" placeholder="Search Vehicle"></input>
+            <input id="searchbar" type="text" placeholder="Search Vehicle">
         </div>
 
-        <!-- Menu on the right -->
         <div class="header-right">
+            <button class="header-right-buttons" id="Logout" value="/logout">Upload</button>
+            <button class="header-right-buttons" id="Logout" value="/logout">My Vehicles</button>
             <p class="header-right-buttons" id="welcome">{{ username }}</p>
             <button class="header-right-buttons" id="Logout" value="/logout">Log out</button>
+            <!-- Add more buttons here as needed -->
         </div>
     </div>
 
-    <div id="layout" class="layout"> 
+    <div id="layout" class="layout">
         <!--{{ items | safe }}-->
     </div>
 
-    <!--
-    <div id="sidemenu">
-        <div id="sideoptionstyle">
-            {{user_specifics | safe}}
-        </div> 
-    </div>
+    <div class="filterview" id="filterview" style="overflow: scroll;">
+        <div class="option">
+            <!-- Filter Options -->
+            <label>Price</label>
+            <div class="sideoption">
+                <input type="radio" name="price" class="selector">
+                <p class="data">$500 - $10,000</p>
+            </div>
+            <div class="sideoption">
+                <input type="radio" name="price" class="selector">
+                <p class="data">$10,000 - $50,000</p>
+            </div>
+            <div class="sideoption">
+                <input type="radio" name="price" class="selector">
+                <p class="data">$50,000 - $100,000</p>
+            </div>
 
-    <div class = "filterview" id = "filterview" style="overflow: scroll;">
-        <div class = "option">
-            <label>Price range</label>
-            <div class = "sideoption">
-                <input type="radio" name = "price" style="width: 10px;" class = "selector">
-                <p class = "data">$500, - $10,000</p>
+            <label>Condition</label>
+            <div class="sideoption">
+                <input type="checkbox" id="used" class="selector">
+                <p class="data" value="#new">New</p>
             </div>
-            <div class = "sideoption">
-                <input type="radio" name = "price" style="width: 10px;" class = "selector">
-                <p class = "data">$10,000 - $20,000</p>
+            <div class="sideoption">
+                <input type="checkbox" id="used" class="selector">
+                <p class="data" value="#used">Used</p>
             </div>
-            <div class = "sideoption">
-                <input type="radio" name = "price" style="width: 10px;" class = "selector">
-                <p class = "data">$20,000 - $50,000</p>
-            </div>     
+            <div class="sideoption">
+                <input type="checkbox" id="used" class="selector">
+                <p class="data" value="#salvage">Salvage</p>
+            </div>
+            <div class="sideoption">
+                <input type="checkbox" id="used" class="selector">
+                <p class="data" value="#damaged">Damaged</p>
+            </div>
+
+            <label>Engine</label>
+            <div class="sideoption">
+                <input type="checkbox" id="cylinder" class="selector">
+                <p class="data" value="#gasoline">Gasoline</p>
+            </div>
+            <div class="sideoption">
+                <input type="checkbox" id="cylinder" class="selector">
+                <p class="data" value="#electric">Electric</p>
+            </div>
+            <div class="sideoption">
+                <input type="checkbox" id="cylinder" class="selector">
+                <p class="data" value="#4hybrid">Hybrid</p>
+            </div>
+
+            <label>Speed</label>
+            <div class="sideoption">
+                <input type="checkbox" id="speed" class="selector">
+                <p class="data" value="#100kmph">100 mph</p>
+            </div>
+            <div class="sideoption">
+                <input type="checkbox" id="speed" class="selector">
+                <p class="data" value="#200kmph">200 mph</p>
+            </div>
+            <div class="sideoption">
+                <input type="checkbox" id="speed" class="selector">
+                <p class="data" value="#300kmph">300 mph</p>
+            </div>
+            <div class="sideoption">
+                <input type="checkbox" id="speed" class="selector">
+                <p class="data" value="#400kmph">400 mph</p>
+            </div>
+
+            <label>Seats</label>
+            <div class="sideoption">
+                <input type="checkbox" id="medium" class="selector">
+                <p class="data" value="#3seater">3-Seater</p>
+            </div>
+            <div class="sideoption">
+                <input type="checkbox" id="medium" class="selector">
+                <p class="data" value="#4seater">4-Seater</p>
+            </div>
+            <div class="sideoption">
+                <input type="checkbox" id="medium" class="selector">
+                <p class="data" value="#5seater">5-Seater</p>
+            </div>
+            <div class="sideoption">
+                <input type="checkbox" id="medium" class="selector">
+                <p class="data" value="#7seater">7-Seater</p>
+            </div>
         </div>
-        
-        <div class = "sideoption">
-            <p class = "data" value = "#used">Used Cars</p>
-            <input type="checkbox" id = "used" class = "selector">
-        </div>
-        <div class = "sideoption">
-            <p class = "data" value="#4cylinder"> 4-Cylinder Engine</p>
-            <input type="checkbox" id = "cylinder" class = "selector">
-        </div>
-        <div class = "sideoption">
-            <p class = "data" value="#200kmph">200 km Top Speed</p>
-            <input type="checkbox" id = "speed" class = "selector">
-        </div>
-        <div class = "sideoption">
-            <p class = "data" value = "#4seater">4 Seater Cars</p>
-            <input type="checkbox" id = "medium" class = "selector">
-        </div>
-        <div class = "sideoption">
-            <p class = "data" value="#singer">chrissy</p>
-            <input type="checkbox" id = "chrissy" class = "selector">
-        </div>
-    </div>
-    -->
-    <!--{{ searchoptions | safe }}-->
+    </div>    
 
     <div class="itemview" id="itemview">
         <button id="close" name="close" value="close"><span class="material-symbols-outlined">close</span></button> <!-- Close button inside itemview -->
         <img id="itemImage" alt="Item Image">
-    
+
         <div class="itemTable">
             <div class="itemTableRow">
                 <p class="itemTableTitle">Name:</p>
                 <p class="itemTableDetails"><span id="name-custom"></span></p> <!-- Unique ID -->
             </div>
-            
+
             <div class="itemTableRow">
                 <p class="itemTableTitle">Price:</p>
                 <p class="itemTableDetails"><span id="price-custom"></span></p> <!-- Unique ID -->
             </div>
-            
+
             <div class="itemTableRow">
                 <p class="itemTableTitle">Category:</p>
                 <p class="itemTableDetails"><span id="category-custom"></span></p> <!-- Unique ID -->
             </div>
-    
+
             <div class="itemTableRow">
                 <p class="itemTableTitle">Tags:</p>
                 <p class="itemTableDetails"><span id="tags-custom"></span></p> <!-- Unique ID -->
             </div>
-    
+
             <div class="itemTableRow">
                 <p class="itemTableTitle">Description:</p>
                 <p class="itemTableDetails"><span id="description-custom"></span></p> <!-- Unique ID -->
             </div>
         </div>
     </div>    
-    
+
     <script src="{{ url_for('static', filename='java/pageloading.js') }}" vehicles='{{ dynamic|tojson|safe }}'></script>
     <script src="{{ url_for('static', filename='java/mainPage.js') }}"></script>
 </body>

@@ -1,25 +1,25 @@
 .itemview {
-    display: flex; /* Use flexbox to position children horizontally */
-    align-items: stretch; /* Make items stretch to full height */
-    justify-content: flex-start;
-    width: 80%;
-    height: 80%;
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    margin: 0 auto;
-    color: #fafafa;
+    align-items: stretch;
     background-color: #424242;
     border: none;
+    color: #fafafa;
+    display: flex;
+    height: 80%;
+    justify-content: flex-start;
+    left: 10%;
+    margin: 0 auto;
     overflow: hidden;
+    position: absolute;
+    top: 10%;
+    width: 80%;
 }
 
-#update{
-    position: absolute;
-    left: 39%;
-    top: 65%;
-    width: 20%;
-    height: 10%;
+#update {
     background-color: green;
     font-size: 43px;
+    height: 10%;
+    left: 39%;
+    position: absolute;
+    top: 65%;
+    width: 20%;
 }

@@ -1,10 +1,10 @@
 .textBody {
+    align-items: center;
     color: #fafafa;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     height: 100%;
+    justify-content: center;
 }
 
 .textBody .material-symbols-outlined {
@@ -12,8 +12,8 @@
 }
 
 .textBody h1 {
-    font-weight: 600;
     font-size: 100px;
+    font-weight: 600;
     margin-bottom: 10px;
 }
 
@@ -23,8 +23,8 @@
 }
 
 .textBody button {
-    display: flex;
-    padding: 1% !important;
     border: none;
+    display: flex;
     margin-bottom: 15px;
+    padding: 1% !important;
 }

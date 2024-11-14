@@ -1,64 +1,45 @@
 #itemImg {
-    width: 40%;
     height: 40%;
     left: 30%;
     position: relative;
     top: 0;
     visibility: hidden;
+    width: 40%;
 }
 
 #imgUpload {
+    font-size: 16px;
+    height: 40px;
     left: 0;
-    top:0;
-    align-items: center;
+    padding: 8px;
     position: absolute;
-    font-size: 16px;  /* Increase font size */
-    padding: 8px;     /* Increase padding for better clickability */
-    width: 350px;     /* Control the total width including the white area */
-    height: 40px;     /* Increase height */
+    top: 0;
+    width: 350px;
 }
 
 #details {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    font-weight: 400;
     height: 80%;
-    position: relative;
     left: 10%;
-    top: 10%;
-    font-weight: 400;
-}
-
-#imgUpload{
-    left: 0;
-    top:0;
-    position: absolute;
-    font-size: 16px;  /* Increase font size */
-    padding: 8px;     /* Increase padding for better clickability */
-    width: 350px;     /* Control the total width including the white area */
-    height: 40px;     /* Increase height */
-}
-
-#itemImg{
-    width: 40%;
-    height: 40%;
-    left: 30%;
     position: relative;
-    top: 0;
+    top: 10%;
+    width: 80%;
 }
 
-.detail{
-    height: 10%; /* Container height relative to the body or parent element */
-    width: 100%;
-    top: 10%;
-    position: relative;
-    display: flex;
+.detail {
     align-items: center;
-    justify-content: center;
-    font-weight: 400;
     background-color: #424242;
-    color: #fafafa;
     border: 2px solid #212121;
+    color: #fafafa;
+    display: flex;
+    font-weight: 400;
+    height: 10%;
+    justify-content: center;
+    position: relative;
+    top: 10%;
+    width: 100%;
 }
 
 .detail::placeholder {
@@ -66,20 +47,20 @@
 }
 
 .detail:focus {
-    color: #58d68d;
     border: 2px solid #58d68d;
+    color: #58d68d;
     outline: none;
 }
 
 #uploadButton {
-    width: 50%;
-    height: 25%;
-    left: 25%;
-    position: relative;
-    color: #58d68d;
     background-color: #186a3b;
     border: none;
     border-radius: 20px;
+    color: #58d68d;
     font-size: 18px;
     font-weight: 600;
+    height: 25%;
+    left: 25%;
+    position: relative;
+    width: 50%;
 }
