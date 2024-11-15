@@ -1,7 +1,6 @@
 var layout = document.getElementById("layout")
 if (document.cookie.includes("email")){
     //let uploadLink = document.getElementById("upload")
-    //let userLink = document.getElementById("uploads")
     //let logout = document.getElementById("Logout")
     
     let parts = document.cookie.split("; ")
@@ -9,14 +8,17 @@ if (document.cookie.includes("email")){
     let isLoggedIn = loggedIn.split("=")[1] == "True"
     let username = parts[1].split("=")[1]
     
-    if (isLoggedIn)
-        document.getElementById("welcome").textContent = parts[1].split("=")[1]
+    let userLink = document.getElementById("uploads")
+    userLink.value += username
     
-    let links = document.getElementsByClassName("sidemenu")
+    if (isLoggedIn)
+        document.getElementById("welcome").textContent = "Welcome\n"+parts[1].split("=")[1]
+    
+    /*let links = document.getElementsByClassName("header-right-buttons sidemenu")
     for(let i = 0; i < links.length; i++){
         if(links[i].nodeName != "BUTTON") continue;
         links[i].onclick = () => window.location.href = links[i].getAttribute("value")
-    }
+    }*/
     
     //uploadLink.onclick = () => window.location.href = "/upload"
     //logout.onclick = () => window.location.href = "/logout"
