@@ -20,14 +20,15 @@
         <div class="login-container">
             <div id="info">
                 <h1 class="login-header">Welcome Back!</h1>
+                <p class="login-description">Enter your credential to login</p>
                 <div class="inputs">
                     <form action="/login" method="post">
                         <input autocomplete="email" class="userinfo" name="email" id="email" placeholder="Email" type="text" required>
                         <input autocomplete="current-password" class="userinfo" name="password" id="password" placeholder="Password" type="password" required>
-                        <button class="userinfo" type="submit" id="blueButton">Login</button>
+                        <button class="userinfo" type="submit" id="blueButton">Log in</button>
                     </form>
                     <form action="/signup" method="post" class="form-wrapper">
-                        <button class="userinfo" type="submit" id="blackButton">Create Account</button>
+                        <button class="userinfo" type="submit" id="blackButton">Sign up</button>
                     </form>                    
                     <form action="/pass" method="post">
                         <button class="userinfo forgotPassword" id="plainButton">Forgot password?</button>
