@@ -1,5 +1,5 @@
 var itemView = document.getElementById("itemview")
-var sidemenu = document.getElementById("sidemenu")
+var rightHeader = document.getElementById("header-right")
 var layout = document.getElementById("layout")
 var searchBar = document.getElementById("searchbar")
 var filterview = document.getElementById("filterview")
@@ -22,7 +22,7 @@ document.getElementById("welcome").textContent = cookies[1].split("=")[1]
 
 function ShowBackground(){
     itemView.style.visibility = "hidden"
-    sidemenu.style.filter = "none"
+    rightHeader.style.filter = "none"
     layout.style.filter = "none"
     searchBar.style.filter = "none"
 
@@ -98,7 +98,8 @@ function ShowVehicles(vehicleList) {
 
 function ShowItem(vehicle) {
     let updateForm = document.getElementById("form")
-    updateForm.action = "/update/"+vehicle["_id"]
+    if(updateForm != null)
+        updateForm.action = "/update/"+vehicle["_id"]
 
     let name = document.getElementById("name-custom") || document.getElementById("name");
     let cat = document.getElementById("category-custom") || document.getElementById("category");
@@ -118,7 +119,8 @@ function ShowItem(vehicle) {
     tag.value = vehicle.tags || "N/A";
 
     itemView.style.visibility = "visible";
-    sidemenu.style.filter = "blur(10px)";
+    console.log(rightHeader)
+    rightHeader.style.filter = "blur(10px)";
     layout.style.filter = "blur(10px)";
     searchBar.style.filter = "blur(10px)";
     

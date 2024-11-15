@@ -48,7 +48,7 @@
     border-color: #fafafa;
 }
 
-.header-right {
+#header-right {
     align-items: center;
     display: flex;
     flex-shrink: 0;
