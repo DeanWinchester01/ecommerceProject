@@ -68,7 +68,7 @@ def GetVehicleImage():
         user = request.cookies["email"]
         vehiclename = data["name"]
         description = data["description"]
-        price = int(data["price"])
+        price = data["price"]
         category = data["category"]
         tags = data["tags"]
 

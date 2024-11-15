@@ -108,18 +108,24 @@ function ShowItem(vehicle) {
     let img = document.getElementById("itemImage");
     let tag = document.getElementById("tags-custom") || document.getElementById("tags");
 
-    name.value = vehicle.name || "Unknown Vehicle";
-    cat.value = vehicle.category || "Uncategorized";
-    description.value = vehicle.description || "No description available";
-    pr.value = "$" + (vehicle.price || "0.00");
+    if(name.localName == "span"){
+        name.textContent = vehicle.name
+        cat.textContent = vehicle.category || "Uncategorized";
+        description.textContent = vehicle.description || "No description available";
+        pr.textContent = "$" + (vehicle.price || "0.00");
+        tag.textContent = vehicle.tags;
+    }
+    else{
+        name.value = vehicle.name;
+        cat.value = vehicle.category || "Uncategorized";
+        description.value = vehicle.description || "No description available";
+        pr.value = "$" + (vehicle.price || "0.00");
+        tag.value = vehicle.tags;
+    }
     
     img.src = "/static/images/" + vehicle["_id"] + ".png";
 
-    // Handle tags directly as a string
-    tag.value = vehicle.tags || "N/A";
-
     itemView.style.visibility = "visible";
-    console.log(rightHeader)
     rightHeader.style.filter = "blur(10px)";
     layout.style.filter = "blur(10px)";
     searchBar.style.filter = "blur(10px)";
@@ -189,6 +195,7 @@ var vehicles = JSON.parse(document.currentScript.getAttribute('vehicles'));
 //logout.onclick = () => window.location.href = "/logout"
 
 ShowVehicles(vehicles)
+document.currentScript.setAttribute("vehicles","")
 
 //OLD CODE PUT IN PYTHON
 /**

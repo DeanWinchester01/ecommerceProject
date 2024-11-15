@@ -54,15 +54,19 @@
                 </p>
                 <p class = "descriptor" id = "category">
                     <span>Category:</span>
-                    <input type="text" id = "category-custom" placeholder = "Uncategorized" name="category">
+                    <select name="category" id="category">
+                        <option value="Car">Car</option>
+                        <option value="Motorcycle">Motorcycle</option>
+                    </select>
+                    <!--<input type="text" id = "category-custom" placeholder = "Uncategorized" name="category">-->
                 </p>
                 <p class = "descriptor" id = "description">
                     <span>Description:</span>
                     <input type="text" id = "description-custom" placeholder = "No description" name="description">
                 </p>
                 <p class = "descriptor" id = "price">
-                    <span>Price:</span>
-                    <input type="text" id = "price-custom" placeholder = "0" name="price">
+                    <span>Price: $</span>
+                    <input type="number" id = "price-custom" placeholder = "0" name="price">
                 </p>
                 <p class="descriptor" id = "tags">
                     <span>Tags:</span>

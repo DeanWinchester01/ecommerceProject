@@ -43,8 +43,13 @@
                     <input name = "image" type="file" id = "imgUpload" accept="image/*" style="left: 0%; color: transparent;" required>
                     <input class = "detail" name="name" id = "itemName" type = "text" placeholder = "Name" required>
                     <input class = "detail" name="description" id = "desc" type = "text" placeholder = "Description">
-                    <input class = "detail" name="price" id = "price" type = "text" placeholder = "Price" required>
-                    <input class = "detail" name="category" id = "category" type = "text" placeholder = "Category" required>
+                    <input class = "detail" name="price" id = "price" type = "number" placeholder = "Price" required>
+                    <select class = "detail" name="category" id="category" required>
+                        <option value="Car">Car</option>
+                        <option value="Motorcycle">Motorcycle</option>
+                    </select>
+                    <!--input type="text" id = "category-custom" placeholder = "Uncategorized" name="category">
+                    <input class = "detail" name="category" id = "category" type = "text" placeholder = "Category" required-->
                     <input class = "detail" name="tags" id = "tags" type="text" placeholder = "#Input #Tags #Like #This">
             
                     <input type="submit" id = "uploadButton" style="height: 10%; width: 50%; left: 25%; top: 12%;">
