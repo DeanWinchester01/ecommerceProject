@@ -1,3 +1,4 @@
+var headerTitle = document.getElementById("header-title")
 var itemView = document.getElementById("itemview")
 var rightHeader = document.getElementById("header-right")
 var layout = document.getElementById("layout")
@@ -22,6 +23,7 @@ document.getElementById("welcome").textContent = cookies[1].split("=")[1]
 
 function ShowBackground(){
     itemView.style.visibility = "hidden"
+    headerTitle.style.filter = "none"
     rightHeader.style.filter = "none"
     layout.style.filter = "none"
     searchBar.style.filter = "none"
@@ -128,6 +130,7 @@ function ShowItem(vehicle) {
     img.src = "/static/images/" + vehicle["_id"] + ".png";
 
     itemView.style.visibility = "visible";
+    headerTitle.style.filter = "blur(10px)";
     rightHeader.style.filter = "blur(10px)";
     layout.style.filter = "blur(10px)";
     searchBar.style.filter = "blur(10px)";

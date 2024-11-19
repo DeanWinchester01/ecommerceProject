@@ -12,7 +12,7 @@ if (document.cookie.includes("email")){
     userLink.value += username
     
     if (isLoggedIn)
-        document.getElementById("welcome").textContent = "Welcome\n"+parts[1].split("=")[1]
+        document.getElementById("welcome").textContent = parts[1].split("=")[1]
     
     /*let links = document.getElementsByClassName("header-right-buttons sidemenu")
     for(let i = 0; i < links.length; i++){
