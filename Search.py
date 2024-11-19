@@ -99,6 +99,7 @@ def SearchForVehicles(search: str, allVehicles: list):
 @searchBp.route("/search", methods = ["POST"])
 def Search():
     data = request.get_json()
+    print(data)
     data = data[1:-1]
     search = SearchForVehicles(data, vehicles)
     vehicleList = []

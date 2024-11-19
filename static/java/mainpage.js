@@ -38,8 +38,11 @@ function GetFilters(){
         let selector = options[i].querySelector(".selector")
         let data = options[i].querySelector(".data")
         
-        if(selector.checked)
+        if(selector.checked){
+            console.log(data.getAttribute("value"))
             filters += data.getAttribute("value") + " "
+
+        }
     }
     
     return filters

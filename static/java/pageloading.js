@@ -112,14 +112,16 @@ function ShowItem(vehicle) {
         name.textContent = vehicle.name
         cat.textContent = vehicle.category || "Uncategorized";
         description.textContent = vehicle.description || "No description available";
-        pr.textContent = "$" + (vehicle.price || "0.00");
+        pr.value = vehicle.price
+        //pr.textContent = "$" + (vehicle.price || "0.00");
         tag.textContent = vehicle.tags;
     }
     else{
         name.value = vehicle.name;
         cat.value = vehicle.category || "Uncategorized";
         description.value = vehicle.description || "No description available";
-        pr.value = "$" + (vehicle.price || "0.00");
+        pr.value = vehicle.price
+        //pr.value = "$" + (vehicle.price || "0.00");
         tag.value = vehicle.tags;
     }
     
@@ -163,6 +165,7 @@ function GetVehicles(ids){
 function Fetch(){
     console.log("fetching")
     let filters = GetFilters()
+    console.log(filters)
     let search = JSON.stringify(filters+searchBar.value)
     fetch("/search",{
         method: 'POST',
