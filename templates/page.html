@@ -23,7 +23,7 @@
 </head>
 <body>
     <div class="header">
-        <h1>E-Commerce</h1>
+        <h1 id="header-title">E-Commerce</h1>
 
         <div class="searchbar-container">
             <span class="searchbar-icon material-symbols-outlined">search</span>
@@ -31,10 +31,18 @@
         </div>
 
         <div id="header-right">
-            <p class="header-right-buttons sidemenu" id="welcome">{{ username }}</p>
-            <button class="header-right-buttons sidemenu" id="upload" value="/upload">Upload</button>
-            <button class="header-right-buttons sidemenu" id="uploads" value="/page/">My Vehicles</button>
-            <button class="header-right-buttons sidemenu" id="Logout" value="/logout">Log out</button>
+            <p class="header-right-buttons sidemenu" id="welcome">
+                <span class="material-symbols-outlined">person</span> {{ username }}
+            </p>
+            <button class="header-right-buttons sidemenu" id="upload" value="/upload">
+                <span class="material-symbols-outlined">cloud_upload</span> Upload
+            </button>
+            <button class="header-right-buttons sidemenu" id="uploads" value="/page/">
+                <span class="material-symbols-outlined">folder</span> My Vehicles
+            </button>
+            <button class="header-right-buttons sidemenu" id="Logout" value="/logout">
+                <span class="material-symbols-outlined">logout</span> Log out
+            </button>
         </div>
     </div>
 
