@@ -88,6 +88,11 @@
     position: relative;
 }
 
+.layout-main {
+    margin-left: 10%; /* Ensure it doesn't overlap with the filterview */
+    width: 78%; /* Take up the remaining space */
+}
+
 .item {
     align-items: center;
     background-color: #212121;
@@ -223,19 +228,26 @@
 
 /* Filter View */
 .filterview {
-    background-color: #5dade2;
-    display: grid;
-    height: 57%;
+    color: #fafafa;
+    background-color: #424242;
+    display: flex; /* Use flexbox for better control over the layout */
+    flex-direction: column; /* Stack items vertically */
+    height: auto; /* Adjust height to fit content */
     left: 0;
-    overflow-y: hidden;
-    position: absolute;
-    top: 24%;
-    width: 15%;
+    overflow-y: auto; /* Allow scrolling for long content */
+    position: fixed; /* Fix position on the left */
+    top: 10%; /* Leave space below the header */
+    width: 5%; /* Fixed width for the filter panel */
+    min-width: 200px; /* Set a minimum width for small screens */
+    z-index: 10; /* Ensure it's above other elements */
+    padding: 10px; /* Add padding for inner spacing */
+    box-sizing: border-box; /* Ensure padding is included in width */
 }
 
 .option {
-    background-color: #5dade2;
-    display: grid;
-    align-content: center;
-    margin-bottom: 5px;
+    background-color: #616161;
+    padding: 5px; /* Add some padding for spacing */
+    margin-bottom: 5px; /* Add spacing between filter items */
+    border-radius: 5px; /* Slightly round corners for better visuals */
+    flex-shrink: 0; /* Prevent shrinking */
 }
