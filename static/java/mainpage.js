@@ -20,14 +20,13 @@ var options = document.getElementsByClassName("option")
 function GetFilters(){
     let filters = ""
     for(let i = 0; i < options.length; i++){
-        let selector = options[i].querySelector(".selector")
-        let data = options[i].querySelector(".data")
-        
-        console.log(selector.checked)
-        if(selector.checked){
-            console.log(data.getAttribute("value"))
-            filters += data.getAttribute("value") + " "
+        let filter = options[i].querySelectorAll(".sideoption")
 
+        for(let sideoption = 0; sideoption < filter.length; sideoption++){
+            if(filter[sideoption].querySelector(".selector").checked){
+                let data = filter[sideoption].querySelector(".data")
+                filters += data.getAttribute("value") + " "
+            }
         }
     }
     
@@ -38,8 +37,5 @@ for(let i = 0; i < options.length; i++){
     let buttons = options[i].querySelectorAll(".selector")
     for(let button  = 0; button < buttons.length; button++){
         buttons[button].onclick = Fetch
-    }
-    //console.log(child.id)
-    //child.onclick = Fetch
-        
+    } 
 }

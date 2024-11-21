@@ -30,6 +30,7 @@ def GetVehiclesByTag(vehiclesList: list, tags: list):
         return allCurrentVehicles
     
     newList = []
+    print(len(allCurrentVehicles))
     for vehicle in range(len(allCurrentVehicles)-1, 0, -1):
         if allCurrentVehicles[vehicle].get("tags") == None:
             allCurrentVehicles.pop(vehicle)
@@ -53,23 +54,33 @@ def GetVehicleByPrice(vehicleList: list, lower: int, higher: int):
     allCurrentVehicles = []
     for x in vehicleList:
         allCurrentVehicles.append(x)
+    print(allCurrentVehicles)
 
-    if (lower and higher) == 0:
+    print(type(lower), lower, type(higher), higher)
+    if lower == 0 and higher == 0:
+        print("returning all vehicles")
         return vehicleList
     
+    print("generating new list")
     newList = []
-    for vehicle in range(len(allCurrentVehicles)-1,0,-1):
+    print(len(allCurrentVehicles))
+    for vehicle in range(len(allCurrentVehicles)):
+        print(vehicle)
         currentVehicle: dict = allCurrentVehicles[vehicle]
-        vehiclePrice = currentVehicle["price"]
+        vehiclePrice = int(currentVehicle["price"])
+        print("vehicle: ",currentVehicle)
+        print(type(vehiclePrice),vehiclePrice)
 
         if vehiclePrice > lower and vehiclePrice < higher:
             newList.append(currentVehicle)
 
+    print(newList)
     return newList
 
     
 def SearchForVehicles(search: str, allVehicles: list):
     searchParameters = search.split(" ")
+    print(searchParameters)
     vehicleName = ""
     tags = []
     lower, higher = 0,0
@@ -85,8 +96,11 @@ def SearchForVehicles(search: str, allVehicles: list):
 
         if "-" in param:
             nums = param.split("-")
+            print("nums",nums)
             lower = int(nums[0])
+            print("lower", lower)
             higher = int(nums[1])
+            print("higher", higher)
 
         if not "#" in param and not "-" in param and vehicleName == "":
             vehicleName = param.lower()
@@ -99,7 +113,7 @@ def SearchForVehicles(search: str, allVehicles: list):
 @searchBp.route("/search", methods = ["POST"])
 def Search():
     data = request.get_json()
-    print(data)
+    #print(data)
     data = data[1:-1]
     search = SearchForVehicles(data, vehicles)
     vehicleList = []

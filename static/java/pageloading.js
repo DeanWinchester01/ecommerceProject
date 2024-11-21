@@ -180,6 +180,8 @@ function Fetch(){
         }
         return response.json()
     }).then(data =>{
+        console.log("data result")
+        console.log(data)
         GetVehicles(data)
     }).catch(error => console.log(error))
 }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Title -->
-    <title>E-Commerce | Home</title>
+    <title>Driver's Paradise | Home</title>
 
     <!-- Style.CSS -->
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
@@ -23,7 +23,7 @@
 </head>
 <body>
     <div class="header">
-        <h1 id="header-title">E-Commerce</h1>
+        <h1 id="header-title">Driver's Paradise</h1>
 
         <div class="searchbar-container">
             <span class="searchbar-icon material-symbols-outlined">search</span>
@@ -54,15 +54,19 @@
         <div class="option">
             <!-- Filter Options -->
              <p>Price</p>
-            <div>
-                <input type="radio" name="price" class="selector" id = "price1">
-                <label class = "data" for="price1" value = "500-10000">$500 - $10,000</label>
+             <div class = "sideoption">
+                <input type="radio" name="price" class="selector" id = "price0">
+                <label class = "data" for="price0" value = "0-1000">$0 - $1000</label>
             </div>
-            <div>
+            <div class = "sideoption">
+                <input type="radio" name="price" class="selector" id = "price1">
+                <label class = "data" for="price1" value = "1000-10000">$1000 - $10,000</label>
+            </div>
+            <div class = "sideoption">
                 <input type="radio" name="price" class="selector" id = "price2">
                 <label class = "data" for="price2" value = "10000-50000">$10,000 - $50,000</label>
             </div>
-            <div>
+            <div class = "sideoption">
                 <input type="radio" name="price" class="selector" id = "price3">
                 <label class = "data" for="price3" value="50000-100000">$50,000 - $100,000</label>
             </div>
