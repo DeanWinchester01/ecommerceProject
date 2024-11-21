@@ -9,17 +9,17 @@ var itemName = document.getElementById("name")
 var category = document.getElementById("category")
 var desc = document.getElementById("description")
 var price = document.getElementById("price")
-let tags = document.getElementById("tags")
-
-//let uploadLink = document.getElementById("upload")
-//let mainLink = document.getElementById("mainPage")
-//let logout = document.getElementById("Logout")
+var tags = document.getElementById("tags")
 var privatePage = false
 
-var cookies = document.cookie.split(";");
-let username = cookies[1].split("=")[1]
-let email = cookies[0].split("=")[1]
-document.getElementById("welcome").textContent = cookies[1].split("=")[1]
+let parts = document.cookie.split("; ")
+let data = {}
+for(let i = 0; i < parts.length; i++){
+    let key = parts[i].split("=")[0]
+    let val = parts[i].split("=")[1]
+    data[key] = val
+}
+document.getElementById("welcome").textContent = data["username"]
 
 function ShowBackground(){
     itemView.style.visibility = "hidden"
@@ -114,8 +114,7 @@ function ShowItem(vehicle) {
         name.textContent = vehicle.name
         cat.textContent = vehicle.category || "Uncategorized";
         description.textContent = vehicle.description || "No description available";
-        pr.value = vehicle.price
-        //pr.textContent = "$" + (vehicle.price || "0.00");
+        pr.textContent = "$"+vehicle.price
         tag.textContent = vehicle.tags;
     }
     else{
@@ -123,7 +122,6 @@ function ShowItem(vehicle) {
         cat.value = vehicle.category || "Uncategorized";
         description.value = vehicle.description || "No description available";
         pr.value = vehicle.price
-        //pr.value = "$" + (vehicle.price || "0.00");
         tag.value = vehicle.tags;
     }
     
@@ -197,98 +195,7 @@ for(let i = 0; i < links.length; i++){
 }
 document.getElementById("close").onclick = () => ShowBackground()
 var vehicles = JSON.parse(document.currentScript.getAttribute('vehicles'));
-//uploadLink.onclick = () => window.location.href = "/upload"
-//logout.onclick = () => window.location.href = "/logout"
 
 ShowVehicles(vehicles)
 document.currentScript.setAttribute("vehicles","")
-
-//OLD CODE PUT IN PYTHON
-/**
- * 
- * @param {String} name
- * @returns {Array}
- */
-/*function GetVehiclesByName(name){
-    let allCurrentVehicles = vehicles
-    if(name == ""){
-        console.log("returned all vehicles")
-        return allCurrentVehicles
-    }
-
-    let newList = []
-
-    for(let i = 0; i < allCurrentVehicles.length; i++){
-        let vehicle = allCurrentVehicles[i]
-        let vehicleName = Object.keys(vehicle).includes("vehicle") && vehicle.vehicle || vehicle.name
-        
-        if(vehicleName.toLowerCase().includes(name)){
-            newList.push(vehicle)
-        }
-    }
-    console.log("returned new list")
-    return newList
-}
-
-/**
- * 
- * @param {Array} vehicles 
- * @param {Array} tags 
- * @returns {Array} 
- 
-function GetVehiclesByTag(vehicles, tags){
-    let allCurrentVehicles = vehicles
-    if(tags.length == 0)
-        return allCurrentVehicles
-
-    let newList = []
-
-    console.log(tags)
-    for(let vehicle = vehicles.length-1; vehicle >= 0; vehicle--){
-        let currentVehicle = vehicles[vehicle]
-        if(!Object.keys(currentVehicle).includes("tags")) continue
-        for(let tag = 0; tag < tags.length; tag++){
-            console.log("searching tag: "+tags[tag])
-            if(!currentVehicle.tags.includes(tags[tag])){
-                allCurrentVehicles.slice(vehicle,vehicle+1)
-                console.log(allCurrentVehicles)
-            }else{
-                newList.push(currentVehicle)
-                console.log("vehicle "+vehicle+" includes "+tags[tag])
-                break
-            }
-        }
-    }
-
-    return newList
-}
-
-/**
- * 
- * @param {string} search 
- * @returns {Array}
- 
-function SearchForVehicles(search){
-    let searchParameters = search.split(" ")
-    let vehicleName = "";
-    let tags = []
-    for(let i = 0; i < searchParameters.length; i++){
-        let param = searchParameters[i].toLowerCase()
-        if (param[0] == "#" && param.length > 1){
-            tags.push(param)
-            console.log("pushed tag")
-        }
-
-        if(!param.includes("#") && vehicleName == ""){
-            console.log(param)
-            vehicleName = param.toLowerCase()
-        }
-    }
-
-    let list = GetVehiclesByName(vehicleName)
-    console.log(list)
-    let newList = GetVehiclesByTag(list, tags)
-    console.log(newList)
-    return newList
-}*/
 
