@@ -223,18 +223,19 @@
 
 /* Filter View */
 .filterview {
-    background-color: #424242;
+    background-color: #5dade2;
     display: grid;
     height: 57%;
     left: 0;
     overflow-y: hidden;
     position: absolute;
     top: 24%;
-    width: 9%;
+    width: 15%;
 }
 
 .option {
     background-color: #5dade2;
     display: grid;
     align-content: center;
+    margin-bottom: 5px;
 }

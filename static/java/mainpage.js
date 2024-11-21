@@ -16,13 +16,14 @@ if (document.cookie.includes("email")){
         document.getElementById("welcome").textContent = data["username"]
 }
 
-var options = document.getElementsByClassName("sideoption")
+var options = document.getElementsByClassName("option")
 function GetFilters(){
     let filters = ""
     for(let i = 0; i < options.length; i++){
         let selector = options[i].querySelector(".selector")
         let data = options[i].querySelector(".data")
         
+        console.log(selector.checked)
         if(selector.checked){
             console.log(data.getAttribute("value"))
             filters += data.getAttribute("value") + " "
@@ -34,7 +35,11 @@ function GetFilters(){
 }
 
 for(let i = 0; i < options.length; i++){
-    let child = options[i].querySelector(".selector")
-    child.onclick = Fetch
+    let buttons = options[i].querySelectorAll(".selector")
+    for(let button  = 0; button < buttons.length; button++){
+        buttons[button].onclick = Fetch
+    }
+    //console.log(child.id)
+    //child.onclick = Fetch
         
 }

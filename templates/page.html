@@ -53,91 +53,103 @@
     <div class="filterview" id="filterview" style="overflow: scroll;">
         <div class="option">
             <!-- Filter Options -->
-            <label>Price</label>
-            <div class="sideoption">
-                <input type="radio" name="price" class="selector">
-                <p class="data" value="500-10000">$500 - $10,000</p>
+             <p>Price</p>
+            <div>
+                <input type="radio" name="price" class="selector" id = "price1">
+                <label class = "data" for="price1" value = "500-10000">$500 - $10,000</label>
             </div>
-            <div class="sideoption">
-                <input type="radio" name="price" class="selector">
-                <p class="data" value="10000-50000">$10,000 - $50,000</p>
+            <div>
+                <input type="radio" name="price" class="selector" id = "price2">
+                <label class = "data" for="price2" value = "10000-50000">$10,000 - $50,000</label>
             </div>
-            <div class="sideoption">
-                <input type="radio" name="price" class="selector">
-                <p class="data" value="50000-100000">$50,000 - $100,000</p>
-            </div>
-        </div>
-        <div class="option">
-            <label>Condition</label>
-            <div class="sideoption">
-                <input type="radio" name="used" class="selector">
-                <p class="data" value="#new">New</p>
-            </div>
-            <div class="sideoption">
-                <input type="radio" name="used" class="selector">
-                <p class="data" value="#used">Used</p>
-            </div>
-            <div class="sideoption">
-                <input type="radio" name="used" class="selector">
-                <p class="data" value="#salvage">Salvage</p>
-            </div>
-            <div class="sideoption">
-                <input type="radio" name="used" class="selector">
-                <p class="data" value="#damaged">Damaged</p>
+            <div>
+                <input type="radio" name="price" class="selector" id = "price3">
+                <label class = "data" for="price3" value="50000-100000">$50,000 - $100,000</label>
             </div>
         </div>
         <div class="option">
-            <label>Engine</label>
+            <p>Condition</p>
             <div class="sideoption">
-                <input type="checkbox" name="cylinder" class="selector">
-                <p class="data" value="#gasoline">Gasoline</p>
+                <input type="radio" name="condition" class="selector" id = "new">
+                <label class = "data" for="new" value = "#new">New</label>
             </div>
             <div class="sideoption">
-                <input type="checkbox" name="cylinder" class="selector">
-                <p class="data" value="#electric">Electric</p>
+                <input type="radio" name="condition" class="selector" id = "used">
+                <label class = "data" for="used" value = "#used">Used</label>
             </div>
             <div class="sideoption">
-                <input type="checkbox" name="cylinder" class="selector">
-                <p class="data" value="#4hybrid">Hybrid</p>
+                <input type="radio" name="condition" class="selector" id = "salvage">
+                <label class = "data" for="salvage" value = "#salvage">Salvage</label>
+            </div>
+            <div class="sideoption">
+                <input type="radio" name="condition" class="selector" id = "damaged">
+                <label class = "data" for="damaged" value = "#damaged">Damaged</label>
             </div>
         </div>
         <div class="option">
-            <label>Speed</label>
+            <p>Engine</p>
             <div class="sideoption">
-                <input type="checkbox" name="speed" class="selector">
-                <p class="data" value="#100kmph">100 mph</p>
+                <input type="radio" name="engine" class="selector" id = "gas">
+                <label class = "data" for="gas" value = "#gas">Gasoline</label>
             </div>
             <div class="sideoption">
-                <input type="checkbox" name="speed" class="selector">
-                <p class="data" value="#200kmph">200 mph</p>
+                <input type="radio" name="engine" class="selector" id = "electric">
+                <label class = "data" for="electric" value = "#electric">Electric</label>
             </div>
             <div class="sideoption">
-                <input type="checkbox" name="speed" class="selector">
-                <p class="data" value="#300kmph">300 mph</p>
+                <input type="radio" name="engine" class="selector" id = "hybrid">
+                <label class = "data" for="hybrid" value = "#hybrid">Hybrid</label>
+            </div>
+        </div>
+        <div class="option">
+            <p>Top Speed</p>
+            <div class="sideoption">
+                <input type="radio" name="speed" class="selector" id = "100mph">
+                <label class = "data" for="100mph" value = "#100kmph">100 mph</label>
             </div>
             <div class="sideoption">
-                <input type="checkbox" name="speed" class="selector">
-                <p class="data" value="#400kmph">400 mph</p>
+                <input type="radio" name="speed" class="selector" id = "200mph">
+                <label class = "data" for="200mph" value = "#200kmph">200 mph</label>
+            </div>
+            <div class="sideoption">
+                <input type="radio" name="speed" class="selector" id = "300mph">
+                <label class = "data" for="300mph" value = "#300kmph">300 mph</label>
+            </div>
+            <div class="sideoption">
+                <input type="radio" name="speed" class="selector" id = "400mph">
+                <label class = "data" for="400mph" value = "#400kmph">400 mph</label>
             </div>
         </div>
 
         <div class="option">
-            <label>Seats</label>
+            <p>Seats</p>
             <div class="sideoption">
-                <input type="checkbox" name="medium" class="selector">
-                <p class="data" value="#3seater">3-Seater</p>
+                <input type="radio" name="seats" class="selector" id = "1seat">
+                <label class = "data" for="1seat" value = "#1seat">1-Seater</label>
             </div>
             <div class="sideoption">
-                <input type="checkbox" name="medium" class="selector">
-                <p class="data" value="#4seater">4-Seater</p>
+                <input type="radio" name="seats" class="selector" id = "2seat">
+                <label class = "data" for="2seat" value = "#2seat">2-Seater</label>
             </div>
             <div class="sideoption">
-                <input type="checkbox" name="medium" class="selector">
-                <p class="data" value="#5seater">5-Seater</p>
+                <input type="radio" name="seats" class="selector" id = "3seat">
+                <label class = "data" for="3seat" value = "#3seat">3-Seater</label>
             </div>
             <div class="sideoption">
-                <input type="checkbox" name="medium" class="selector">
-                <p class="data" value="#7seater">7-Seater</p>
+                <input type="radio" name="seats" class="selector" id = "4seat">
+                <label class = "data" for="4seat" value = "#4seat">4-Seater</label>
+            </div>
+            <div class="sideoption">
+                <input type="radio" name="seats" class="selector" id = "5seat">
+                <label class = "data" for="5seat" value = "#5seat">5-Seater</label>
+            </div>
+            <div class="sideoption">
+                <input type="radio" name="seats" class="selector" id = "6seat">
+                <label class = "data" for="6seat" value = "#6seat">6-Seater</label>
+            </div>
+            <div class="sideoption">
+                <input type="radio" name="seats" class="selector" id = "7seat">
+                <label class = "data" for="7seat" value = "#7seat">7-Seater</label>
             </div>
         </div> 
     </div>    
