@@ -44,48 +44,47 @@
         <!--{{ items | safe }}-->
     </div>
     
-    <div class = "itemview" id = "itemview">
-        <img  id = "itemImage" >
-        <form action = "/update" method = "post" id = "form">
-            <div class = "descriptors" style="top: 12.5%; left: 50%; position: absolute; width: 30%;">
-                <p class = "descriptor" id = "name">
+    <div class="itemview" id="itemview">
+        <img id="itemImage">
+        <form action="/update" method="post" id="form">
+            <div class="descriptors">
+                <p class="descriptor" id="name">
                     <span>Name:</span>
-                    <input type="text" id = "name-custom" placeholder = "Unknown Vehicle" name="name">
+                    <input type="text" id="name-custom" placeholder="Unknown Vehicle" name="name">
                 </p>
-                <p class = "descriptor" id = "category">
+                <p class="descriptor" id="category">
                     <span>Category:</span>
                     <select name="category" id="category">
                         <option value="Car">Car</option>
                         <option value="Motorcycle">Motorcycle</option>
                     </select>
-                    <!--<input type="text" id = "category-custom" placeholder = "Uncategorized" name="category">-->
                 </p>
-                <p class = "descriptor" id = "description">
+                <p class="descriptor" id="description">
                     <span>Description:</span>
-                    <input type="text" id = "description-custom" placeholder = "No description" name="description">
+                    <input type="text" id="description-custom" placeholder="No description" name="description">
                 </p>
-                <p class = "descriptor" id = "price">
+                <p class="descriptor" id="price">
                     <span>Price: $</span>
-                    <input type="number" id = "price-custom" placeholder = "0" name="price">
+                    <input type="number" id="price-custom" placeholder="0" name="price">
                 </p>
-                <p class="descriptor" id = "tags">
+                <p class="descriptor" id="tags">
                     <span>Tags:</span>
-                    <input type="text" id = "tags-custom" placeholder = "N/A" name="tags">
+                    <input type="text" id="tags-custom" placeholder="N/A" name="tags">
                 </p>
-                <button class = "descriptor" style = "font-size: 15px; align-items: center;">
-                    <span class = "material-symbols-outlined">chat_bubble</span>
+                <button class="message-button">
+                    <span class="material-symbols-outlined">chat_bubble</span>
                     Message
                 </button>
             </div>
         
-            <button id = "update" type="submit">
+            <button id="update" type="submit">
                 Update vehicle
             </button>
             
         </form>
-        <button id = "close" name="close" value="close"><span class="material-symbols-outlined">close</span></button>
+        <button id="close" name="close" value="close"><span class="material-symbols-outlined">close</span></button>
     </div>
     
-    <script src="{{ url_for('static', filename='java/pageloading.js') }}"vehicles='{{ dynamic|tojson|safe }}'></script>
+    <script src="{{ url_for('static', filename='java/pageloading.js') }}" vehicles='{{ dynamic|tojson|safe }}'></script>
 </body>
 </html>

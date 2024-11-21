@@ -1,3 +1,55 @@
+/* General Styles for Descriptors */
+.descriptors {
+    display: flex;
+    flex-direction: column; /* Stack descriptors vertically */
+    width: 100%;
+}
+
+/* For each descriptor, ensure a table-like layout */
+.descriptor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Style the labels (span) to be aligned correctly */
+.descriptor span {
+    width: 30%; /* Adjust width for labels */
+    text-align: left;
+}
+
+/* Style the input fields to take up remaining space */
+.descriptor input,
+.descriptor select {
+    width: 65%; /* Allow inputs to fill the available space */
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #616161;
+    color: #fafafa;
+    border: 2px solid #424242;
+}
+
+.message-button {
+    background-color: #424242;
+    border: 100%;
+    border-radius: 10px;
+    color: #fafafa;
+    display: flex;
+    font-size: 1.4em;
+    font-weight: 600;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;
+    width: 100%; /* Full width for the button */
+    padding: 0;
+    margin-left: 50%;
+}
+
+/* For Other Elements that were Not Defined */
 .itemview {
     align-items: stretch;
     background-color: #424242;
@@ -15,11 +67,24 @@
 }
 
 #update {
-    background-color: green;
-    font-size: 43px;
-    height: 10%;
-    left: 39%;
-    position: absolute;
-    top: 65%;
-    width: 20%;
+    background-color: #58d68d;
+    border: 100%;
+    border-radius: 10px;
+    color: #eafaf1;
+    display: flex;
+    font-size: 1.4em;
+    font-weight: 600;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;
+    width: 100%;
+    padding: 0;
+    margin-top: 10px;
+    margin-left: 50%;
+}
+
+.delete {
+    padding: 10px;
 }
